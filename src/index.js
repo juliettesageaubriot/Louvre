@@ -1,33 +1,38 @@
- import "./styles.scss";
-// // console.log("hello world!");
-TweenLite.defaultEase = Linear.easeNone;
-var titles = document.querySelectorAll(".sectionTitle");
-var controller = new ScrollMagic.Controller();
-var tl = new TimelineMax();
+import './styles.scss';
 
-// create timeline
-// this could also be created in a loop
-tl.to("#js-slideContainer", 1, {xPercent: -20}, "label1");
-tl.from(titles[1], 0.5, {opacity:0}, "label1+=0.5");
-tl.to("#js-slideContainer", 1, {xPercent: -40}, "label2");
-tl.from(titles[2], 0.5, {opacity:0}, "label2+=0.5");
-tl.to("#js-slideContainer", 1, {xPercent: -60}, "label3");
-tl.from(titles[3], 0.5, {opacity:0}, "label3+=0.5");
-tl.to("#js-slideContainer", 1, {xPercent: -80}, "label4");
-tl.from(titles[4], 0.5, {opacity:0}, "label4+=0.5");
+import { gsap } from 'gsap';
 
+class App {
+	constructor(className = '.app') {
+		this.app = document.querySelector(className);
 
-new ScrollMagic.Scene({
-  triggerElement: "#js-wrapper",
-  triggerHook: "onLeave",
-  duration: "400%"
-})
-  .setPin("#js-wrapper")
-  .setTween(tl)
-  .addIndicators({
-    colorTrigger: "white",
-    colorStart: "white",
-    colorEnd: "white",
-  })
-  .addTo(controller);
-  
+		this.bind();
+		this.events();
+	}
+
+	bind() {
+		this.horizontal = this.horizontal.bind(this);
+	}
+
+	events() {
+		const { horizontal } = this;
+
+		window.addEventListener('mousewheel', horizontal, { passive: false });
+		window.addEventListener('DOMMouseScroll', horizontal, { passive: false });
+	}
+
+	horizontal(e, v = 80) {
+		e = window.event || e;
+
+		e.preventDefault();
+
+		const delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
+		const scrollLeft_ = gsap.getProperty(this.app, 'scrollLeft');
+		gsap.to(this.app, {
+			scrollLeft: scrollLeft_ - delta * v,
+			ease: 'power2.out'
+		});
+	}
+}
+
+window.onload = () => (window.app = new App());
