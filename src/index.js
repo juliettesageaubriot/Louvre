@@ -1,6 +1,8 @@
 import './styles.scss';
 
-import { gsap } from 'gsap';
+import utils from './utils';
+
+const { drop } = utils;
 
 class App {
 	constructor(className = '.app') {
@@ -15,23 +17,36 @@ class App {
 	}
 
 	events() {
-		const { horizontal } = this;
-
-		window.addEventListener('mousewheel', horizontal, { passive: false });
-		window.addEventListener('DOMMouseScroll', horizontal, { passive: false });
+		this.horizontal();
 	}
 
-	horizontal(e, v = 80) {
-		e = window.event || e;
+	horizontal() {
+		if (ScrollMagic && TimelineMax && gsap) {
+			const controller = new ScrollMagic.Controller();
 
-		e.preventDefault();
+			const horizontalSlides = new TimelineMax()
+				// animate panels
+				.to('.wrapper', 1, { x: '-20%' })
+				.to('.wrapper', 1, { x: '-40%' })
+				.to('.wrapper', 1, { x: '-60%' })
+				.to('.wrapper', 1, { x: '-80%' })
+				.to('.wrapper', 1, { x: '-80%' });
 
-		const delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
-		const scrollLeft_ = gsap.getProperty(this.app, 'scrollLeft');
-		gsap.to(this.app, {
-			scrollLeft: scrollLeft_ - delta * v,
-			ease: 'power2.out'
-		});
+			// create scene to pin and link animation
+			new ScrollMagic.Scene({
+				triggerElement: '.app',
+				triggerHook: 'onLeave',
+				duration: '500%'
+			})
+				.setPin('.app')
+				.setTween(horizontalSlides)
+				.addIndicators({})
+				.addTo(controller);
+
+			drop([...document.querySelectorAll('body > div')]).forEach((d) =>
+				gsap.set(d, { autoAlpha: 0 })
+			);
+		}
 	}
 }
 

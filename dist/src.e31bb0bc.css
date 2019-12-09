@@ -178,7 +178,6 @@ table {
 body {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
   position: relative;
 }
 
@@ -202,6 +201,7 @@ body {
   left: 0;
   transform: translate(0, 0);
   overflow: hidden;
+  perspective: 1000;
   color: black;
   background: white;
   -webkit-font-smoothing: antialiased;
