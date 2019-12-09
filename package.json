@@ -12,6 +12,9 @@
     "build-prod": "parcel build src/index.html"
   },
   "dependencies": {
+    "gsap": "^3.0.2",
+    "scrollmagic": "^2.0.7",
+    "scrollmagic-plugin-gsap": "^1.0.3",
     "wipe.css": "^1.1.2"
   },
   "devDependencies": {
