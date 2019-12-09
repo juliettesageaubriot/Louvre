@@ -1,0 +1,31 @@
+@import './styles/theme';
+
+body {
+	@include size(100vw, 100vh);
+	overflow: hidden;
+	position: relative;
+}
+
+.app__overlay {
+	pointer-events: none;
+	@include size(100%, 100%);
+	@include abs-pos();
+	overflow: hidden;
+	z-index: 9999;
+}
+
+.app {
+	@include size(100%, 100%);
+	@include abs-pos();
+	overflow: hidden;
+	color: $text;
+	background: $bg;
+
+	@include base-lettering;
+	@include montserrat;
+
+	.wrapper {
+		@include size(100%, 100%);
+		position: relative;
+	}
+}

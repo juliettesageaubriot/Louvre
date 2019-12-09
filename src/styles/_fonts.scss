@@ -1,0 +1,40 @@
+// Base style
+$base-font-size: 1rem;
+$base-line-height: 1.4;
+$base-letter-spacing: 0.8px;
+
+//font-weight:
+$thin: 100;
+$light: 300;
+$medium: 500;
+$black: 900;
+
+@mixin base-lettering() {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: justify;
+	line-height: $base-line-height;
+	letter-spacing: $base-letter-spacing;
+}
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,500,900&display=swap');
+
+@mixin montserrat(
+	$size: $base-font-size,
+	$style: normal,
+	$decoration: none,
+	$weight: $light,
+	$align: justify,
+	$lh: $base-line-height,
+	$spacing: $base-letter-spacing
+) {
+	font-family: 'Montserrat', sans-serif;
+	font-style: $style;
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $lh;
+	letter-spacing: $spacing;
+	text-decoration: $decoration;
+	text-align: $align;
+}
