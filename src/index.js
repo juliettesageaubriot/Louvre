@@ -75,11 +75,15 @@ class App {
 				if (entry.isIntersecting) {
 					console.log(entry.target, this.scrollDir);
 					animations.forEach((tl) => tl.pause());
-					animations[i].resume();
+          animations[i].play();
+          if ( this.scrollDir === 'RIGHT') {
+            animations[i].play();
+          } else {
+            animations[i].reverse();
+          }
 				} else {
 					return;
-					//animations[i].reverse();
-				}
+        }
 			}
 		}
 	}
