@@ -1,47 +1,30 @@
 import './styles.scss';
 
-import { gsap } from 'gsap';
+import Debugger from './scripts/classes/Debugger';
+import Scroller from './scripts/classes/Scroller';
 
 class App {
-	constructor(className = '.app') {
+	constructor(debug = true, className = '.app') {
 		this.app = document.querySelector(className);
-		this.scrollDir = 'RIGHT';
+		this.animation = {};
+		this.config = {
+			debug
+		};
+
+		if (this.config.debug) {
+			this.debugger = new Debugger();
+			this.debugger.clear();
+		}
+
+		this.scroller = new Scroller(this.app, this.debugger);
 
 		this.bind();
 		this.events();
 	}
 
-	bind() {
-		this.horizontal = this.horizontal.bind(this);
-	}
+	bind() {}
 
-	events() {
-		const { horizontal } = this;
-
-		window.addEventListener('mousewheel', horizontal, { passive: false });
-		window.addEventListener('DOMMouseScroll', horizontal, { passive: false });
-	}
-
-	horizontal(e, v = 80) {
-		e = window.event || e;
-
-		e.preventDefault();
-
-		// block scroll left/right
-		if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
-			return true;
-		}
-
-		const delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
-		const scrollLeft_ = gsap.getProperty(this.app, 'scrollLeft');
-		gsap.to(this.app, {
-			scrollLeft: scrollLeft_ - delta * v,
-			ease: 'power2.out'
-		});
-
-		this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
-		console.log(this.scrollDir);
-	}
+	events() {}
 }
 
 window.onload = () => (window.app = new App());
