@@ -36,6 +36,21 @@ class App {
 	}
 
 	observer() {
+    console.log('coucou', window.scrollX, window.scrollY)
+
+    
+    var position = document.documentElement.scrollTop;
+    document.addEventListener('scroll', function() {
+    var scroll = document.documentElement.scrollTop;
+    if (scroll > position) {
+      console.log('down');
+    } else {
+      console.log('up');
+    }
+    
+    position = scroll;
+  });
+
 		const threshold = 0.7; // trigger
 		const options = {
 			root: null,
@@ -66,12 +81,12 @@ class App {
 				let i = ar.indexOf(entry.target);
 				if (entry.isIntersecting) {
 					console.log(entry.target);
-					animations.forEach((tl) => tl.pause(0));
-					animations[i].resume();
-				} else {
-					return;
-					// animations[i].reverse();
-				}
+          animations.forEach((tl) => tl.pause());
+          animations[i].resume();
+        } else {
+          return
+          //animations[i].reverse();
+        }
 			}
 		}
 	}
