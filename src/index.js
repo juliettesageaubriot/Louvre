@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 class App {
 	constructor(className = '.app') {
 		this.app = document.querySelector(className);
+		this.scrollDir = null;
 
 		this.bind();
 		this.events();
@@ -26,6 +27,7 @@ class App {
 
 		e.preventDefault();
 
+		// block scroll left/right
 		if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
 			return true;
 		}
@@ -36,6 +38,9 @@ class App {
 			scrollLeft: scrollLeft_ - delta * v,
 			ease: 'power2.out'
 		});
+
+		this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
+		console.log(this.scrollDir);
 	}
 }
 

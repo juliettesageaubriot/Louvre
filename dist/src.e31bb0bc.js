@@ -5684,6 +5684,7 @@ function () {
     _classCallCheck(this, App);
 
     this.app = document.querySelector(className);
+    this.scrollDir = null;
     this.bind();
     this.events();
   }
@@ -5709,7 +5710,7 @@ function () {
     value: function horizontal(e) {
       var v = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 80;
       e = window.event || e;
-      e.preventDefault();
+      e.preventDefault(); // block scroll left/right
 
       if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
         return true;
@@ -5723,6 +5724,9 @@ function () {
         scrollLeft: scrollLeft_ - delta * v,
         ease: 'power2.out'
       });
+
+      this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
+      console.log(this.scrollDir);
     }
   }]);
 
