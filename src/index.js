@@ -1,11 +1,23 @@
 import './styles.scss';
 
 import { gsap } from 'gsap';
+import Debugger from './scripts/classes/Debugger';
 
 class App {
-	constructor(className = '.app') {
+	constructor(debug = true, className = '.app') {
 		this.app = document.querySelector(className);
-		this.scrollDir = 'RIGHT';
+		this.scroll = {
+			direction: 'RIGHT',
+			x: this.app.scrollLeft
+		};
+		this.config = {
+			debug
+		};
+
+		if (this.config.debug) {
+			this.debugger = new Debugger();
+			this.debugger.clear();
+		}
 
 		this.bind();
 		this.events();
@@ -13,16 +25,16 @@ class App {
 	}
 
 	bind() {
-		this.horizontal = this.horizontal.bind(this);
+		this.scroller = this.scroller.bind(this);
 	}
 
 	events() {
-		const { horizontal } = this;
-		window.addEventListener('mousewheel', horizontal, { passive: false });
-		window.addEventListener('DOMMouseScroll', horizontal, { passive: false });
+		const { scroller } = this;
+		window.addEventListener('mousewheel', scroller, { passive: false });
+		window.addEventListener('DOMMouseScroll', scroller, { passive: false });
 	}
 
-	horizontal(e, v = 80) {
+	scroller(e, v = 80) {
 		e = window.event || e;
 
 		e.preventDefault();
@@ -39,7 +51,13 @@ class App {
 			ease: 'power2.out'
 		});
 
-		this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
+		this.scroll.direction = delta < 0 ? 'RIGHT' : 'LEFT';
+		this.scroll.x = this.app.scrollLeft;
+
+		if (this.config.debug) {
+			this.debugger.add('scroller', this.scroll);
+			// this.debugger.log(['scroller']);
+		}
 	}
 
 	observer() {
@@ -55,17 +73,38 @@ class App {
 		const observer = new IntersectionObserver(animHandler.bind(this), options);
 
 		/**
-		 * Config Animatons
+		 * Config Animations
 		 */
 		const targets = [...document.querySelectorAll('section')];
 		const animations = [];
 
-		targets.forEach((target) => {
-			animations.push(gsap.timeline({ paused: true }));
+		targets.forEach((target, index) => {
+			const tl = gsap.timeline({ paused: true });
+
+			// timeline for each section
+			if (index === 2) {
+				const { width } = target.getBoundingClientRect();
+				const bounding = {
+					name: `section#${index}`,
+					target,
+					minScroll: width * index,
+					maxScroll: width * (index + 1)
+				};
+
+				tl.to(
+					target.querySelector('img'),
+					1,
+					{ scale: 2, rotation: 360, yoyo: true },
+					0
+				);
+				this.animate(tl, true, bounding);
+			} else {
+				tl.to(target.querySelector('img'), 1, { scale: 1.4 }, 0);
+			}
+
+			animations.push(tl);
 			observer.observe(target);
 		});
-		// timeline for each section
-		animations[1].to('#apple', 1, { scale: 1.4, autoAlpha: 0.5 });
 
 		/**
 		 * Observer handler
@@ -73,14 +112,46 @@ class App {
 		function animHandler(entries, observer) {
 			entries.forEach(({ target, isIntersecting }) => {
 				const i = targets.indexOf(target);
-				if (isIntersecting) {
-					console.log(target, this.scrollDir);
+				const tl = animations[i];
 
-					if (this.scrollDir === 'RIGHT') {
-						animations[i].play();
-					} else {
-						animations[i].reverse();
+				if (isIntersecting) {
+					switch (i) {
+						case 2:
+							break;
+						default:
+							this.animate(tl);
+							break;
 					}
+				}
+			});
+		}
+	}
+
+	animate(timeline, withProgress = false, bounding) {
+		if (!withProgress) {
+			if (this.scroll.direction === 'RIGHT') {
+				timeline.play();
+			} else {
+				timeline.reverse();
+			}
+		} else {
+			const { target, name, minScroll, maxScroll } = bounding;
+
+			target.addEventListener('mousewheel', () => {
+				const { x: scrollX } = this.scroll;
+				const scrollData = {
+					target,
+					minScroll,
+					scrollX,
+					maxScroll,
+					progress: scrollX / maxScroll
+				};
+
+				timeline.progress(scrollData.progress);
+
+				if (this.config.debug) {
+					this.debugger.add(`scrollData_${name}`, scrollData);
+					this.debugger.log([`scrollData_${name}`]);
 				}
 			});
 		}
