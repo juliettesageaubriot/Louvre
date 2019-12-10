@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 class App {
 	constructor(className = '.app') {
 		this.app = document.querySelector(className);
-		this.scrollDir = null;
+		this.scrollDir = 'RIGHT';
 
 		this.bind();
 		this.events();

@@ -5684,7 +5684,7 @@ function () {
     _classCallCheck(this, App);
 
     this.app = document.querySelector(className);
-    this.scrollDir = null;
+    this.scrollDir = 'RIGHT';
     this.bind();
     this.events();
   }
@@ -5764,7 +5764,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55942" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52491" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
