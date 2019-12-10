@@ -5711,11 +5711,7 @@ function () {
     value: function horizontal(e) {
       var v = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 80;
       e = window.event || e;
-<<<<<<< HEAD
-      e.preventDefault();
-=======
       e.preventDefault(); // block scroll left/right
->>>>>>> origin/testScroll-without-scrollmagic
 
       if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
         return true;
@@ -5732,7 +5728,6 @@ function () {
 
       this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
       console.log(this.scrollDir);
-<<<<<<< HEAD
     }
   }, {
     key: "observer",
@@ -5818,8 +5813,6 @@ function () {
           }
         }
       }
-=======
->>>>>>> origin/testScroll-without-scrollmagic
     }
   }]);
 
@@ -5857,7 +5850,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49788" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55942" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

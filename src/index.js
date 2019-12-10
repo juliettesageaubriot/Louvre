@@ -8,8 +8,8 @@ class App {
 		this.scrollDir = null;
 
 		this.bind();
-    this.events();
-    this.observer();
+		this.events();
+		this.observer();
 	}
 
 	bind() {
@@ -28,10 +28,7 @@ class App {
 
 		e.preventDefault();
 
-<<<<<<< HEAD
-=======
 		// block scroll left/right
->>>>>>> origin/testScroll-without-scrollmagic
 		if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
 			return true;
 		}
@@ -41,14 +38,13 @@ class App {
 		gsap.to(this.app, {
 			scrollLeft: scrollLeft_ - delta * v,
 			ease: 'power2.out'
-    });
+		});
 
-    this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
+		this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
 		console.log(this.scrollDir);
 	}
 
 	observer() {
-    
 		const threshold = 0.7; // trigger
 		const options = {
 			root: null,
@@ -79,12 +75,12 @@ class App {
 				let i = ar.indexOf(entry.target);
 				if (entry.isIntersecting) {
 					console.log(entry.target);
-          animations.forEach((tl) => tl.pause());
-          animations[i].resume();
-        } else {
-          return
-          //animations[i].reverse();
-        }
+					animations.forEach((tl) => tl.pause());
+					animations[i].resume();
+				} else {
+					return;
+					//animations[i].reverse();
+				}
 			}
 		}
 	}
