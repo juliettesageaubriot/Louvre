@@ -5684,7 +5684,7 @@ function () {
     _classCallCheck(this, App);
 
     this.app = document.querySelector(className);
-    this.scrollDir = null;
+    this.scrollDir = 'RIGHT';
     this.bind();
     this.events();
     this.observer();
@@ -5727,7 +5727,6 @@ function () {
       });
 
       this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
-      console.log(this.scrollDir);
     }
   }, {
     key: "observer",
@@ -5739,7 +5738,7 @@ function () {
         rootMargin: '0px',
         threshold: threshold
       };
-      var observer = new IntersectionObserver(animHandler, options);
+      var observer = new IntersectionObserver(animHandler.bind(this), options);
       var targets = document.querySelectorAll('section');
       var ar = [].slice.call(targets);
       var animations = [];
@@ -5789,7 +5788,7 @@ function () {
             var i = ar.indexOf(entry.target);
 
             if (entry.isIntersecting) {
-              console.log(entry.target);
+              console.log(entry.target, this.scrollDir);
               animations.forEach(function (tl) {
                 return tl.pause();
               });

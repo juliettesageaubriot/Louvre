@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 class App {
 	constructor(className = '.app') {
 		this.app = document.querySelector(className);
-		this.scrollDir = null;
+		this.scrollDir = 'RIGHT';
 
 		this.bind();
 		this.events();
@@ -41,7 +41,6 @@ class App {
 		});
 
 		this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
-		console.log(this.scrollDir);
 	}
 
 	observer() {
@@ -52,7 +51,7 @@ class App {
 			threshold: threshold
 		};
 
-		const observer = new IntersectionObserver(animHandler, options);
+		const observer = new IntersectionObserver(animHandler.bind(this), options);
 		const targets = document.querySelectorAll('section');
 
 		const ar = [].slice.call(targets);
@@ -74,7 +73,7 @@ class App {
 			for (var entry of targets) {
 				let i = ar.indexOf(entry.target);
 				if (entry.isIntersecting) {
-					console.log(entry.target);
+					console.log(entry.target, this.scrollDir);
 					animations.forEach((tl) => tl.pause());
 					animations[i].resume();
 				} else {
