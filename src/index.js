@@ -46,7 +46,7 @@ class App {
 		/**
 		 * Config Intersection Observer
 		 */
-		const threshold = 0.6; // trigger
+		const threshold = 0.5; // trigger
 		const options = {
 			root: null,
 			rootMargin: '0px',

@@ -5742,7 +5742,7 @@ function () {
       /**
        * Config Intersection Observer
        */
-      var threshold = 0.6; // trigger
+      var threshold = 0.5; // trigger
 
       var options = {
         root: null,
