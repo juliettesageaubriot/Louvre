@@ -5669,6 +5669,14 @@ require("./styles.scss");
 
 var _gsap = require("gsap");
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -5731,6 +5739,9 @@ function () {
   }, {
     key: "observer",
     value: function observer() {
+      /**
+       * Config Intersection Observer
+       */
       var threshold = 0.6; // trigger
 
       var options = {
@@ -5739,84 +5750,46 @@ function () {
         threshold: threshold
       };
       var observer = new IntersectionObserver(animHandler.bind(this), options);
-      var targets = document.querySelectorAll('section');
-      var ar = [].slice.call(targets);
+      /**
+       * Config Animatons
+       */
+
+      var targets = _toConsumableArray(document.querySelectorAll('section'));
+
       var animations = [];
-      var count = 0;
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = ar[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var target = _step.value;
-          animations[count] = _gsap.gsap.timeline({
-            paused: true
-          });
-          observer.observe(target);
-          count++;
-        } // timeline for each section
-
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
+      targets.forEach(function (target) {
+        animations.push(_gsap.gsap.timeline({
+          paused: true
+        }));
+        observer.observe(target);
+      }); // timeline for each section
 
       animations[1].to('#apple', 1, {
         scale: 1.4,
         autoAlpha: 0.5
-      }); // observer handler
+      });
+      /**
+       * Observer handler
+       */
 
-      function animHandler(targets, observer) {
-        var _iteratorNormalCompletion2 = true;
-        var _didIteratorError2 = false;
-        var _iteratorError2 = undefined;
+      function animHandler(entries, observer) {
+        var _this = this;
 
-        try {
-          for (var _iterator2 = targets[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-            var entry = _step2.value;
-            var i = ar.indexOf(entry.target);
+        entries.forEach(function (_ref) {
+          var target = _ref.target,
+              isIntersecting = _ref.isIntersecting;
+          var i = targets.indexOf(target);
 
-            if (entry.isIntersecting) {
-              console.log(entry.target, this.scrollDir);
-              animations.forEach(function (tl) {
-                return tl.pause();
-              });
-              animations[i].resume();
+          if (isIntersecting) {
+            console.log(target, _this.scrollDir);
 
-              if (this.scrollDir === 'RIGHT') {
-                animations[i].play();
-              } else {
-                animations[i].reverse();
-              }
+            if (_this.scrollDir === 'RIGHT') {
+              animations[i].play();
             } else {
-              return;
+              animations[i].reverse();
             }
           }
-        } catch (err) {
-          _didIteratorError2 = true;
-          _iteratorError2 = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-              _iterator2.return();
-            }
-          } finally {
-            if (_didIteratorError2) {
-              throw _iteratorError2;
-            }
-          }
-        }
+        });
       }
     }
   }]);
@@ -5855,7 +5828,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49788" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53993" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
