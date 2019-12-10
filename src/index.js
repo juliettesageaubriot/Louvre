@@ -83,21 +83,12 @@ class App {
 
 			// timeline for each section
 			if (index === 2) {
-				const { width } = target.getBoundingClientRect();
-				const bounding = {
-					name: `section#${index}`,
-					target,
-					minScroll: width * index,
-					maxScroll: width * (index + 1)
-				};
-
 				tl.to(
 					target.querySelector('img'),
 					1,
 					{ scale: 2, rotation: 360, yoyo: true },
 					0
 				);
-				this.animate(tl, true, bounding);
 			} else {
 				tl.to(target.querySelector('img'), 1, { scale: 1.4 }, 0);
 			}
@@ -114,46 +105,16 @@ class App {
 				const i = targets.indexOf(target);
 				const tl = animations[i];
 
-				if (isIntersecting) {
-					switch (i) {
-						case 2:
-							break;
-						default:
-							this.animate(tl);
-							break;
-					}
-				}
+				if (isIntersecting) this.animate(tl);
 			});
 		}
 	}
 
-	animate(timeline, withProgress = false, bounding) {
-		if (!withProgress) {
-			if (this.scroll.direction === 'RIGHT') {
-				timeline.play();
-			} else {
-				timeline.reverse();
-			}
+	animate(timeline) {
+		if (this.scroll.direction === 'RIGHT') {
+			timeline.play();
 		} else {
-			const { target, name, minScroll, maxScroll } = bounding;
-
-			target.addEventListener('mousewheel', () => {
-				const { x: scrollX } = this.scroll;
-				const scrollData = {
-					target,
-					minScroll,
-					scrollX,
-					maxScroll,
-					progress: scrollX / maxScroll
-				};
-
-				timeline.progress(scrollData.progress);
-
-				if (this.config.debug) {
-					this.debugger.add(`scrollData_${name}`, scrollData);
-					this.debugger.log([`scrollData_${name}`]);
-				}
-			});
+			timeline.reverse();
 		}
 	}
 }
