@@ -5800,7 +5800,7 @@ function () {
                 animations[i].reverse();
               }
             } else {
-              return; //animations[i].reverse();
+              return;
             }
           }
         } catch (err) {

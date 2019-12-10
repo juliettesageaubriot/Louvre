@@ -18,7 +18,6 @@ class App {
 
 	events() {
 		const { horizontal } = this;
-
 		window.addEventListener('mousewheel', horizontal, { passive: false });
 		window.addEventListener('DOMMouseScroll', horizontal, { passive: false });
 	}
@@ -83,10 +82,7 @@ class App {
           }
 				} else {
 					return;
-					//animations[i].reverse();
         }
-        
-        
 			}
 		}
 	}
