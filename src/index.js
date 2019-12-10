@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 class App {
 	constructor(className = '.app') {
 		this.app = document.querySelector(className);
+		this.scrollDir = null;
 
 		this.bind();
     this.events();
@@ -27,6 +28,10 @@ class App {
 
 		e.preventDefault();
 
+<<<<<<< HEAD
+=======
+		// block scroll left/right
+>>>>>>> origin/testScroll-without-scrollmagic
 		if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
 			return true;
 		}

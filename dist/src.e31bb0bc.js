@@ -5684,6 +5684,7 @@ function () {
     _classCallCheck(this, App);
 
     this.app = document.querySelector(className);
+    this.scrollDir = null;
     this.bind();
     this.events();
     this.observer();
@@ -5710,7 +5711,11 @@ function () {
     value: function horizontal(e) {
       var v = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 80;
       e = window.event || e;
+<<<<<<< HEAD
       e.preventDefault();
+=======
+      e.preventDefault(); // block scroll left/right
+>>>>>>> origin/testScroll-without-scrollmagic
 
       if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
         return true;
@@ -5727,6 +5732,7 @@ function () {
 
       this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
       console.log(this.scrollDir);
+<<<<<<< HEAD
     }
   }, {
     key: "observer",
@@ -5812,6 +5818,8 @@ function () {
           }
         }
       }
+=======
+>>>>>>> origin/testScroll-without-scrollmagic
     }
   }]);
 
