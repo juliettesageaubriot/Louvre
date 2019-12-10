@@ -5730,13 +5730,10 @@ function () {
         rootMargin: '0px',
         threshold: threshold
       };
-      var mt = window.GreenSockGlobals = {};
       var observer = new IntersectionObserver(animHandler, options);
-      var targets = document.querySelectorAll("section");
-      console.log(targets);
+      var targets = document.querySelectorAll('section');
       var ar = [].slice.call(targets);
       var animations = [];
-      console.log(animations);
       var count = 0;
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -5745,12 +5742,11 @@ function () {
       try {
         for (var _iterator = ar[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var target = _step.value;
-          animations[count] = new TimelineMax({
+          animations[count] = _gsap.gsap.timeline({
             paused: true
           });
           observer.observe(target);
           count++;
-          console.log('coucou', animations[1]);
         } // timeline for each section
 
       } catch (err) {
@@ -5768,9 +5764,9 @@ function () {
         }
       }
 
-      animations[0];
-      animations[1].to("#apple", 1, {
-        scale: 1.4
+      animations[1].to('#apple', 1, {
+        scale: 1.4,
+        autoAlpha: 0.5
       }); // observer handler
 
       function animHandler(targets, observer) {
@@ -5784,13 +5780,13 @@ function () {
             var i = ar.indexOf(entry.target);
 
             if (entry.isIntersecting) {
+              console.log(entry.target);
               animations.forEach(function (tl) {
                 return tl.pause(0);
               });
-              animations[i].play();
+              animations[i].resume();
             } else {
-              //return;
-              animations[i].reverse();
+              return; // animations[i].reverse();
             }
           }
         } catch (err) {
@@ -5845,7 +5841,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49788" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55942" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

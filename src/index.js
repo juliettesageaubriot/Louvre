@@ -7,8 +7,8 @@ class App {
 		this.app = document.querySelector(className);
 
 		this.bind();
-    this.events();
-    this.observer();
+		this.events();
+		this.observer();
 	}
 
 	bind() {
@@ -33,58 +33,48 @@ class App {
 			scrollLeft: scrollLeft_ - delta * v,
 			ease: 'power2.out'
 		});
-  }
-  
- observer() {
+	}
 
-  const threshold = 0.7; // trigger
-  const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: threshold
-  };
-  let mt = window.GreenSockGlobals = {};
-  const observer = new IntersectionObserver(animHandler, options);
-  const targets = document.querySelectorAll("section");
+	observer() {
+		const threshold = 0.7; // trigger
+		const options = {
+			root: null,
+			rootMargin: '0px',
+			threshold: threshold
+		};
 
-  console.log(targets)
+		const observer = new IntersectionObserver(animHandler, options);
+		const targets = document.querySelectorAll('section');
 
-  const ar = [].slice.call(targets); 
-  let animations = []; 
+		const ar = [].slice.call(targets);
+		let animations = [];
 
-  console.log(animations)
+		let count = 0;
 
-  let count = 0;
+		for (let target of ar) {
+			animations[count] = gsap.timeline({ paused: true });
+			observer.observe(target);
+			count++;
+		}
 
-  for (let target of ar) {
-    animations[count] = new TimelineMax({paused:true});  
-    observer.observe(target);
-    count++;
-    console.log('coucou', animations[1])
+		// timeline for each section
+		animations[1].to('#apple', 1, { scale: 1.4, autoAlpha: 0.5 });
 
-}
-
-  // timeline for each section
-  animations[0]
-  animations[1].to("#apple",1, {scale:1.4});
-
-  // observer handler
-  function animHandler(targets, observer) {
-    for (var entry of targets) {
-      let i = ar.indexOf(entry.target);
-      if (entry.isIntersecting) {
-        
-        
-        animations.forEach(tl => tl.pause(0));
-        animations[i].play();
-
-      } else {
-          //return;
-        animations[i].reverse();
-      }
-    }
-  }
- }
+		// observer handler
+		function animHandler(targets, observer) {
+			for (var entry of targets) {
+				let i = ar.indexOf(entry.target);
+				if (entry.isIntersecting) {
+					console.log(entry.target);
+					animations.forEach((tl) => tl.pause(0));
+					animations[i].resume();
+				} else {
+					return;
+					// animations[i].reverse();
+				}
+			}
+		}
+	}
 }
 
 window.onload = () => (window.app = new App());
