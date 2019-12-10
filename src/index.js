@@ -7,8 +7,8 @@ class App {
 		this.app = document.querySelector(className);
 
 		this.bind();
-		this.events();
-		this.observer();
+    this.events();
+    this.observer();
 	}
 
 	bind() {
@@ -27,30 +27,23 @@ class App {
 
 		e.preventDefault();
 
+		if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
+			return true;
+		}
+
 		const delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
 		const scrollLeft_ = gsap.getProperty(this.app, 'scrollLeft');
 		gsap.to(this.app, {
 			scrollLeft: scrollLeft_ - delta * v,
 			ease: 'power2.out'
-		});
+    });
+
+    this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
+		console.log(this.scrollDir);
 	}
 
 	observer() {
-    console.log('coucou', window.scrollX, window.scrollY)
-
     
-    var position = document.documentElement.scrollTop;
-    document.addEventListener('scroll', function() {
-    var scroll = document.documentElement.scrollTop;
-    if (scroll > position) {
-      console.log('down');
-    } else {
-      console.log('up');
-    }
-    
-    position = scroll;
-  });
-
 		const threshold = 0.7; // trigger
 		const options = {
 			root: null,

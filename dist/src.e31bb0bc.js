@@ -5711,6 +5711,11 @@ function () {
       var v = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 80;
       e = window.event || e;
       e.preventDefault();
+
+      if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
+        return true;
+      }
+
       var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
 
       var scrollLeft_ = _gsap.gsap.getProperty(this.app, 'scrollLeft');
@@ -5719,23 +5724,13 @@ function () {
         scrollLeft: scrollLeft_ - delta * v,
         ease: 'power2.out'
       });
+
+      this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
+      console.log(this.scrollDir);
     }
   }, {
     key: "observer",
     value: function observer() {
-      console.log('coucou', window.scrollX, window.scrollY);
-      var position = document.documentElement.scrollTop;
-      document.addEventListener('scroll', function () {
-        var scroll = document.documentElement.scrollTop;
-
-        if (scroll > position) {
-          console.log('down');
-        } else {
-          console.log('up');
-        }
-
-        position = scroll;
-      });
       var threshold = 0.7; // trigger
 
       var options = {
