@@ -5686,6 +5686,7 @@ function () {
     this.app = document.querySelector(className);
     this.bind();
     this.events();
+    this.observer();
   }
 
   _createClass(App, [{
@@ -5718,6 +5719,95 @@ function () {
         scrollLeft: scrollLeft_ - delta * v,
         ease: 'power2.out'
       });
+    }
+  }, {
+    key: "observer",
+    value: function observer() {
+      var threshold = 0.7; // trigger
+
+      var options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: threshold
+      };
+      var mt = window.GreenSockGlobals = {};
+      var observer = new IntersectionObserver(animHandler, options);
+      var targets = document.querySelectorAll("section");
+      console.log(targets);
+      var ar = [].slice.call(targets);
+      var animations = [];
+      console.log(animations);
+      var count = 0;
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = ar[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var target = _step.value;
+          animations[count] = new TimelineMax({
+            paused: true
+          });
+          observer.observe(target);
+          count++;
+          console.log('coucou', animations[1]);
+        } // timeline for each section
+
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      animations[0];
+      animations[1].to("#apple", 1, {
+        scale: 1.4
+      }); // observer handler
+
+      function animHandler(targets, observer) {
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+          for (var _iterator2 = targets[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var entry = _step2.value;
+            var i = ar.indexOf(entry.target);
+
+            if (entry.isIntersecting) {
+              animations.forEach(function (tl) {
+                return tl.pause(0);
+              });
+              animations[i].play();
+            } else {
+              //return;
+              animations[i].reverse();
+            }
+          }
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
+          }
+        }
+      }
     }
   }]);
 
@@ -5755,7 +5845,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55942" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49788" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
