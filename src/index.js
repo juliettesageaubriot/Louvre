@@ -2,14 +2,12 @@ import './styles.scss';
 
 import { gsap } from 'gsap';
 import Debugger from './scripts/classes/Debugger';
+import Scroller from './scripts/classes/Scroller';
 
 class App {
 	constructor(debug = true, className = '.app') {
 		this.app = document.querySelector(className);
-		this.scroll = {
-			direction: 'RIGHT',
-			x: this.app.scrollLeft
-		};
+		this.animation = {};
 		this.config = {
 			debug
 		};
@@ -19,44 +17,52 @@ class App {
 			this.debugger.clear();
 		}
 
+		this.scroller = new Scroller(this.app, this.debugger);
+
 		this.bind();
 		this.events();
+
+		this.timelines();
 		this.observer();
 	}
 
-	bind() {
-		this.scroller = this.scroller.bind(this);
-	}
+	bind() {}
 
-	events() {
-		const { scroller } = this;
-		window.addEventListener('mousewheel', scroller, { passive: false });
-		window.addEventListener('DOMMouseScroll', scroller, { passive: false });
-	}
+	events() {}
 
-	scroller(e, v = 80) {
-		e = window.event || e;
+	timelines() {
+		/**
+		 * Config Animations
+		 */
+		const targets = [...document.querySelectorAll('section')];
+		const timelines = [];
 
-		e.preventDefault();
+		// timeline for each section
+		targets.forEach((target, index) => {
+			const tl = gsap.timeline({ paused: true });
 
-		// block scroll left/right
-		if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
-			return true;
-		}
+			if (index === 2) {
+				tl.to(
+					target.querySelector('img'),
+					1,
+					{ scale: 2, rotation: 360, yoyo: true },
+					0
+				);
+			} else {
+				tl.to(target.querySelector('img'), 1, { scale: 1.4 }, 0);
+			}
 
-		const delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
-		const scrollLeft_ = gsap.getProperty(this.app, 'scrollLeft');
-		gsap.to(this.app, {
-			scrollLeft: scrollLeft_ - delta * v,
-			ease: 'power2.out'
+			timelines.push(tl);
 		});
 
-		this.scroll.direction = delta < 0 ? 'RIGHT' : 'LEFT';
-		this.scroll.x = this.app.scrollLeft;
+		this.animation = {
+			targets,
+			timelines
+		};
 
 		if (this.config.debug) {
-			this.debugger.add('scroller', this.scroll);
-			// this.debugger.log(['scroller']);
+			this.debugger.add('animation', this.animation);
+			this.debugger.log(['animation']);
 		}
 	}
 
@@ -70,48 +76,29 @@ class App {
 			rootMargin: '0px',
 			threshold
 		};
-		const observer = new IntersectionObserver(animHandler.bind(this), options);
-
-		/**
-		 * Config Animations
-		 */
-		const targets = [...document.querySelectorAll('section')];
-		const animations = [];
-
-		targets.forEach((target, index) => {
-			const tl = gsap.timeline({ paused: true });
-
-			// timeline for each section
-			if (index === 2) {
-				tl.to(
-					target.querySelector('img'),
-					1,
-					{ scale: 2, rotation: 360, yoyo: true },
-					0
-				);
-			} else {
-				tl.to(target.querySelector('img'), 1, { scale: 1.4 }, 0);
-			}
-
-			animations.push(tl);
-			observer.observe(target);
-		});
 
 		/**
 		 * Observer handler
 		 */
-		function animHandler(entries, observer) {
+		const { targets, timelines } = this.animation;
+		const animHandler = (entries, observer) => {
 			entries.forEach(({ target, isIntersecting }) => {
 				const i = targets.indexOf(target);
-				const tl = animations[i];
+				const tl = timelines[i];
 
 				if (isIntersecting) this.animate(tl);
 			});
-		}
+		};
+
+		/**
+		 * Create observer & observe
+		 */
+		const observer = new IntersectionObserver(animHandler, options);
+		targets.forEach((target) => observer.observe(target));
 	}
 
 	animate(timeline) {
-		if (this.scroll.direction === 'RIGHT') {
+		if (this.scroller.data.direction === 'RIGHT') {
 			timeline.play();
 		} else {
 			timeline.reverse();
