@@ -44,7 +44,7 @@ class App {
 	}
 
 	observer() {
-		const threshold = 0.7; // trigger
+		const threshold = 0.6; // trigger
 		const options = {
 			root: null,
 			rootMargin: '0px',
@@ -75,7 +75,7 @@ class App {
 				if (entry.isIntersecting) {
 					console.log(entry.target, this.scrollDir);
 					animations.forEach((tl) => tl.pause());
-          animations[i].play();
+          animations[i].resume();
           if ( this.scrollDir === 'RIGHT') {
             animations[i].play();
           } else {
@@ -83,7 +83,10 @@ class App {
           }
 				} else {
 					return;
+					//animations[i].reverse();
         }
+        
+        
 			}
 		}
 	}

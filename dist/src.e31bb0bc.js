@@ -5731,7 +5731,7 @@ function () {
   }, {
     key: "observer",
     value: function observer() {
-      var threshold = 0.7; // trigger
+      var threshold = 0.6; // trigger
 
       var options = {
         root: null,
@@ -5792,7 +5792,7 @@ function () {
               animations.forEach(function (tl) {
                 return tl.pause();
               });
-              animations[i].play();
+              animations[i].resume();
 
               if (this.scrollDir === 'RIGHT') {
                 animations[i].play();
@@ -5800,7 +5800,7 @@ function () {
                 animations[i].reverse();
               }
             } else {
-              return;
+              return; //animations[i].reverse();
             }
           }
         } catch (err) {
