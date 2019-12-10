@@ -44,47 +44,46 @@ class App {
 	}
 
 	observer() {
-		const threshold = 0.7; // trigger
+		/**
+		 * Config Intersection Observer
+		 */
+		const threshold = 0.6; // trigger
 		const options = {
 			root: null,
 			rootMargin: '0px',
-			threshold: threshold
+			threshold
 		};
-
 		const observer = new IntersectionObserver(animHandler.bind(this), options);
-		const targets = document.querySelectorAll('section');
 
-		const ar = [].slice.call(targets);
-		let animations = [];
+		/**
+		 * Config Animatons
+		 */
+		const targets = [...document.querySelectorAll('section')];
+		const animations = [];
 
-		let count = 0;
-
-		for (let target of ar) {
-			animations[count] = gsap.timeline({ paused: true });
+		targets.forEach((target) => {
+			animations.push(gsap.timeline({ paused: true }));
 			observer.observe(target);
-			count++;
-		}
-
+		});
 		// timeline for each section
 		animations[1].to('#apple', 1, { scale: 1.4, autoAlpha: 0.5 });
 
-		// observer handler
-		function animHandler(targets, observer) {
-			for (var entry of targets) {
-				let i = ar.indexOf(entry.target);
-				if (entry.isIntersecting) {
-					console.log(entry.target, this.scrollDir);
-					animations.forEach((tl) => tl.pause());
-          animations[i].play();
-          if ( this.scrollDir === 'RIGHT') {
-            animations[i].play();
-          } else {
-            animations[i].reverse();
-          }
-				} else {
-					return;
-        }
-			}
+		/**
+		 * Observer handler
+		 */
+		function animHandler(entries, observer) {
+			entries.forEach(({ target, isIntersecting }) => {
+				const i = targets.indexOf(target);
+				if (isIntersecting) {
+					console.log(target, this.scrollDir);
+
+					if (this.scrollDir === 'RIGHT') {
+						animations[i].play();
+					} else {
+						animations[i].reverse();
+					}
+				}
+			});
 		}
 	}
 }
