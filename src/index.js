@@ -26,6 +26,10 @@ class App {
 
 		e.preventDefault();
 
+		if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
+			return true;
+		}
+
 		const delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
 		const scrollLeft_ = gsap.getProperty(this.app, 'scrollLeft');
 		gsap.to(this.app, {

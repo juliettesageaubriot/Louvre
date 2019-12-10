@@ -5710,6 +5710,11 @@ function () {
       var v = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 80;
       e = window.event || e;
       e.preventDefault();
+
+      if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
+        return true;
+      }
+
       var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
 
       var scrollLeft_ = _gsap.gsap.getProperty(this.app, 'scrollLeft');
