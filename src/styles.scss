@@ -28,13 +28,6 @@ body {
 		@include abs-pos;
 		z-index: 1;
 		pointer-events: none;
-
-		.arrow {
-			position: fixed;
-			width: 100px;
-			height: 20px;
-			background-color: $bg;
-		}
 	}
 
 	&__scenes {
