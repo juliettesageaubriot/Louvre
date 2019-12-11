@@ -32,21 +32,25 @@ class App {
 	bind() {}
 
 	events() {
-		let test = document.getElementById('loup');
-		// test.addEventListener('click', () => {
-		// gsap
-		// 	.timeline()
-		// 	.to(this.app.querySelector('#loup'), {
-		// 		bottom: '25%'
-		// 	})
-		// 	.to(this.app.querySelector('#loup'), {
-		// 		bottom: '25%'
-		// 	});
-
-		test.addEventListener('click', () => {
-			console.log('fff');
+		//scene 3
+		// loup qui saute sur le bouc
+		let loup = document.getElementById('loup');
+		loup.addEventListener('click', () => {
 			gsap.to(this.app.querySelector('#loup'), 1, {
-				y: -20,
+				y: -30,
+				x: 100,
+				rotate: -15,
+				repeat: 1,
+				repeatDelay: 0,
+				yoyo: true,
+				ease: 1
+			});
+		});
+
+		// loup qui grossit au hover
+		loup.addEventListener('mouseover', () => {
+			gsap.to(this.app.querySelector('#loup'), 1, {
+				scale: 1.05,
 				repeat: 1,
 				repeatDelay: 0,
 				yoyo: true,
@@ -68,11 +72,13 @@ class App {
 
 			if (index === 2) {
 				tl.to(
-					target.querySelector('#oiseau'),
-					1,
-					{ rotation: -10, repeat: -1, yoyo: true, repeatDelay: 0.8, ease: 1 },
-					0
-				);
+					target.querySelector('#oiseau'),1, { 
+						rotation: -10, 
+						repeat: -1, 
+						yoyo: true, 
+						repeatDelay: 0, 
+						ease: 1 
+					});
 			} else {
 				null;
 			}
