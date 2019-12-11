@@ -55,6 +55,32 @@ class App {
 		const { arrow } = tweens;
 
 		arrow(this);
+
+		//scene 3
+		// loup qui saute sur le bouc
+		let loup = document.getElementById('loup');
+		loup.addEventListener('click', () => {
+			gsap.to(this.app.querySelector('#loup'), 1, {
+				y: -30,
+				x: 100,
+				rotate: -15,
+				repeat: 1,
+				repeatDelay: 0,
+				yoyo: true,
+				ease: 1
+			});
+		});
+
+		// loup qui grossit au hover
+		loup.addEventListener('mouseover', () => {
+			gsap.to(this.app.querySelector('#loup'), 1, {
+				scale: 1.15,
+				repeat: 1,
+				repeatDelay: 0,
+				yoyo: true,
+				ease: 1
+			});
+		});
 	}
 
 	scenes() {
@@ -68,9 +94,25 @@ class App {
 		targets.forEach((target, index) => {
 			const tl = gsap.timeline({ paused: true });
 
-			if (index === 1) {
-				tl.to(target.querySelector('#antilope'), 1, { scale: 1, yoyo: true }, 0);
-				tl.to(target.querySelector('#test'), 1, { scale: 4, yoyo: true }, 0);
+			if (index === 2) {
+				tl.to(target.querySelector('#oiseau'), 1, {
+					rotation: -15,
+					repeat: 5,
+					yoyo: true,
+					repeatDelay: 0,
+					ease: 1
+				});
+
+				tl.to(
+					target.querySelector('#loup'),
+					1,
+					{
+						scale: 1.08
+					},
+					0
+				);
+			} else {
+				null;
 			}
 
 			timelines.push(tl);

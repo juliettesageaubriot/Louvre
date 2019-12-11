@@ -66,25 +66,43 @@ body {
 				}
 			}
 			&:nth-of-type(2) {
-				#artemise-cerf {
-					width: 500px;
-					top: 55%;
-					left: 60%;
-				}
-
-				#antilope {
-					width: 300px;
-					top: 73%;
-					left: 36%;
-				}
-
-				#loup {
-					width: 350px;
-					top: 73%;
-					left: 19%;
-				}
 			}
 			&:nth-of-type(3) {
+				#artemise-cerf {
+					width: 30%;
+					bottom: 20%;
+					right: 22%;
+				}
+				#antilope {
+					width: 20%;
+					bottom: 20%;
+					left: 28%;
+				}
+				#loup {
+					width: 25%;
+					bottom: 20%;
+					left: 4%;
+
+					&:hover {
+						cursor: pointer;
+					}
+				}
+				#cheval {
+					width: 20%;
+					bottom: 20%;
+					right: 0;
+					margin-right: 10px;
+				}
+				#oiseau {
+					width: 12%;
+					top: 25%;
+					left: 5%;
+				}
+				#plante-accrochée {
+					width: 25%;
+					top: 13%;
+					left: 30%;
+				}
 			}
 			&:nth-of-type(4) {
 			}
@@ -93,7 +111,6 @@ body {
 
 			.img {
 				position: absolute;
-				transform: translate(-50%, -50%);
 			}
 		}
 	}

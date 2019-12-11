@@ -17,7 +17,12 @@ const tween = (app) => {
 		.fromTo(
 			arrow,
 			{ autoAlpha: 0 },
-			{ autoAlpha: 1, onComplete: () => appScroller.auto() },
+			{
+				autoAlpha: 1,
+				onComplete: () => {
+					// appScroller.auto()
+				}
+			},
 			`<-1`
 		);
 
