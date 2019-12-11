@@ -48,9 +48,27 @@ class App {
 				tl.to(
 					target.querySelector('#oiseau'),
 					1,
-					{ rotation: -10,repeat: -1, yoyo:true, repeatDelay:1, ease:"none" },
+					{ rotation: -10,repeat: -1, yoyo:true, repeatDelay:.8, ease:1 },
 					0
 				);
+
+				let test = document.getElementById("loup")
+				test.addEventListener('click', function() {
+					tl.to(
+						target.querySelector('#loup'),
+						1,
+						{bottom: "25%"},
+						0,
+					).to(
+						target.querySelector('#loup'),
+						1,
+						{bottom: "20%"},
+					 	">"
+						
+					)
+					;
+				})
+				
 			} else {
 				null
 			}

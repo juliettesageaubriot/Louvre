@@ -71,6 +71,10 @@ body {
 					width: 27%;
 					bottom: 20%;
 					left: 4%;
+
+					&:hover{
+						cursor: pointer;
+					}
 				}
 				#cheval {
 					width: 20%;
