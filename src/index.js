@@ -3,6 +3,7 @@ import './styles.scss';
 import { gsap } from 'gsap';
 import Debugger from './scripts/classes/Debugger';
 import Scroller from './scripts/classes/Scroller';
+import tweens from './scripts/tweens';
 
 class App {
 	constructor(debug = true, className = '.app') {
@@ -27,7 +28,7 @@ class App {
 		this.events();
 
 		this.tweens();
-		this.timelines();
+		this.scenes();
 		this.observer();
 	}
 
@@ -51,29 +52,12 @@ class App {
 	}
 
 	tweens() {
-		this.animation.arrow = {
-			gif: this.app.querySelector('.arrow--start'),
-			arrow: this.app.querySelector('.arrow'),
-			duration: 5
-		};
+		const { arrow } = tweens;
 
-		const { gif, arrow, duration } = this.animation.arrow;
-
-		const timelineArrow = gsap
-			.timeline({ paused: true })
-			.set(arrow, { autoAlpha: 0 })
-			.to(gif, { autoAlpha: 0.5 }, `+=${duration}`)
-			.fromTo(
-				arrow,
-				{ autoAlpha: 0 },
-				{ autoAlpha: 1, onComplete: () => this.scroller.auto() },
-				`<-1`
-			);
-
-		timelineArrow.play();
+		arrow(this);
 	}
 
-	timelines() {
+	scenes() {
 		/**
 		 * Config Animations
 		 */
@@ -123,7 +107,7 @@ class App {
 				const i = targets.indexOf(target);
 				const tl = timelines[i];
 
-				if (isIntersecting) this.animate(tl);
+				if (isIntersecting) this.playScene(tl);
 			});
 		};
 
@@ -134,7 +118,7 @@ class App {
 		targets.forEach((target) => observer.observe(target));
 	}
 
-	animate(timeline) {
+	playScene(timeline) {
 		if (this.scroller.data.direction === 'RIGHT') {
 			timeline.play();
 		} else {
