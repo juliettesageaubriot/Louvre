@@ -49,7 +49,6 @@ export default class Scroller {
 		});
 
 		// data
-		console.log(this.config.auto);
 		this.data = {
 			direction: delta < 0 ? 'RIGHT' : 'LEFT',
 			x: app.scrollLeft
@@ -62,10 +61,10 @@ export default class Scroller {
 	}
 
 	auto() {
+		this.config.auto = true;
 		this.config.autoIntervalID = setInterval(() => {
 			this.scroll({ auto: true });
 		}, 200);
-		this.config.auto = true;
 	}
 
 	clearAuto() {
