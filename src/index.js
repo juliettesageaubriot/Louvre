@@ -17,7 +17,10 @@ class App {
 			this.debugger.clear();
 		}
 
-		this.scroller = new Scroller(this.app, this.debugger);
+		this.scroller = new Scroller(
+			this.app.querySelector('.app__scenes'),
+			this.debugger
+		);
 
 		this.bind();
 		this.events();
