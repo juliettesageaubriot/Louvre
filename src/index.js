@@ -19,7 +19,8 @@ class App {
 
 		this.scroller = new Scroller(
 			this.app.querySelector('.app__scenes'),
-			this.debugger
+			this.debugger,
+			false
 		);
 
 		this.bind();

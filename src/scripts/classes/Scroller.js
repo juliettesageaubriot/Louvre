@@ -1,8 +1,8 @@
 import { gsap } from 'gsap';
 
 export default class Scroller {
-	constructor(scrollingElement, appDebugger, velocity = 80) {
-		this.config = { velocity, autoIntervalID: null, auto: false };
+	constructor(scrollingElement, appDebugger, debug = true, velocity = 80) {
+		this.config = { velocity, debug, autoIntervalID: null, auto: false };
 		this.app = scrollingElement;
 		this.appDebugger = appDebugger;
 		this.data = {};
@@ -35,36 +35,41 @@ export default class Scroller {
 		this.scroll({ wheelDelta: e.wheelDelta || -e.detail });
 	}
 
-	scroll(conf) {
+	scroll(conf = {}) {
 		const { app, appDebugger, config } = this;
-		const { auto, wheelDelta, toX } = conf;
+		const { wheelDelta } = conf;
 
 		// scroll converter
-		// -1 = RIGHT, 1 = LEFT
-		const delta = auto ? -1 : Math.max(-1, Math.min(1, wheelDelta));
+		// -1 = RIGHT, 1 = LEFT, 0 when !wheeldelta
+		const delta = config.auto
+			? -1
+			: !wheelDelta
+			? 0
+			: Math.max(-1, Math.min(1, wheelDelta));
 		const scrollLeft_ = gsap.getProperty(app, 'scrollLeft');
 		gsap.to(app, {
-			scrollLeft: toX ? toX : scrollLeft_ - delta * config.velocity,
+			scrollLeft: scrollLeft_ - delta * config.velocity,
 			ease: 'power2.out'
 		});
 
 		// data
 		this.data = {
 			direction: delta < 0 ? 'RIGHT' : 'LEFT',
-			x: app.scrollLeft
+			x: app.scrollLeft,
+			autoScroll: config.auto
 		};
 
-		if (appDebugger) {
-			appDebugger.add('scroller', this.data);
-			appDebugger.log(['scroller']);
-		}
+		if (appDebugger) appDebugger.add('scroller', this.data);
+		if (config.debug) this.log();
+	}
+
+	log() {
+		this.appDebugger.log(['scroller']);
 	}
 
 	auto() {
 		this.config.auto = true;
-		this.config.autoIntervalID = setInterval(() => {
-			this.scroll({ auto: true });
-		}, 200);
+		this.config.autoIntervalID = setInterval(() => this.scroll(), 200);
 	}
 
 	clearAuto() {
