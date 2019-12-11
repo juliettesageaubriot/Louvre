@@ -44,18 +44,11 @@ class App {
 		targets.forEach((target, index) => {
 			const tl = gsap.timeline({ paused: true });
 
-			switch (index) {
-				case 2:
-					tl.to(
-						target.querySelector('img'),
-						1,
-						{ scale: 2, rotation: 360, yoyo: true },
-						0
-					);
-					break;
-				default:
-					tl.to(target.querySelector('img'), 1, { scale: 1.4 }, 0);
-					break;
+			if (index === 1) {
+				tl.to(target.querySelector('#antilope'), 1, { scale: 1, yoyo: true }, 0);
+				tl.to(target.querySelector('#test'), 1, { scale: 4, yoyo: true }, 0);
+			} else {
+				tl.to(target.querySelector('img'), 1, { scale: 1.4 }, 0);
 			}
 
 			timelines.push(tl);
