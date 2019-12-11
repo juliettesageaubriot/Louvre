@@ -1,9 +1,9 @@
 import { gsap } from 'gsap';
 
 export default class Scroller {
-	constructor(app, appDebugger, velocity = 80) {
+	constructor(scrollingElement, appDebugger, velocity = 80) {
 		this.config = { velocity };
-		this.app = app;
+		this.app = scrollingElement;
 		this.appDebugger = appDebugger;
 		this.data = {};
 

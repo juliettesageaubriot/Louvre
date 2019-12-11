@@ -16,7 +16,6 @@ body {
 
 .app {
 	@include size(100%, 100%);
-	@include abs-pos();
 	overflow: hidden;
 	color: $text;
 	background: $bg;
@@ -24,9 +23,28 @@ body {
 	@include base-lettering;
 	@include montserrat;
 
-	.wrapper {
-		@include size(500%, 100%);
-		display: flex;
+	&__fixed {
+		@include size(100%, 100%);
+		@include abs-pos;
+		z-index: 1;
+		pointer-events: none;
+
+		.arrow {
+			position: fixed;
+			width: 100px;
+			height: 20px;
+			background-color: $bg;
+		}
+	}
+
+	&__scenes {
+		@include size(100%, 100%);
+		overflow: hidden;
+
+		&__wrapper {
+			@include size(500%, 100%);
+			display: flex;
+		}
 
 		section {
 			@include size(100%/5, 100%);
@@ -36,30 +54,21 @@ body {
 			justify-content: space-around;
 			overflow: hidden;
 
-			&:nth-child(1) {
+			&:nth-of-type(1) {
 				background: #262626;
 			}
-			&:nth-child(2) {
+			&:nth-of-type(2) {
 				background: #22a7f0;
 			}
-			&:nth-child(3) {
+			&:nth-of-type(3) {
 				background: #f9690e;
 			}
-			&:nth-child(4) {
+			&:nth-of-type(4) {
 				background: #9b59b6;
 			}
-			&:nth-child(5) {
+			&:nth-of-type(5) {
 				background: #03c9a9;
 			}
 		}
 	}
-}
-
-#wrapApple {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 1;
-}
-#apple {
 }
