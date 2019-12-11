@@ -1,18 +1,28 @@
-@mixin abs-center() {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+@mixin abs-center($vertical: true, $horizontal: true) {
+	position: absolute;
+	@if $vertical and $horizontal {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	} @else if $vertical {
+		top: 50%;
+		transform: translateY(-50%);
+	} @else if $horizontal {
+		left: 50%;
+		transform: translateX(-50%);
+	}
 }
 
 @mixin abs-pos($top: 0, $left: 0, $x: 0, $y: 0) {
-  position: absolute;
-  top: $top;
-  left: $left;
-  transform: translate($x, $y);
+	position: absolute;
+	top: $top;
+	left: $left;
+	@if not($x == 0) or not ($y == 0) {
+		transform: translateX();
+	}
 }
 
 @mixin size($w, $h) {
-  width: $w;
-  height: $h;
+	width: $w;
+	height: $h;
 }

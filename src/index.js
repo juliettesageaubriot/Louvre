@@ -25,13 +25,52 @@ class App {
 		this.bind();
 		this.events();
 
+		this.tweens();
 		this.timelines();
 		this.observer();
 	}
 
 	bind() {}
 
-	events() {}
+	events() {
+		const handlerKeypress = ({ code }) => {
+			console.log(code);
+			switch (code) {
+				case 'Space':
+					this.scroller.toggleAuto();
+					break;
+				case 'KeyR':
+					this.scroller.scroll({ to: 0 });
+					break;
+				default:
+					break;
+			}
+		};
+		window.addEventListener('keypress', handlerKeypress);
+	}
+
+	tweens() {
+		this.animation.arrow = {
+			gif: this.app.querySelector('.arrow--start'),
+			arrow: this.app.querySelector('.arrow'),
+			duration: 5
+		};
+
+		const { gif, arrow, duration } = this.animation.arrow;
+
+		const timelineArrow = gsap
+			.timeline({ paused: true })
+			.set(arrow, { autoAlpha: 0 })
+			.to(gif, { autoAlpha: 0.5 }, `+=${duration}`)
+			.fromTo(
+				arrow,
+				{ autoAlpha: 0 },
+				{ autoAlpha: 1, onComplete: () => this.scroller.auto() },
+				`<-1`
+			);
+
+		timelineArrow.play();
+	}
 
 	timelines() {
 		/**
@@ -47,14 +86,12 @@ class App {
 			if (index === 1) {
 				tl.to(target.querySelector('#antilope'), 1, { scale: 1, yoyo: true }, 0);
 				tl.to(target.querySelector('#test'), 1, { scale: 4, yoyo: true }, 0);
-			} else {
-				tl.to(target.querySelector('img'), 1, { scale: 1.4 }, 0);
 			}
 
 			timelines.push(tl);
 		});
 
-		this.animation = {
+		this.animation.scenes = {
 			targets,
 			timelines
 		};
@@ -79,7 +116,7 @@ class App {
 		/**
 		 * Observer handler
 		 */
-		const { targets, timelines } = this.animation;
+		const { targets, timelines } = this.animation.scenes;
 		const animHandler = (entries, observer) => {
 			entries.forEach(({ target, isIntersecting }) => {
 				const i = targets.indexOf(target);
