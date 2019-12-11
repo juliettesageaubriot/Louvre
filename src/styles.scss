@@ -55,21 +55,36 @@ body {
 			}
 			&:nth-of-type(2) {
 				#artemise-cerf {
-					width: 500px;
-					top: 55%;
+					width: 550px;
+					top: 52%;
 					left: 60%;
 				}
-
 				#antilope {
 					width: 300px;
 					top: 73%;
-					left: 36%;
+					left: 34%;
+				}
+				#loup {
+					width: 450px;
+					top: 71%;
+					left: 15%;
 				}
 
-				#loup {
+				#cheval {
 					width: 350px;
-					top: 73%;
-					left: 19%;
+					top: 50%;
+					right: -10%;
+				}
+				#oiseau {
+					width: 150px;
+					top: 25%;
+					left: 15%;
+				}
+				#plante-accrochée {
+					width: 300px;
+					top: 22%;
+					left: 40%;
+
 				}
 			}
 			&:nth-of-type(3) {
