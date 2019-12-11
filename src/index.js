@@ -44,21 +44,15 @@ class App {
 		targets.forEach((target, index) => {
 			const tl = gsap.timeline({ paused: true });
 
-			if (index === 1) {
+			if (index === 2) {
 				tl.to(
-					target.querySelector('#antilope'),
+					target.querySelector('#oiseau'),
 					1,
-					{ scale: 1, yoyo: true },
-					0
-				);
-				tl.to(
-					target.querySelector('#test'),
-					1,
-					{ scale: 4, yoyo: true },
+					{ rotation: -10,repeat: -1, yoyo:true, repeatDelay:1, ease:"none" },
 					0
 				);
 			} else {
-				tl.to(target.querySelector('#test'), 1, { scale: 1.4 }, 0);
+				null
 			}
 
 			timelines.push(tl);
