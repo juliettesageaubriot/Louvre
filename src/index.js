@@ -31,7 +31,29 @@ class App {
 
 	bind() {}
 
-	events() {}
+	events() {
+		let test = document.getElementById('loup');
+		// test.addEventListener('click', () => {
+		// gsap
+		// 	.timeline()
+		// 	.to(this.app.querySelector('#loup'), {
+		// 		bottom: '25%'
+		// 	})
+		// 	.to(this.app.querySelector('#loup'), {
+		// 		bottom: '25%'
+		// 	});
+
+		test.addEventListener('click', () => {
+			console.log('fff');
+			gsap.to(this.app.querySelector('#loup'), 1, {
+				y: -20,
+				repeat: 1,
+				repeatDelay: 0,
+				yoyo: true,
+				ease: 1
+			});
+		});
+	}
 
 	timelines() {
 		/**
@@ -48,17 +70,11 @@ class App {
 				tl.to(
 					target.querySelector('#oiseau'),
 					1,
-					{ rotation: -10,repeat: -1, yoyo:true, repeatDelay:.8, ease:1 },
+					{ rotation: -10, repeat: -1, yoyo: true, repeatDelay: 0.8, ease: 1 },
 					0
 				);
-
-				let test = document.getElementById("loup")
-				test.addEventListener('click', function() {
-					tl.to(target.querySelector("#loup"), {bottom: "25%"});
-				})
-				
 			} else {
-				null
+				null;
 			}
 
 			timelines.push(tl);
