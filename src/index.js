@@ -3,6 +3,7 @@ import './styles.scss';
 import { gsap } from 'gsap';
 import Debugger from './scripts/classes/Debugger';
 import Scroller from './scripts/classes/Scroller';
+import tweens from './scripts/tweens';
 
 class App {
 	constructor(debug = true, className = '.app') {
@@ -19,21 +20,44 @@ class App {
 
 		this.scroller = new Scroller(
 			this.app.querySelector('.app__scenes'),
-			this.debugger
+			this.debugger,
+			false
 		);
 
 		this.bind();
 		this.events();
 
-		this.timelines();
+		this.tweens();
+		this.scenes();
 		this.observer();
 	}
 
 	bind() {}
 
-	events() {}
+	events() {
+		const handlerKeypress = ({ code }) => {
+			console.log(code);
+			switch (code) {
+				case 'Space':
+					this.scroller.toggleAuto();
+					break;
+				case 'KeyR':
+					this.scroller.scroll({ to: 0 });
+					break;
+				default:
+					break;
+			}
+		};
+		window.addEventListener('keypress', handlerKeypress);
+	}
 
-	timelines() {
+	tweens() {
+		const { arrow } = tweens;
+
+		arrow(this);
+	}
+
+	scenes() {
 		/**
 		 * Config Animations
 		 */
@@ -47,14 +71,12 @@ class App {
 			if (index === 1) {
 				tl.to(target.querySelector('#antilope'), 1, { scale: 1, yoyo: true }, 0);
 				tl.to(target.querySelector('#test'), 1, { scale: 4, yoyo: true }, 0);
-			} else {
-				tl.to(target.querySelector('img'), 1, { scale: 1.4 }, 0);
 			}
 
 			timelines.push(tl);
 		});
 
-		this.animation = {
+		this.animation.scenes = {
 			targets,
 			timelines
 		};
@@ -79,13 +101,13 @@ class App {
 		/**
 		 * Observer handler
 		 */
-		const { targets, timelines } = this.animation;
+		const { targets, timelines } = this.animation.scenes;
 		const animHandler = (entries, observer) => {
 			entries.forEach(({ target, isIntersecting }) => {
 				const i = targets.indexOf(target);
 				const tl = timelines[i];
 
-				if (isIntersecting) this.animate(tl);
+				if (isIntersecting) this.playScene(tl);
 			});
 		};
 
@@ -96,7 +118,7 @@ class App {
 		targets.forEach((target) => observer.observe(target));
 	}
 
-	animate(timeline) {
+	playScene(timeline) {
 		if (this.scroller.data.direction === 'RIGHT') {
 			timeline.play();
 		} else {
