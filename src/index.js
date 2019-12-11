@@ -44,11 +44,17 @@ class App {
 		targets.forEach((target, index) => {
 			const tl = gsap.timeline({ paused: true });
 
-			if (index === 2) {
+			if (index === 1) {
 				tl.to(
-					target.querySelector('img'),
+					target.querySelector('#antilope'),
 					1,
-					{ scale: 2, rotation: 360, yoyo: true },
+					{ scale: 1, yoyo: true },
+					0
+				);
+				tl.to(
+					target.querySelector('#test'),
+					1,
+					{ scale: 4, yoyo: true },
 					0
 				);
 			} else {
