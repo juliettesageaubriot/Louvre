@@ -30,10 +30,9 @@ body {
 		pointer-events: none;
 
 		.arrow {
-			position: fixed;
-			width: 100px;
-			height: 20px;
-			background-color: $bg;
+			@include size(20%, auto);
+			@include abs-center;
+			filter: brightness(200%);
 		}
 	}
 
