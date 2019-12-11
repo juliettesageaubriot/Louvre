@@ -58,7 +58,7 @@ class App {
 					0
 				);
 			} else {
-				tl.to(target.querySelector('img'), 1, { scale: 1.4 }, 0);
+				tl.to(target.querySelector('#test'), 1, { scale: 1.4 }, 0);
 			}
 
 			timelines.push(tl);
