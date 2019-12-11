@@ -50,7 +50,7 @@ class App {
 		// loup qui grossit au hover
 		loup.addEventListener('mouseover', () => {
 			gsap.to(this.app.querySelector('#loup'), 1, {
-				scale: 1.05,
+				scale: 1.15,
 				repeat: 1,
 				repeatDelay: 0,
 				yoyo: true,
@@ -73,12 +73,17 @@ class App {
 			if (index === 2) {
 				tl.to(
 					target.querySelector('#oiseau'),1, { 
-						rotation: -10, 
-						repeat: -1, 
+						rotation: -15, 
+						repeat: 5, 
 						yoyo: true, 
 						repeatDelay: 0, 
 						ease: 1 
 					});
+
+					tl.to(
+						target.querySelector('#loup'),1, { 
+							scale: 1.08 
+						}, 0);
 			} else {
 				null;
 			}
