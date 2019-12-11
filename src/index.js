@@ -54,19 +54,7 @@ class App {
 
 				let test = document.getElementById("loup")
 				test.addEventListener('click', function() {
-					tl.to(
-						target.querySelector('#loup'),
-						1,
-						{bottom: "25%"},
-						0,
-					).to(
-						target.querySelector('#loup'),
-						1,
-						{bottom: "20%"},
-					 	">"
-						
-					)
-					;
+					tl.to(target.querySelector("#loup"), {bottom: "25%"});
 				})
 				
 			} else {
