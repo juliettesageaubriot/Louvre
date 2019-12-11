@@ -5662,12 +5662,168 @@ var gsapWithCSS = _gsapCore.gsap.registerPlugin(_CSSPlugin.CSSPlugin) || _gsapCo
 
 
 exports.default = exports.gsap = gsapWithCSS;
-},{"./gsap-core.js":"../node_modules/gsap/gsap-core.js","./CSSPlugin.js":"../node_modules/gsap/CSSPlugin.js"}],"index.js":[function(require,module,exports) {
+},{"./gsap-core.js":"../node_modules/gsap/gsap-core.js","./CSSPlugin.js":"../node_modules/gsap/CSSPlugin.js"}],"scripts/classes/Debugger.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Debugger =
+/*#__PURE__*/
+function () {
+  function Debugger() {
+    _classCallCheck(this, Debugger);
+
+    this.console = {};
+  }
+
+  _createClass(Debugger, [{
+    key: "add",
+    value: function add(key, value) {
+      this.console = _objectSpread({}, this.console, _defineProperty({}, key, value));
+    }
+  }, {
+    key: "log",
+    value: function log() {
+      var _this = this;
+
+      var keys = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      if (keys.length > 0) {
+        var console_ = {};
+        keys.forEach(function (k) {
+          console_[k] = _this.console[k];
+        });
+        console.log(console_);
+      } else console.log(this.console);
+    }
+  }, {
+    key: "clear",
+    value: function clear() {
+      console.clear();
+    }
+  }]);
+
+  return Debugger;
+}();
+
+exports.default = Debugger;
+},{}],"scripts/classes/Scroller.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _gsap = require("gsap");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Scroller =
+/*#__PURE__*/
+function () {
+  function Scroller(app, appDebugger) {
+    var velocity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 80;
+
+    _classCallCheck(this, Scroller);
+
+    this.config = {
+      velocity: velocity
+    };
+    this.app = app;
+    this.appDebugger = appDebugger;
+    this.data = {};
+    this.init();
+  }
+
+  _createClass(Scroller, [{
+    key: "init",
+    value: function init() {
+      this.bind();
+      var handler = this.handler;
+      window.addEventListener('mousewheel', handler, {
+        passive: false
+      });
+      window.addEventListener('DOMMouseScroll', handler, {
+        passive: false
+      });
+    }
+  }, {
+    key: "bind",
+    value: function bind() {
+      this.handler = this.handler.bind(this);
+    }
+  }, {
+    key: "handler",
+    value: function handler(e) {
+      var app = this.app,
+          appDebugger = this.appDebugger,
+          config = this.config;
+      e = window.event || e;
+      e.preventDefault(); // block scroll left/right
+
+      if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
+        return true;
+      } // scroll converter
+
+
+      var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
+
+      var scrollLeft_ = _gsap.gsap.getProperty(app, 'scrollLeft');
+
+      _gsap.gsap.to(app, {
+        scrollLeft: scrollLeft_ - delta * config.velocity,
+        ease: 'power2.out'
+      }); // data
+
+
+      this.data = {
+        direction: delta < 0 ? 'RIGHT' : 'LEFT',
+        x: app.scrollLeft
+      };
+
+      if (appDebugger) {
+        appDebugger.add('scroller', this.data);
+        appDebugger.log(['scroller']);
+      }
+    }
+  }]);
+
+  return Scroller;
+}();
+
+exports.default = Scroller;
+},{"gsap":"../node_modules/gsap/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("./styles.scss");
 
 var _gsap = require("gsap");
+
+var _Debugger = _interopRequireDefault(require("./scripts/classes/Debugger"));
+
+var _Scroller = _interopRequireDefault(require("./scripts/classes/Scroller"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -5687,58 +5843,79 @@ var App =
 /*#__PURE__*/
 function () {
   function App() {
-    var className = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '.app';
+    var debug = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '.app';
 
     _classCallCheck(this, App);
 
     this.app = document.querySelector(className);
-    this.scrollDir = 'RIGHT';
+    this.animation = {};
+    this.config = {
+      debug: debug
+    };
+
+    if (this.config.debug) {
+      this.debugger = new _Debugger.default();
+      this.debugger.clear();
+    }
+
+    this.scroller = new _Scroller.default(this.app, this.debugger);
     this.bind();
     this.events();
+    this.timelines();
     this.observer();
   }
 
   _createClass(App, [{
     key: "bind",
-    value: function bind() {
-      this.horizontal = this.horizontal.bind(this);
-    }
+    value: function bind() {}
   }, {
     key: "events",
-    value: function events() {
-      var horizontal = this.horizontal;
-      window.addEventListener('mousewheel', horizontal, {
-        passive: false
-      });
-      window.addEventListener('DOMMouseScroll', horizontal, {
-        passive: false
-      });
-    }
+    value: function events() {}
   }, {
-    key: "horizontal",
-    value: function horizontal(e) {
-      var v = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 80;
-      e = window.event || e;
-      e.preventDefault(); // block scroll left/right
+    key: "timelines",
+    value: function timelines() {
+      /**
+       * Config Animations
+       */
+      var targets = _toConsumableArray(document.querySelectorAll('section'));
 
-      if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
-        return true;
-      }
+      var timelines = []; // timeline for each section
 
-      var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
+      targets.forEach(function (target, index) {
+        var tl = _gsap.gsap.timeline({
+          paused: true
+        });
 
-      var scrollLeft_ = _gsap.gsap.getProperty(this.app, 'scrollLeft');
+        if (index === 2) {
+          tl.to(target.querySelector('img'), 1, {
+            scale: 2,
+            rotation: 360,
+            yoyo: true
+          }, 0);
+        } else {
+          tl.to(target.querySelector('img'), 1, {
+            scale: 1.4
+          }, 0);
+        }
 
-      _gsap.gsap.to(this.app, {
-        scrollLeft: scrollLeft_ - delta * v,
-        ease: 'power2.out'
+        timelines.push(tl);
       });
+      this.animation = {
+        targets: targets,
+        timelines: timelines
+      };
 
-      this.scrollDir = delta < 0 ? 'RIGHT' : 'LEFT';
+      if (this.config.debug) {
+        this.debugger.add('animation', this.animation);
+        this.debugger.log(['animation']);
+      }
     }
   }, {
     key: "observer",
     value: function observer() {
+      var _this = this;
+
       /**
        * Config Intersection Observer
        */
@@ -5749,47 +5926,40 @@ function () {
         rootMargin: '0px',
         threshold: threshold
       };
-      var observer = new IntersectionObserver(animHandler.bind(this), options);
-      /**
-       * Config Animatons
-       */
-
-      var targets = _toConsumableArray(document.querySelectorAll('section'));
-
-      var animations = [];
-      targets.forEach(function (target) {
-        animations.push(_gsap.gsap.timeline({
-          paused: true
-        }));
-        observer.observe(target);
-      }); // timeline for each section
-
-      animations[1].to('#apple', 1, {
-        scale: 1.4,
-        autoAlpha: 0.5
-      });
       /**
        * Observer handler
        */
 
-      function animHandler(entries, observer) {
-        var _this = this;
+      var _this$animation = this.animation,
+          targets = _this$animation.targets,
+          timelines = _this$animation.timelines;
 
+      var animHandler = function animHandler(entries, observer) {
         entries.forEach(function (_ref) {
           var target = _ref.target,
               isIntersecting = _ref.isIntersecting;
           var i = targets.indexOf(target);
-
-          if (isIntersecting) {
-            console.log(target, _this.scrollDir);
-
-            if (_this.scrollDir === 'RIGHT') {
-              animations[i].play();
-            } else {
-              animations[i].reverse();
-            }
-          }
+          var tl = timelines[i];
+          if (isIntersecting) _this.animate(tl);
         });
+      };
+      /**
+       * Create observer & observe
+       */
+
+
+      var observer = new IntersectionObserver(animHandler, options);
+      targets.forEach(function (target) {
+        return observer.observe(target);
+      });
+    }
+  }, {
+    key: "animate",
+    value: function animate(timeline) {
+      if (this.scroller.data.direction === 'RIGHT') {
+        timeline.play();
+      } else {
+        timeline.reverse();
       }
     }
   }]);
@@ -5800,7 +5970,7 @@ function () {
 window.onload = function () {
   return window.app = new App();
 };
-},{"./styles.scss":"styles.scss","gsap":"../node_modules/gsap/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./styles.scss":"styles.scss","gsap":"../node_modules/gsap/index.js","./scripts/classes/Debugger":"scripts/classes/Debugger.js","./scripts/classes/Scroller":"scripts/classes/Scroller.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
