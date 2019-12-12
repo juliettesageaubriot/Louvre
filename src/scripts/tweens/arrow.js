@@ -3,11 +3,10 @@ import configs from '../../configs';
 
 const { ARTEMIS, ARROW } = configs.classNames;
 
-const tween = (app) => {
-	const { app: appDOM, scroller: appScroller } = app;
+const tween = (container, appScroller) => {
 	const config = {
-		artemis: appDOM.querySelector(ARTEMIS),
-		arrow: appDOM.querySelector(ARROW),
+		artemis: container.querySelector(ARTEMIS),
+		arrow: container.querySelector(ARROW),
 		duration: 5
 	};
 
@@ -15,7 +14,6 @@ const tween = (app) => {
 
 	const timeline = gsap
 		.timeline({ paused: true })
-		.set(arrow, { autoAlpha: 0 })
 		.to(artemis, { autoAlpha: 0.5 }, `+=${duration}`)
 		.fromTo(
 			arrow,

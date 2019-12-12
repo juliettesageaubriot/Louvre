@@ -4,11 +4,14 @@ import { gsap } from 'gsap';
 import Debugger from './scripts/classes/Debugger';
 import Scroller from './scripts/classes/Scroller';
 import tweens from './scripts/tweens';
+import configs from './configs';
+
+const { classNames } = configs;
 
 class App {
-	constructor(debug = true, className = '.app') {
+	constructor(debug = true, className = classNames.APP) {
 		this.app = document.querySelector(className);
-		this.animation = {};
+		this.animations = {};
 		this.config = {
 			debug
 		};
@@ -19,7 +22,7 @@ class App {
 		}
 
 		this.scroller = new Scroller(
-			this.app.querySelector('.app__scenes'),
+			this.app.querySelector(classNames.SCENES),
 			this.debugger,
 			false
 		);
@@ -44,6 +47,9 @@ class App {
 				case 'KeyR':
 					this.scroller.scroll({ to: 0 });
 					break;
+				case 'KeyS':
+					this.animations.shatter.doIt();
+					break;
 				default:
 					break;
 			}
@@ -52,9 +58,10 @@ class App {
 	}
 
 	tweens() {
-		const { arrow } = tweens;
+		const { arrow, shatter } = tweens;
 
-		arrow(this);
+		this.animations.arrow = arrow(this.app, this.scroller);
+		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
 		// loup qui saute sur le bouc
@@ -118,13 +125,13 @@ class App {
 			timelines.push(tl);
 		});
 
-		this.animation.scenes = {
+		this.animations.scenes = {
 			targets,
 			timelines
 		};
 
 		if (this.config.debug) {
-			this.debugger.add('animation', this.animation);
+			this.debugger.add('animation', this.animations);
 			this.debugger.log(['animation']);
 		}
 	}
@@ -143,7 +150,7 @@ class App {
 		/**
 		 * Observer handler
 		 */
-		const { targets, timelines } = this.animation.scenes;
+		const { targets, timelines } = this.animations.scenes;
 		const animHandler = (entries, observer) => {
 			entries.forEach(({ target, isIntersecting }) => {
 				const i = targets.indexOf(target);
