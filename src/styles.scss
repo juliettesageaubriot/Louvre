@@ -181,6 +181,42 @@ body {
 					bottom: 20%;
 				}
 			}
+			&:nth-of-type(6) {
+				#paysage {
+					bottom: 19%;
+
+				}
+				#nuages {
+					width: 40%;
+					top: 30%;
+					left: 10%;
+				}
+				#bateau {
+					width: 15%;
+					bottom: 23%;
+					left: 10%;
+				}
+				#artemis {
+					width: 12%;
+					right: 6%;
+					bottom: 20%;
+				}
+				#plantes {
+					width: 10%;
+					right: 29%;
+					bottom: 30.5%;
+				}
+				#poisson {
+					width: 5%;
+					bottom: 20%;
+					left: 35%;
+				}
+				#vague {
+					width: 20%;
+					left: 8%;
+					bottom: 20%;
+				}
+			}
 
 			.img {
 				position: absolute;
