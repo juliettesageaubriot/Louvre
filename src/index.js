@@ -61,6 +61,7 @@ class App {
 		let loup = document.getElementById('loup');
 		let cheval = document.getElementById('cheval');
 		let nuagebas = document.getElementById('nuages-bas');
+		let plantetombee = document.getElementById('plante-tombee');
 
 
 		loup.onclick = () => {
@@ -104,6 +105,17 @@ class App {
 				ease: 1
 			});
 		}
+
+		//hover plante tombée bas scene 4
+		plantetombee.onmouseover = () => {
+			gsap.to(this.app.querySelector('#plante-tombee'), 1, {
+				rotation: 0.8,
+				repeat: 1,
+				repeatDelay: 0,
+				yoyo: true,
+				ease: 1
+			});
+		}
 	}
 
 	scenes() {
@@ -138,10 +150,32 @@ class App {
 				null;
 			}
 
+			if (index === 4) {
+				tl.to(target.querySelector('#poissons'), 1, {
+					rotation: -15,
+					repeat: 5,
+					yoyo: true,
+					repeatDelay: 0,
+					ease: 1
+				});
+
+				tl.to(target.querySelector('#plante-2'), 1, {
+					rotation: -10,
+					repeat: -1,
+					yoyo: true,
+					repeatDelay: 0,
+					ease: 1
+				}, "<");
+
+			} else {
+				null;
+			}
+
 			if (index === 5) {
 
 				tl.to(target.querySelector('#bateau'), 1, {
 					rotation: -15,
+					x: 10,
 					repeat: 8,
 					yoyo: true,
 					repeatDelay: 0,
