@@ -35,6 +35,19 @@ body {
 			transform: translate(-50%, -50%) rotate(-2deg);
 			opacity: 0;
 		}
+
+		#song {
+			//width: 2%;
+			@include size(30px, auto);
+			@include abs-pos(90%, 95%);
+			transform: translate(-50%, -50%);
+			cursor: pointer;
+			path {
+				&:hover {
+					fill: red;
+				}
+			}
+		}
 	}
 
 	&__scenes {
