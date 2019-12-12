@@ -60,7 +60,8 @@ class App {
 		// loup qui saute sur le bouc et qui emet un son
 		let loup = document.getElementById('loup');
 		let cheval = document.getElementById('cheval');
-		loup.addEventListener('click', () => {
+
+		loup.onclick = () => {
 			gsap.to(this.app.querySelector('#loup'), 1, {
 				y: -30,
 				x: 100,
@@ -72,10 +73,10 @@ class App {
 			});
 			let audio = document.getElementById('v1');
 			if (audio) audio.play().catch(() => audio.play());
-		});
+		}
 
 		// loup qui grossit au hover
-		loup.addEventListener('mouseover', () => {
+		loup.onmouseover = () => {
 			gsap.to(this.app.querySelector('#loup'), 1, {
 				scale: 1.15,
 				repeat: 1,
@@ -83,13 +84,13 @@ class App {
 				yoyo: true,
 				ease: 1
 			});
-		});
+		};
 
 		//hover du cheval, il emet un bruit
-		cheval.addEventListener('mouseover', () => {
+		cheval.onmouseover = () => {
 			let audio = document.getElementById('v2');
 			if (audio) audio.play().catch(() => audio.play());
-		});
+		}
 	}
 
 	scenes() {
@@ -122,6 +123,14 @@ class App {
 				);
 			} else {
 				null;
+			}
+
+			let femmes = document.getElementById('v3')
+			if (index === 4) {
+				console.log('coucou')
+				femmes.play()
+			} else {
+				femmes.pause()
 			}
 
 			timelines.push(tl);
