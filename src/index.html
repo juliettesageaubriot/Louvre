@@ -24,12 +24,12 @@
 						
 					</section>
 					<section id="three">
-						<img id="artemise-cerf" class="img" src="./assets/images/artemise-cerfs.png" alt="" />
-						<img id="antilope" class="img" src="./assets/images/antilope.png" alt="" />
-						<img id="loup" class="img" src="./assets/images/loup.png" alt="" onClick='loup()' />
-						<img id="cheval" class="img" src="./assets/images/cheval.png" alt="" onmouseover='cheval()' />
-						<img id="oiseau" class="img" src="./assets/images/oiseau.png" alt="" />
-						<img id="plante-accrochée" class="img" src="./assets/images/plante-accrochée.png" alt="" />
+						<img id="artemise-cerf" class="img" src="./assets/images/scene-3/artemise-cerfs.png" alt="" />
+						<img id="antilope" class="img" src="./assets/images/scene-3/antilope.png" alt="" />
+						<img id="loup" class="img" src="./assets/images/scene-3/loup.png" alt="" onClick='loup()' />
+						<img id="cheval" class="img" src="./assets/images/scene-3/cheval.png" alt="" onmouseover='cheval()' />
+						<img id="oiseau" class="img" src="./assets/images/scene-3/oiseau.png" alt="" />
+						<img id="plante-accrochee" class="img" src="./assets/images/scene-3/plante-accrochée.png" alt="" />
 						
 						<audio id="v1" autobuffer="true">
 						<source src='./assets/sons/loup.mp3' type='audio/mp3'>
@@ -38,8 +38,10 @@
 						<source src='./assets/sons/cheval.mp3' type='audio/mp3'>
 					</section>
 					<section id="four">
-						Section Four
-						<img src="#" alt="" />
+						<img id="fleurs" class="img" src="./assets/images/scene-4/fleurs.png" alt="" />
+						<img id="plante-tombee" class="img" src="./assets/images/scene-4/plante-tombée.png" alt="" onClick='loup()' />
+						<img id="montagnes" class="img" src="./assets/images/scene-4/montagnes.png" alt="" />
+						<img id="premier-plan" class="img" src="./assets/images/scene-4/premierplan.png" alt="" onmouseover='cheval()' />
 					</section>
 					<section id="five">
 						Section Five
@@ -51,21 +53,7 @@
 		</main>
 		<script src="index.js"></script>
 		<script>
-
-			function loup() {
-			let loup = document.getElementById('v1')
-
-			if (loup.paused == true) {
-				loup.play()
-			}
-		}
-
-		function cheval() {
-			let cheval = document.getElementById('v2')
-			if (cheval.paused == true) {
-				cheval.play()
-			}
-		}
+			
 		
 		</script>
 	</body>

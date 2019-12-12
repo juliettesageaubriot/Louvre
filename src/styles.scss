@@ -42,6 +42,7 @@ body {
 			@include abs-pos(90%, 95%);
 			transform: translate(-50%, -50%);
 			cursor: pointer;
+			pointer-events: all;
 			path {
 				&:hover {
 					fill: red;
@@ -111,13 +112,27 @@ body {
 					top: 25%;
 					left: 5%;
 				}
-				#plante-accrochée {
+				#plante-accrochee {
 					width: 25%;
-					top: 13%;
+					top: 14%;
 					left: 30%;
 				}
 			}
 			&:nth-of-type(4) {
+				#montagnes {
+					bottom: 18%;
+				}
+				#fleurs {
+					bottom: 18%;
+				}
+				#plante-tombee {
+					width: 55%;
+					left: 16%;
+					top: 14%;
+				}
+				#premier-plan {
+					bottom: 18%;
+				}
 			}
 			&:nth-of-type(5) {
 			}
