@@ -1,31 +1,26 @@
 import { gsap } from 'gsap';
 import configs from '../../configs';
 
-const { ARTEMIS, ARROW } = configs.classNames;
+const { ARROW } = configs.classNames;
 
-const tween = (container, appScroller) => {
+const tween = (appScroller) => {
 	const config = {
-		artemis: container.querySelector(ARTEMIS),
-		arrow: container.querySelector(ARROW),
 		duration: 5
 	};
 
-	const { artemis, arrow, duration } = config;
+	const { duration } = config;
 
-	const timeline = gsap
-		.timeline({ paused: true })
-		.to(artemis, { autoAlpha: 0.5 }, `+=${duration}`)
-		.fromTo(
-			arrow,
-			{ autoAlpha: 0 },
-			{
-				autoAlpha: 1,
-				onComplete: () => {
-					// appScroller.auto()
-				}
-			},
-			`<-1`
-		);
+	const timeline = gsap.timeline({ paused: true }).fromTo(
+		ARROW,
+		{ autoAlpha: 0 },
+		{
+			autoAlpha: 1,
+			onComplete: () => {
+				// appScroller.auto()
+			}
+		},
+		`<${duration - 1}`
+	);
 
 	timeline.play();
 };
