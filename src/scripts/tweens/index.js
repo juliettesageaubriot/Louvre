@@ -1,3 +1,4 @@
 import arrow from './arrow';
+import shatter from './shatter';
 
-export default { arrow };
+export default { arrow, shatter };

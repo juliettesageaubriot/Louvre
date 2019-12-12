@@ -1,9 +1,10 @@
 import { gsap } from 'gsap';
 
-const tween = (container, appScroller) => {
+const tween = (app) => {
+	const { app: appDOM, scroller: appScroller } = app;
 	const config = {
-		gif: container.querySelector('.arrow--start'),
-		arrow: container.querySelector('.arrow'),
+		gif: appDOM.querySelector('.arrow--start'),
+		arrow: appDOM.querySelector('.arrow'),
 		duration: 5
 	};
 

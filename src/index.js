@@ -54,7 +54,7 @@ class App {
 	tweens() {
 		const { arrow } = tweens;
 
-		arrow(this);
+		arrow(this.app, this.scroller);
 
 		//scene 3
 		// loup qui saute sur le bouc
