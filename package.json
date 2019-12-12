@@ -7,9 +7,10 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "clean": "git rm -r --cached dist",
+    "clean": "git rm -rf --cached dist && rm -r dist .cache",
     "start": "parcel src/index.html",
-    "build-prod": "parcel build src/index.html"
+    "build-prod": "parcel build src/index.html",
+    "build-deploy": "npm run build-prod && surge dist https://artemis-demo.surge.sh"
   },
   "dependencies": {
     "gsap": "^3.0.2",
