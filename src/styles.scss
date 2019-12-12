@@ -30,9 +30,9 @@ body {
 		pointer-events: none;
 
 		.arrow {
-			@include size(auto, 34px);
-			@include abs-pos(29.5%, 63%);
-			transform: translate(-50%, -50%) rotate(-2deg) scaleX(1.24);
+			@include size(auto, 42px);
+			@include abs-pos(29.2%, 61%);
+			transform: translate(-50%, -50%) rotate(-2deg);
 			opacity: 0;
 		}
 
