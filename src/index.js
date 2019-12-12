@@ -70,10 +70,8 @@ class App {
 				yoyo: true,
 				ease: 1
 			});
-			let loupsong = document.getElementById('v1')
-			if (loupsong.paused == true) {
-				loupsong.play()
-			}
+			let audio = document.getElementById('v1');
+			if (audio) audio.play().catch(() => audio.play());
 		});
 
 		// loup qui grossit au hover
@@ -89,10 +87,8 @@ class App {
 
 		//hover du cheval, il emet un bruit
 		cheval.addEventListener('mouseover', () => {
-			let chevalsong = document.getElementById('v2')
-			if (chevalsong.paused == true) {
-				chevalsong.play()
-			}
+			let audio = document.getElementById('v2');
+			if (audio) audio.play().catch(() => audio.play());
 		});
 	}
 
