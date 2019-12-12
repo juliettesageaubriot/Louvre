@@ -8,6 +8,11 @@
 		<main id="app" class="app">
 			<div class="app__fixed">
 				<img class="arrow" src="./assets/images/arrow.png" alt="" />
+				<span> 
+					<svg id="song" viewBox="0 0 512 512">
+						<path d="M470.4 1.5L150.4 96c-13.3 4.2-22.4 16.5-22.4 30.5v261.4c-10.5-2.5-21.2-3.9-32-3.9-53 0-96 28.7-96 64s43 64 96 64 96-28.7 96-64V214.3l256-75v184.6c-10.5-2.6-21.2-3.9-32-3.9-53 0-96 28.7-96 64s43 64 96 64 96-28.6 96-64V32c0-17.7-14.4-32-32-32-3.3 0-6.5.5-9.6 1.5z"/>
+					</svg>
+				</span>
 			</div>
 			<div class="app__scenes">
 				<div class="app__scenes__wrapper">
@@ -20,51 +25,35 @@
 						
 					</section>
 					<section id="three">
-						<img id="artemise-cerf" class="img" src="./assets/images/artemise-cerfs.png" alt="" />
-						<img id="antilope" class="img" src="./assets/images/antilope.png" alt="" />
-						<img id="loup" class="img" src="./assets/images/loup.png" alt="" onClick='loup()' />
-						<img id="cheval" class="img" src="./assets/images/cheval.png" alt="" onmouseover='cheval()' />
-						<img id="oiseau" class="img" src="./assets/images/oiseau.png" alt="" />
-						<img id="plante-accrochée" class="img" src="./assets/images/plante-accrochée.png" alt="" />
+						<img id="artemise-cerf" class="img" src="./assets/images/scene-3/artemise-cerfs.png" alt="" />
+						<img id="antilope" class="img" src="./assets/images/scene-3/antilope.png" alt="" />
+						<img id="loup" class="img" src="./assets/images/scene-3/loup.png" alt="" onClick='loup()' />
+						<img id="cheval" class="img" src="./assets/images/scene-3/cheval.png" alt="" onmouseover='cheval()' />
+						<img id="oiseau" class="img" src="./assets/images/scene-3/oiseau.png" alt="" />
+						<img id="plante-accrochee" class="img" src="./assets/images/scene-3/plante-accrochée.png" alt="" />
 						
-						<audio id="v1" autobuffer="true">
-						<source src='./assets/sons/loup.mp3' type='audio/mp3'>
-
-						<audio id="v2" autobuffer="true">
-						<source src='./assets/sons/cheval.mp3' type='audio/mp3'>
+						<audio id="v1" src='./assets/sons/loup.mp3'>
+						<audio id="v2" src='./assets/sons/cheval.mp3'>
 					</section>
 					<section id="four">
-						Section Four
-						<img src="#" alt="" />
+						<img id="fleurs" class="img" src="./assets/images/scene-4/fleurs.png" alt="" />
+						<img id="plante-tombee" class="img" src="./assets/images/scene-4/plante-tombée.png" alt="" />
+						<img id="montagnes" class="img" src="./assets/images/scene-4/montagnes.png" alt="" />
+						<img id="premier-plan" class="img" src="./assets/images/scene-4/premierplan.png" alt="" />
 					</section>
 					<section id="five" class="app__scenes__fx--shattering app__scenes__fx">
 						<div class="app__scenes__fx--shattering__content">
-							<p>Section Five</p>
-							<p>Some credits</p>
-						</div>
+							<img id="enfant" class="img" src="./assets/images/scene-5/enfant.png" alt="" />
+							<img id="groupe-de-femme" class="img" src="./assets/images/scene-5/groupe-de-femme.png" alt="" />
+							<img id="femme-bebe" class="img" src="./assets/images/scene-5/femme-bébé.png" alt="" />
+							<img id="artemis" class="img" src="./assets/images/scene-5/artemis.png" alt="" />
+							<img id="femme-penchee" class="img" src="./assets/images/scene-5/femme-penchée.png" alt="" />
+						</div>		
 					</section>
 				</div>
 			</div>
 			
 		</main>
 		<script src="index.js"></script>
-		<script>
-
-			function loup() {
-			let loup = document.getElementById('v1')
-
-			if (loup.paused == true) {
-				loup.play()
-			}
-		}
-
-		function cheval() {
-			let cheval = document.getElementById('v2')
-			if (cheval.paused == true) {
-				cheval.play()
-			}
-		}
-		
-		</script>
 	</body>
 </html>

@@ -66,8 +66,9 @@ class App {
 		this.animations.artemis.timeline.play();
 
 		//scene 3
-		// loup qui saute sur le bouc
+		// loup qui saute sur le bouc et qui emet un son
 		let loup = document.getElementById('loup');
+		let cheval = document.getElementById('cheval');
 		loup.addEventListener('click', () => {
 			gsap.to(this.app.querySelector('#loup'), 1, {
 				y: -30,
@@ -78,6 +79,8 @@ class App {
 				yoyo: true,
 				ease: 1
 			});
+			let audio = document.getElementById('v1');
+			if (audio) audio.play().catch(() => audio.play());
 		});
 
 		// loup qui grossit au hover
@@ -89,6 +92,12 @@ class App {
 				yoyo: true,
 				ease: 1
 			});
+		});
+
+		//hover du cheval, il emet un bruit
+		cheval.addEventListener('mouseover', () => {
+			let audio = document.getElementById('v2');
+			if (audio) audio.play().catch(() => audio.play());
 		});
 	}
 

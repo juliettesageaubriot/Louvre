@@ -35,6 +35,20 @@ body {
 			transform: translate(-50%, -50%) rotate(-2deg);
 			opacity: 0;
 		}
+
+		#song {
+			//width: 2%;
+			@include size(30px, auto);
+			@include abs-pos(90%, 95%);
+			transform: translate(-50%, -50%);
+			cursor: pointer;
+			pointer-events: all;
+			path {
+				&:hover {
+					fill: red;
+				}
+			}
+		}
 	}
 
 	&__scenes {
@@ -74,17 +88,6 @@ body {
 			background-image: url('./assets/images/fond.jpg');
 			background-size: cover;
 			border: 1px solid red;
-
-			&:after {
-				content: '';
-				display: block;
-				@include size(100%, 100%);
-				@include abs-center;
-				background-image: url('./assets/images/texture.jpg');
-				background-size: cover;
-				background-repeat: no-repeat;
-				mix-blend-mode: multiply;
-			}
 
 			&:nth-of-type(1) {
 				.artemis {
@@ -141,15 +144,53 @@ body {
 					top: 25%;
 					left: 5%;
 				}
-				#plante-accrochée {
+				#plante-accrochee {
 					width: 25%;
-					top: 13%;
+					top: 14%;
 					left: 30%;
 				}
 			}
 			&:nth-of-type(4) {
+				#montagnes {
+					bottom: 18%;
+				}
+				#fleurs {
+					bottom: 18%;
+				}
+				#plante-tombee {
+					width: 55%;
+					left: 16%;
+					top: 14%;
+				}
+				#premier-plan {
+					bottom: 18%;
+				}
 			}
 			&:nth-of-type(5) {
+				#enfant {
+					width: 10%;
+					bottom: 19%;
+					left: 2%;
+				}
+				#groupe-de-femme {
+					width: 30%;
+					bottom: 19%;
+					left: 5%;
+				}
+				#femme-bebe {
+					width: 14%;
+					bottom: 19%;
+				}
+				#artemis {
+					width: 19%;
+					bottom: 19%;
+					right: 23%;
+				}
+				#femme-penchee {
+					width: 17%;
+					bottom: 25%;
+					right: 3%;
+				}
 			}
 
 			.img {
