@@ -30,9 +30,9 @@ body {
 		pointer-events: none;
 
 		.arrow {
-			@include size(21%, auto);
-			@include abs-pos(34%, 56%);
-			transform: translate(-50%, -50%) rotate(-2deg);
+			@include size(auto, 34px);
+			@include abs-pos(29.5%, 63%);
+			transform: translate(-50%, -50%) rotate(-2deg) scaleX(1.24);
 			opacity: 0;
 		}
 
@@ -93,25 +93,28 @@ body {
 			border: 1px solid red;
 
 			&:nth-of-type(1) {
-				.artemis {
-					&__wrapper {
-						@include abs-center(
-							$vertical: false,
-							$horizontal: true,
-							$transform: scale(0.7)
-						);
-						@include size(539px, 662px);
-						bottom: 20%;
-						overflow: hidden;
-						transform-origin: bottom;
+				@at-root {
+					.artemis {
+						&__wrapper {
+							@include abs-center(
+								$vertical: false,
+								$horizontal: true,
+								$transform: scale(0.7)
+							);
+							@include size(539px, 662px);
+							bottom: 20%;
+							overflow: hidden;
+							transform-origin: bottom;
+						}
+
+						@include size(100%, 100%);
+						background-image: url('./assets/videos/artemis/anim-artemis.png');
+						background-repeat: no-repeat;
+						animation-name: artemis;
+						animation-timing-function: steps(15);
+						animation-iteration-count: infinite;
+						animation-play-state: paused;
 					}
-					@include size(100%, 100%);
-					background-image: url('./assets/videos/artemis/anim-artemis.png');
-					background-repeat: no-repeat;
-					animation-name: artemis;
-					animation-timing-function: steps(15);
-					animation-iteration-count: infinite;
-					animation-play-state: paused;
 				}
 			}
 			&:nth-of-type(2) {
