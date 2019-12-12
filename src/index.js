@@ -58,10 +58,12 @@ class App {
 	}
 
 	tweens() {
-		const { arrow, shatter } = tweens;
+		const { artemis_arrow: artemisShootsArrow, shatter } = tweens;
 
-		this.animations.arrow = arrow(this.app, this.scroller);
+		this.animations.artemis = artemisShootsArrow(this.scroller);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
+
+		this.animations.artemis.timeline.play();
 
 		//scene 3
 		// loup qui saute sur le bouc

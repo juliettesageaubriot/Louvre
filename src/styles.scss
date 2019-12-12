@@ -82,20 +82,30 @@ body {
 				@include abs-center;
 				background-image: url('./assets/images/texture.jpg');
 				background-size: cover;
-				background-position: center;
 				background-repeat: no-repeat;
 				mix-blend-mode: multiply;
 			}
 
 			&:nth-of-type(1) {
 				.artemis {
-					@include abs-center($vertical: false, $horizontal: true);
-					@include size(auto, 65vh);
-					bottom: 20%;
-					background-image: url('./assets/videos/artemis/anim-aremis.png');
+					&__wrapper {
+						@include abs-center(
+							$vertical: false,
+							$horizontal: true,
+							$transform: scale(0.7)
+						);
+						@include size(539px, 662px);
+						bottom: 20%;
+						overflow: hidden;
+						transform-origin: bottom;
+					}
+					@include size(100%, 100%);
+					background-image: url('./assets/videos/artemis/anim-artemis.png');
 					background-repeat: no-repeat;
-					background-size: auto 100%;
-					background-position: center left;
+					animation-name: artemis;
+					animation-timing-function: steps(15);
+					animation-iteration-count: infinite;
+					animation-play-state: paused;
 				}
 			}
 			&:nth-of-type(2) {
