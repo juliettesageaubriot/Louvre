@@ -53,10 +53,22 @@ body {
 			align-items: center;
 			justify-content: space-around;
 			overflow: hidden;
-			background-image: url('./assets/images/fond.png');
+			background-image: url('./assets/images/fond.jpg');
 			background-size: cover;
 			border: 1px solid red;
 			position: relative;
+
+			&:after {
+				content: '';
+				display: block;
+				@include size(100%, 100%);
+				@include abs-center;
+				background-image: url('./assets/images/texture.jpg');
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				mix-blend-mode: multiply;
+			}
 
 			&:nth-of-type(1) {
 				img {
