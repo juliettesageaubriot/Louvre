@@ -1,3 +1,4 @@
 import arrow from './arrow';
+import artemis from './artemis';
 
-export default { arrow };
+export default { arrow, artemis };

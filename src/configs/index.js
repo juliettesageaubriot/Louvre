@@ -15,7 +15,11 @@ const configs = {
 		size: {},
 		weight: {}
 	},
-	content: {}
+	content: {},
+	classNames: {
+		ARROW: '.arrow',
+		ARTEMIS: '.artemis'
+	}
 };
 
 export default configs;
