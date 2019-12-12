@@ -60,6 +60,8 @@ class App {
 		// loup qui saute sur le bouc et qui emet un son
 		let loup = document.getElementById('loup');
 		let cheval = document.getElementById('cheval');
+		let nuagebas = document.getElementById('nuages-bas');
+
 
 		loup.onclick = () => {
 			gsap.to(this.app.querySelector('#loup'), 1, {
@@ -90,6 +92,17 @@ class App {
 		cheval.onmouseover = () => {
 			let audio = document.getElementById('v2');
 			if (audio) audio.play().catch(() => audio.play());
+		}
+
+		//hover nuage bas scene 6
+		nuagebas.onmouseover = () => {
+			gsap.to(this.app.querySelector('#nuages-bas'), 1, {
+				scale: 1.1,
+				repeat: 1,
+				repeatDelay: 0,
+				yoyo: true,
+				ease: 1
+			});
 		}
 	}
 
@@ -125,12 +138,59 @@ class App {
 				null;
 			}
 
-			let femmes = document.getElementById('v3')
-			if (index === 4) {
-				console.log('coucou')
-				femmes.play()
+			if (index === 5) {
+
+				tl.to(target.querySelector('#bateau'), 1, {
+					rotation: -15,
+					repeat: 8,
+					yoyo: true,
+					repeatDelay: 0,
+					ease: 1
+				});
+
+				tl.to(target.querySelector('#vague'), 1, {
+					rotation: -15,
+					repeat: 8,
+					yoyo: true,
+					repeatDelay: 0,
+					ease: 1
+				}, "<");
+
+				tl.to(target.querySelector('#lune'), 1, {
+					opacity: 1,
+					rotation: 20,
+					repeat: -1,
+					yoyo: true,
+					repeatDelay: 0,
+					ease: 1
+				}, "<");
+
+				tl.to(target.querySelector('#nuages-droite'), 1, {
+					x: 10,
+					y: -3,
+					repeat: 5,
+					yoyo: true,
+					repeatDelay: 0,
+					ease: 1
+				}, "<");
+
+				tl.to(target.querySelector('#nuages-gauche'), 1, {
+					y: -10,
+					repeat: 8,
+					yoyo: true,
+					repeatDelay: 0,
+					ease: 1
+				}, "<");
+
+				tl.to(target.querySelector('#nuages-bas'), 1, {
+					y: -10,
+					repeat: 3,
+					yoyo: true,
+					repeatDelay: 0,
+					ease: 1
+				}, "<");
 			} else {
-				femmes.pause()
+				null;
 			}
 
 			timelines.push(tl);

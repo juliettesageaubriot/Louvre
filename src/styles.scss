@@ -92,6 +92,11 @@ body {
 					bottom: 20%;
 					left: 28%;
 				}
+				#cerf {
+					width: 13%;
+					right: 22%;
+					bottom: 21%;
+				}
 				#loup {
 					width: 25%;
 					bottom: 20%;
@@ -186,11 +191,6 @@ body {
 					bottom: 19%;
 
 				}
-				#nuages {
-					width: 40%;
-					top: 30%;
-					left: 10%;
-				}
 				#bateau {
 					width: 15%;
 					bottom: 23%;
@@ -215,6 +215,27 @@ body {
 					width: 20%;
 					left: 8%;
 					bottom: 20%;
+				}
+				#nuages-droite {
+					width: 20%;
+					top: 30%;
+					left: 30%;
+				}
+				#nuages-gauche {
+					width: 19%;
+					top: 33%;
+					left: 10%;
+				}
+				#nuages-bas {
+					width: 21%;
+					top: 48%;
+					left: 26%;
+				}
+				#lune {
+					opacity: 0;
+					width: 6%;
+					top: 33%;
+					left: 27%;
 				}
 			}
 
