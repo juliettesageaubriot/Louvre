@@ -35,7 +35,9 @@ class App {
 		this.events();
 	}
 
-	bind() {}
+	bind() {
+		this.select = this.select.bind(this);
+	}
 
 	events() {
 		const { artemis, shatter } = this.animations;
@@ -62,7 +64,21 @@ class App {
 	}
 
 	tweens() {
-		const { artemis, shatter } = tweens;
+		const { select } = this;
+		const { cta, artemis, shatter } = tweens;
+
+		/**
+		 * Set CTA for interactive elements
+		 * (for now, just blinking effect)
+		 *
+		 * use: cta(elementNode, useAlpha)
+		 * with:
+		 *   useAlpha === true => blinking with opacity
+		 *   useAlpha === false => blinking with filter: brightness
+		 */
+		cta(select(classNames.ARTEMIS));
+		cta(select('#loup'), true);
+		cta(select('#cheval'), true);
 
 		this.animations.artemis = artemis(this.scroller);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
