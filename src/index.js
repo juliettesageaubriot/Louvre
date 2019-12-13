@@ -62,9 +62,9 @@ class App {
 	}
 
 	tweens() {
-		const { artemis_arrow: artemisShootsArrow, shatter } = tweens;
+		const { artemis, shatter } = tweens;
 
-		this.animations.artemis = artemisShootsArrow(this.scroller, false);
+		this.animations.artemis = artemis(this.scroller);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
