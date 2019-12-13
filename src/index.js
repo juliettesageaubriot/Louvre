@@ -58,12 +58,9 @@ class App {
 	}
 
 	tweens() {
-		const { artemis_arrow: artemisShootsArrow, shatter } = tweens;
+		const { shatter } = tweens;
 
-		this.animations.artemis = artemisShootsArrow(this.scroller);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
-
-		this.animations.artemis.timeline.play();
 
 		//scene 3
 		// loup qui saute sur le bouc et qui emet un son
@@ -110,30 +107,36 @@ class App {
 
 		// timeline for each section
 		targets.forEach((target, index) => {
-			const tl = gsap.timeline({ paused: true });
+			const { artemis_arrow: artemisShootsArrow } = tweens;
+			let scene = gsap.timeline({ paused: true });
 
-			if (index === 2) {
-				tl.to(target.querySelector('#oiseau'), 1, {
-					rotation: -15,
-					repeat: 5,
-					yoyo: true,
-					repeatDelay: 0,
-					ease: 1
-				});
+			switch (index) {
+				case 1:
+					scene = artemisShootsArrow(this.scroller).timeline;
+					break;
+				case 2:
+					scene.to(target.querySelector('#oiseau'), 1, {
+						rotation: -15,
+						repeat: 5,
+						yoyo: true,
+						repeatDelay: 0,
+						ease: 1
+					});
 
-				tl.to(
-					target.querySelector('#loup'),
-					1,
-					{
-						scale: 1.08
-					},
-					0
-				);
-			} else {
-				null;
+					scene.to(
+						target.querySelector('#loup'),
+						1,
+						{
+							scale: 1.08
+						},
+						0
+					);
+					break;
+				default:
+					break;
 			}
 
-			timelines.push(tl);
+			timelines.push(scene);
 		});
 
 		this.animations.scenes = {

@@ -4,7 +4,7 @@ import tweenArtemis from './artemis';
 import tweenArrow from './arrow';
 
 const DELAY_START_ARROW = 0.8;
-const DELAY_END_ARTEMIS = 0.1;
+const DELAY_END_ARTEMIS = 0.0;
 const DURATION_ARTEMIS = 2.4;
 
 const tween = (appScroller, autoScroll = true) => {
