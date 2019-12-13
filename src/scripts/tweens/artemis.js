@@ -2,65 +2,26 @@ import { gsap } from 'gsap';
 import configs from '../../configs';
 
 const { ARTEMIS, ARROW } = configs.classNames;
+const { ARTEMIS: ARTEMIS_ANIM } = configs.classAnimations;
 
-const DELAY_START_ARROW = 0.8;
-const DURATION_ARTEMIS = 2.4;
+const tween = (appScroller, scrollTo = 0, duration = 0) => {
+	const artemis = document.querySelector(ARTEMIS);
 
-const tweenArrow = (appScroller, autoScroll) => {
-	const timeline = gsap.timeline({ paused: true }).fromTo(
-		ARROW,
-		{ autoAlpha: 0 },
-		{
-			autoAlpha: 1,
-			onComplete: () => autoScroll && appScroller.auto()
-		}
-	);
+	const play = () => {
+		gsap.set(ARROW, { autoAlpha: 0 });
+		artemis.classList.remove(ARTEMIS_ANIM);
 
-	return timeline;
-};
+		void artemis.offsetWidth;
 
-const tweenArtemis = () => {
-	const duration = (time) =>
-		gsap.set(ARTEMIS, { animationDuration: `${time}s` });
+		artemis.classList.add(ARTEMIS_ANIM);
 
-	const play = () => gsap.set(ARTEMIS, { animationPlayState: 'running' });
+		artemis.addEventListener('animationend', () => {
+			scrollTo && appScroller.auto(scrollTo, duration);
+			gsap.set(ARROW, { autoAlpha: 1 });
+		});
+	};
 
-	const pause = () => gsap.set(ARTEMIS, { animationPlayState: 'paused' });
-
-	return { duration, play, pause };
-};
-
-const tween = (appScroller, autoScroll = true) => {
-	const artemis = tweenArtemis();
-	const arrow = tweenArrow(appScroller, autoScroll);
-	let doFireArrow = false;
-
-	const setFireArrow = (value) => (doFireArrow = value);
-
-	const timeline = gsap
-		.timeline({ paused: true })
-		.call(
-			() => {
-				artemis.duration(DURATION_ARTEMIS);
-				artemis.play();
-				setFireArrow(true);
-			},
-			null,
-			'+=0.1'
-		)
-		.call(artemis.pause, null, DURATION_ARTEMIS)
-		.call(
-			() => {
-				if (doFireArrow) {
-					arrow.play();
-					setFireArrow(false);
-				}
-			},
-			null,
-			DURATION_ARTEMIS - DELAY_START_ARROW
-		);
-
-	return { timeline, setFireArrow };
+	return { play };
 };
 
 export default tween;

@@ -24,6 +24,9 @@ const configs = {
 		ARTEMIS: '.artemis',
 		SCENES: '.app__scenes',
 		SHATTER: '.app__scenes__fx--shattering'
+	},
+	classAnimations: {
+		ARTEMIS: 'animation--artemis'
 	}
 };
 

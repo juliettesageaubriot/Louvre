@@ -41,7 +41,7 @@ export default class Scroller {
 
 	scroll(conf = {}) {
 		const { app, appDebugger, config } = this;
-		const { wheelDelta } = conf;
+		const { wheelDelta, scrollTo, duration } = conf;
 
 		// scroll converter
 		// -1 = RIGHT, 1 = LEFT, 0 when !wheeldelta
@@ -51,10 +51,20 @@ export default class Scroller {
 			? 0
 			: Math.max(-1, Math.min(1, wheelDelta));
 		const scrollLeft_ = gsap.getProperty(app, 'scrollLeft');
-		gsap.to(app, {
-			scrollLeft: scrollLeft_ - delta * config.velocity,
-			ease: 'power2.out'
-		});
+
+		if (!scrollTo) {
+			gsap.to(app, {
+				scrollLeft: scrollLeft_ - delta * config.velocity,
+				ease: 'power2.out'
+			});
+		} else {
+			gsap.to(app, {
+				scrollLeft: scrollTo,
+				ease: 'power2.out',
+				...(duration ? { duration } : {}),
+				onComplete: () => this.clearAuto()
+			});
+		}
 
 		// data
 		this.data = {
@@ -71,9 +81,12 @@ export default class Scroller {
 		this.appDebugger.log(['scroller']);
 	}
 
-	auto() {
+	auto(scrollTo = 0, duration = 0) {
 		this.config.auto = true;
-		this.config.autoIntervalID = setInterval(() => this.scroll(), 200);
+		this.config.autoIntervalID = setInterval(
+			() => this.scroll({ scrollTo, duration }),
+			200
+		);
 	}
 
 	clearAuto() {
