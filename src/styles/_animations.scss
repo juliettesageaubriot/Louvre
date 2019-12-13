@@ -4,12 +4,3 @@
 
 $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
-
-@keyframes artemis {
-	from {
-		background-position: 0 0;
-	}
-	to {
-		background-position: -8085px 0;
-	}
-}

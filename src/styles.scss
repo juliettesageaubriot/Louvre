@@ -30,20 +30,17 @@ body {
 		pointer-events: none;
 
 		.arrow {
-			@include size(auto, 42px);
-			@include abs-pos(29.2%, 61%);
+			@include size(21%, auto);
+			@include abs-pos(34%, 56%);
 			transform: translate(-50%, -50%) rotate(-2deg);
 			opacity: 0;
-		}
-
-		.instructions {
-			@include abs-pos(90%, 50%, -50%, -50%);
 		}
 
 		#song {
 			//width: 2%;
 			@include size(30px, auto);
-			@include abs-pos(90%, 95%, -50%, -50%);
+			@include abs-pos(90%, 95%);
+			transform: translate(-50%, -50%);
 			cursor: pointer;
 			pointer-events: all;
 			path {
@@ -59,66 +56,30 @@ body {
 		overflow: hidden;
 
 		&__wrapper {
-			@include size(900%, 100%);
+			@include size(500%, 100%);
 			display: flex;
 		}
 
-		&__fx {
-			> * {
-				position: absolute;
-			}
-
-			&--shattering {
-				perspective: 500px;
-				&__content {
-					@include size(100%, 100%);
-					@include center-content;
-				}
-				canvas {
-					backface-visibility: hidden;
-					-webkit-backface-visibility: hidden;
-					-moz-backface-visibility: hidden;
-					-ms-backface-visibility: hidden;
-				}
-			}
-		}
-
 		section {
-			@include size(100%/9, 100%);
-			@include center-content;
-			position: relative;
+			@include size(100%/5, 100%);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
 			overflow: hidden;
 			background-image: url('./assets/images/fond.jpg');
 			background-size: cover;
 			border: 1px solid red;
+			position: relative;
 
 			&:nth-of-type(1) {
+				img {
+					@include abs-center($vertical: false, $horizontal: true);
+					@include size(auto, 65%);
+					bottom: 20%;
+				}
 			}
 			&:nth-of-type(2) {
-				@at-root {
-					.artemis {
-						&__wrapper {
-							@include abs-center(
-								$vertical: false,
-								$horizontal: true,
-								$transform: scale(0.7)
-							);
-							@include size(539px, 662px);
-							bottom: 20%;
-							overflow: hidden;
-							transform-origin: bottom;
-						}
-
-						@include size(100%, 100%);
-						background-image: url('./assets/videos/artemis/anim-artemis.png');
-						background-repeat: no-repeat;
-						animation-name: artemis;
-						animation-timing-function: steps(15);
-						animation-iteration-count: infinite;
-						animation-play-state: paused;
-						cursor: pointer;
-					}
-				}
 			}
 			&:nth-of-type(3) {
 				#artemise-cerf {
