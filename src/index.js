@@ -47,7 +47,10 @@ class App {
 			console.log(code);
 			switch (code) {
 				case 'Enter':
-					!this.scroller.isAutoScrolling() && this.scroller.auto(1, 2);
+					!this.scroller.isAutoScrolling() &&
+						this.scroller.auto(1, 2, () =>
+							gsap.to(classNames.ARROW, 0.4, { autoAlpha: 0 })
+						);
 					break;
 				case 'KeyS':
 					shatter.doIt();

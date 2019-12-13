@@ -1,15 +1,24 @@
+// TODO
+// ...
+
 import { gsap } from 'gsap';
 
 export default class Scroller {
 	constructor(scrollingElement, appDebugger, debug = true, velocity = 80) {
-		this.config = { velocity, debug, autoIntervalID: null, auto: false };
+		this.config = {
+			velocity,
+			debug,
+			autoIntervalID: null,
+			auto: false,
+
+			animationsOnScroll: []
+		};
 		this.app = scrollingElement;
 		this.appDebugger = appDebugger;
 		this.data = {
 			direction: 'RIGHT',
 			x: this.app.scrollLeft,
-			autoScroll: false,
-			autoScrolling: false
+			autoScroll: false // will reflects this.config.auto, read-only data, do not use
 		};
 
 		this.init();
@@ -50,7 +59,7 @@ export default class Scroller {
 
 	scroll(conf = {}) {
 		const { app, appDebugger, config } = this;
-		const { wheelDelta, scrollTo, duration } = conf;
+		const { wheelDelta, scrollTo, duration, cb } = conf;
 
 		// scroll converter
 		// -1 = RIGHT, 1 = LEFT, 0 when !wheeldelta
@@ -73,11 +82,14 @@ export default class Scroller {
 			gsap.to(app, {
 				scrollLeft: scrollTo,
 				...(duration ? { duration } : {}),
-				onComplete: () => this.clearAuto()
+				onComplete: () => {
+					this.clearAuto();
+					cb && cb();
+				}
 			});
 		}
 
-		// data
+		// Data
 		this.data = {
 			...this.data,
 			direction: delta < 0 ? 'RIGHT' : 'LEFT',
@@ -85,8 +97,12 @@ export default class Scroller {
 			autoScroll: config.auto
 		};
 
+		// Debug
 		if (appDebugger) appDebugger.add('scroller', this.data);
 		if (config.debug) this.log();
+
+		// Callback any functions passed as params
+		config.animationsOnScroll.forEach((tween) => tween());
 	}
 
 	log() {
@@ -102,7 +118,7 @@ export default class Scroller {
 	 * use: this.isAutoScrolling && this.auto(...)
 	 */
 	isAutoScrolling() {
-		return this.config.autoScrolling;
+		return this.config.auto;
 	}
 
 	/**
@@ -110,18 +126,16 @@ export default class Scroller {
 	 * currently autoscroll from start to end is possible,
 	 * but do expect bugs
 	 */
-	auto(scrollTo = 0, duration = 0) {
-		if (scrollTo) this.config.autoScrolling = true;
-
+	auto(scrollTo = 0, duration = 0, cb = null) {
 		this.config.auto = true;
 		this.config.autoIntervalID = setInterval(
-			() => this.scroll({ scrollTo, duration }),
+			() => this.scroll({ scrollTo, duration, cb }),
 			200
 		);
 	}
 
 	clearAuto() {
-		this.config.autoScrolling = false;
+		this.config.auto = false;
 		clearInterval(this.config.autoIntervalID);
 	}
 
@@ -130,5 +144,9 @@ export default class Scroller {
 
 		if (this.config.auto) this.auto();
 		else this.clearAuto();
+	}
+
+	addAnimation(tween) {
+		this.config.animationsOnScroll = [...this.config.animationsOnScroll, tween];
 	}
 }
