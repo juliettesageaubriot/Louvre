@@ -59,7 +59,7 @@ body {
 		overflow: hidden;
 
 		&__wrapper {
-			@include size(500%, 100%);
+			@include size(900%, 100%);
 			display: flex;
 		}
 
@@ -84,7 +84,7 @@ body {
 		}
 
 		section {
-			@include size(100%/5, 100%);
+			@include size(100%/9, 100%);
 			@include center-content;
 			position: relative;
 			overflow: hidden;
