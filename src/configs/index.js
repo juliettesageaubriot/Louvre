@@ -23,10 +23,12 @@ const configs = {
 		ARROW: '.arrow',
 		ARTEMIS: '.artemis',
 		SCENES: '.app__scenes',
-		SHATTER: '.app__scenes__fx--shattering'
+		SHATTER: '.app__scenes__fx--shattering',
+		BICHE: '.biche'
 	},
 	classAnimations: {
-		ARTEMIS: 'animation--artemis'
+		ARTEMIS: 'animation--artemis',
+		BICHE: 'animation--biche'
 	}
 };
 
