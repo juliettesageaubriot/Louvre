@@ -3,6 +3,7 @@ import './styles.scss';
 import { gsap } from 'gsap';
 import Debugger from './scripts/classes/Debugger';
 import Scroller from './scripts/classes/Scroller';
+import Scratcher from './scripts/classes/Scratcher';
 import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
@@ -129,6 +130,9 @@ class App {
 			let scene = gsap.timeline({ paused: true });
 
 			switch (index) {
+				case 0:
+					this.animations.scratcher = new Scratcher(target);
+					break;
 				case 2:
 					scene.to(target.querySelector('#oiseau'), 1, {
 						rotation: -15,
