@@ -8,7 +8,8 @@ export default class Scroller {
 		this.data = {
 			direction: 'RIGHT',
 			x: this.app.scrollLeft,
-			autoScroll: false
+			autoScroll: false,
+			autoScrolling: false
 		};
 
 		this.init();
@@ -36,9 +37,13 @@ export default class Scroller {
 			return true;
 		}
 
+		// I don't know why I wrote this but apparently do not remove it...
 		if (this.config.auto && this.data.direction === 'RIGHT') {
 			this.toggleAuto();
 		}
+
+		// Kill any existing auto scroll if manually scrolling
+		gsap.killTweensOf(this.app);
 
 		this.scroll({ wheelDelta: e.wheelDelta || -e.detail });
 	}
@@ -67,7 +72,6 @@ export default class Scroller {
 		} else if (scrollTo && config.auto) {
 			gsap.to(app, {
 				scrollLeft: scrollTo,
-				ease: 'power2.out',
 				...(duration ? { duration } : {}),
 				onComplete: () => this.clearAuto()
 			});
@@ -89,7 +93,26 @@ export default class Scroller {
 		this.appDebugger.log(['scroller']);
 	}
 
+	/**
+	 * Only one autoscroll can exist at a time,
+	 * if try to call another autoscroll while the
+	 * current autoscroll isn't yet ended, block it,
+	 * or do expect bug
+	 *
+	 * use: this.isAutoScrolling && this.auto(...)
+	 */
+	isAutoScrolling() {
+		return this.config.autoScrolling;
+	}
+
+	/**
+	 * autoscroll to a specific position
+	 * currently autoscroll from start to end is possible,
+	 * but do expect bugs
+	 */
 	auto(scrollTo = 0, duration = 0) {
+		if (scrollTo) this.config.autoScrolling = true;
+
 		this.config.auto = true;
 		this.config.autoIntervalID = setInterval(
 			() => this.scroll({ scrollTo, duration }),
@@ -98,8 +121,8 @@ export default class Scroller {
 	}
 
 	clearAuto() {
+		this.config.autoScrolling = false;
 		clearInterval(this.config.autoIntervalID);
-		gsap.killTweensOf(this.app);
 	}
 
 	toggleAuto() {

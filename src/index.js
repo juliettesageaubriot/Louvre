@@ -46,11 +46,8 @@ class App {
 		const handlerKeypress = ({ code }) => {
 			console.log(code);
 			switch (code) {
-				case 'Space':
-					this.scroller.toggleAuto();
-					break;
-				case 'KeyR':
-					this.scroller.scroll({ to: 0 });
+				case 'Enter':
+					!this.scroller.isAutoScrolling() && this.scroller.auto(1, 2);
 					break;
 				case 'KeyS':
 					shatter.doIt();
