@@ -7,7 +7,6 @@
 import { gsap } from 'gsap';
 
 import configs from '../../configs';
-import utils from '../../utils';
 
 import BG from '../../assets/images/fond-scratch.jpg';
 import Brush from '../../assets/images/brush-scratch.png';
@@ -15,7 +14,10 @@ import Brush from '../../assets/images/brush-scratch.png';
 const { SCENE_CONTENT } = configs.classNames;
 const { W, H } = configs.dimensions;
 
-const { bounding } = utils;
+const STRIDE = 32;
+const MAX_FILL_AMT = 0.48;
+const BRUSH_W = 74;
+const BRUSH_H = 56;
 
 export default class Scratcher {
 	constructor(container) {
@@ -29,8 +31,13 @@ export default class Scratcher {
 			brush: null
 		};
 
+		this.bind();
 		this.init();
 		this.doit();
+	}
+
+	bind() {
+		this.handler = this.handler.bind(this);
 	}
 
 	init() {
@@ -56,18 +63,8 @@ export default class Scratcher {
 			this.assets.brush = detail.img;
 		});
 
-		this.canvas.addEventListener('mousemove', ({ x, y }) => {
-			const assetsReady = this.assets.bg && this.assets.brush;
-
-			if (assetsReady) {
-				this.draw(x, y);
-
-				console.log(this.fillAmount(32));
-				if (this.fillAmount(32) >= 32) {
-					gsap.to(this.canvas, 2, { autoAlpha: 0, pointerEvents: 'none' });
-				}
-			}
-		});
+		this.canvas.addEventListener('mousemove', this.handler);
+		this.canvas.addEventListener('touchmove', this.handler);
 	}
 
 	images() {
@@ -93,12 +90,61 @@ export default class Scratcher {
 			);
 	}
 
-	draw(x, y, r = 50) {
+	handler(e) {
+		e.preventDefault();
+
+		const { type } = e;
+		let xy,
+			doScratching = false;
+		if (type === 'mousemove') {
+			doScratching = this.detectClick(e);
+			xy = { x: e.x, y: e.y };
+		} else {
+			const touch = this.detectTouch(e);
+			if (touch) {
+				doScratching = true;
+				xy = { x: touch.clientX, y: touch.clientY };
+			}
+		}
+
+		if (doScratching) this.scratch(xy);
+	}
+
+	detectClick(event) {
+		if ('buttons' in event) {
+			return event.buttons === 1;
+		} else if ('which' in event) {
+			return event.which === 1;
+		} else {
+			return event.button === 1;
+		}
+	}
+
+	detectTouch(event) {
+		return event.targetTouches[0];
+	}
+
+	scratch({ x, y }) {
+		const assetsReady = this.assets.bg && this.assets.brush;
+
+		if (assetsReady) {
+			this.draw(x, y);
+
+			if (this.fillAmount(STRIDE) >= MAX_FILL_AMT) {
+				gsap.to(this.canvas, 2, {
+					autoAlpha: 0,
+					pointerEvents: 'none'
+				});
+			}
+		}
+	}
+
+	draw(x, y) {
 		const { ctx } = this;
 		const { brush } = this.assets;
 
 		ctx.globalCompositeOperation = 'destination-out';
-		ctx.drawImage(brush, x, y, 74, 56);
+		ctx.drawImage(brush, x, y, BRUSH_W, BRUSH_H);
 	}
 
 	fillAmount(stride) {
@@ -124,6 +170,6 @@ export default class Scratcher {
 			}
 		}
 
-		return Math.round((count / total) * 100);
+		return count / total;
 	}
 }
