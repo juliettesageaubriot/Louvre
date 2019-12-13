@@ -42,7 +42,7 @@ class App {
 	}
 
 	events() {
-		const { artemis, shatter } = this.animations;
+		const { artemis, biche, shatter } = this.animations;
 		const handlerKeypress = ({ code }) => {
 			console.log(code);
 			switch (code) {
@@ -62,39 +62,48 @@ class App {
 
 		window.addEventListener('keypress', handlerKeypress);
 		this.select(classNames.ARTEMIS).addEventListener('click', () =>
-		gsap.fromTo(this.app.querySelector('.artemis'), 2.4,
-		{
-			backgroundPosition: "0 0"
-		},
-		{	
-			backgroundPosition: "-8085px 0",
-			ease:SteppedEase.config(15),
-			repeat: -1
-		}),
+		// gsap.fromTo(this.app.querySelector('.artemis'), 2.4,
+		// {
+		// 	backgroundPosition: "0 0"
+		// },
+		// {	
+		// 	backgroundPosition: "-8085px 0",
+		// 	ease:SteppedEase.config(15),
+		// 	repeat: 1
+		// }),
 		
 			artemis.play()
+		);
+
+		this.select(classNames.BICHE).addEventListener('click', () =>
+		
+			biche.play()
 		);
 	}
 
 	tweens() {
 		const { select } = this;
 		const { targets: scenes } = this.animations.scenes;
-		const { cta, artemis, shatter } = tweens;
+		const { cta, artemis, shatter, biche } = tweens;
 
 		/**
 		 * Set CTA for interactive elements
 		 */
 		cta(select(classNames.ARTEMIS).parentNode);
+		cta(select(classNames.BICHE).parentNode);
 		cta(select('#loup'), true);
 		cta(select('#cheval'), true);
 
 		this.animations.artemis = artemis(this.scroller, bounding(scenes[1]).x, 2.4);
+		this.animations.biche = biche(this.scroller, bounding(scenes[3]).x, 2.4);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
+		
 
 		//scene 3
 		// loup qui saute sur le bouc et qui emet un son
 		let loup = document.getElementById('loup');
 		let cheval = document.getElementById('cheval');
+
 		loup.onclick = () => {
 			gsap.to(this.app.querySelector('#loup'), 1, {
 				y: -30,

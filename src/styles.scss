@@ -119,6 +119,25 @@ body {
 						background-repeat: no-repeat;
 						cursor: pointer;
 					}
+
+					.biche {
+						&__wrapper {
+							@include abs-center(
+								$vertical: 10%,
+								$transform: scale(0.7)
+							);
+							@include size(610px, 662px);
+							bottom: 20%;
+							left: 64%;
+							overflow: hidden;
+							transform-origin: bottom;
+						}
+
+						@include size(100%, 100%);
+						background-image: url('./assets/videos/biche/anim-biche.png');
+						background-repeat: no-repeat;
+						cursor: pointer;
+					}
 				}
 			}
 			&:nth-of-type(3) {
