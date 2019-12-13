@@ -140,14 +140,11 @@ class App {
 						ease: 1
 					});
 
-					// scene.to(
-					// 	target.querySelector('#loup'),
-					// 	1,
-					// 	{
-					// 		scale: 1.08
-					// 	},
-					// 	0
-					// );
+					scene.to(
+						target.querySelector('.texte'),1,{
+							rotation: 280
+						},"<");
+						
 					break;
 				default:
 					break;

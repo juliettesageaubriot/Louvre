@@ -36,9 +36,9 @@ body {
 			opacity: 0;
 		}
 
-		.instructions {
-			@include abs-pos(90%, 50%, -50%, -50%);
-		}
+		// .instructions {
+		// 	@include abs-pos(90%, 50%, -50%, -50%);
+		// }
 
 		#song {
 			//width: 2%;
@@ -81,6 +81,10 @@ body {
 					-ms-backface-visibility: hidden;
 				}
 			}
+		}
+
+		.texte {
+			@include abs-pos(90%, 50%, -50%, -50%);
 		}
 
 		section {
