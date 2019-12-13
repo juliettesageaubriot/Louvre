@@ -28,16 +28,17 @@ class App {
 		);
 
 		this.bind();
-		this.events();
 
 		this.tweens();
 		this.scenes();
 		this.observer();
+		this.events();
 	}
 
 	bind() {}
 
 	events() {
+		const { artemis, shatter } = this.animations;
 		const handlerKeypress = ({ code }) => {
 			console.log(code);
 			switch (code) {
@@ -48,18 +49,22 @@ class App {
 					this.scroller.scroll({ to: 0 });
 					break;
 				case 'KeyS':
-					this.animations.shatter.doIt();
+					shatter.doIt();
 					break;
 				default:
 					break;
 			}
 		};
 		window.addEventListener('keypress', handlerKeypress);
+		this.select(classNames.ARTEMIS).addEventListener('click', () =>
+			artemis.timeline.play()
+		);
 	}
 
 	tweens() {
-		const { shatter } = tweens;
+		const { artemis_arrow: artemisShootsArrow, shatter } = tweens;
 
+		this.animations.artemis = artemisShootsArrow(this.scroller, false);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
@@ -107,13 +112,9 @@ class App {
 
 		// timeline for each section
 		targets.forEach((target, index) => {
-			const { artemis_arrow: artemisShootsArrow } = tweens;
 			let scene = gsap.timeline({ paused: true });
 
 			switch (index) {
-				case 1:
-					scene = artemisShootsArrow(this.scroller).timeline;
-					break;
 				case 2:
 					scene.to(target.querySelector('#oiseau'), 1, {
 						rotation: -15,
@@ -187,6 +188,10 @@ class App {
 		} else {
 			timeline.reverse();
 		}
+	}
+
+	select(query) {
+		return this.app.querySelector(query);
 	}
 }
 
