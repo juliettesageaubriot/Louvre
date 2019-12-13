@@ -80,7 +80,7 @@ class App {
 		cta(select('#loup'), true);
 		cta(select('#cheval'), true);
 
-		this.animations.artemis = artemis(this.scroller);
+		this.animations.artemis = artemis(this.scroller, false);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
