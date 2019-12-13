@@ -11,7 +11,6 @@ import configs from '../../configs';
 import BG from '../../assets/images/fond-scratch.jpg';
 import Brush from '../../assets/images/brush-scratch.png';
 
-const { SCENE_CONTENT } = configs.classNames;
 const { W, H } = configs.dimensions;
 
 const STRIDE = 32;
@@ -21,22 +20,19 @@ const BRUSH_H = 56;
 
 export default class Scratcher {
 	constructor(container) {
-		this.dom = {
-			container,
-			content: container.querySelector(SCENE_CONTENT)
-		};
+		this.container = container;
 
 		this.assets = {
 			bg: null,
 			brush: null
 		};
 
-		this.bind();
+		this.bindit();
 		this.init();
 		this.doit();
 	}
 
-	bind() {
+	bindit() {
 		this.handler = this.handler.bind(this);
 	}
 
@@ -46,7 +42,7 @@ export default class Scratcher {
 		this.canvas.height = H();
 		this.ctx = this.canvas.getContext('2d');
 
-		this.dom.container.append(this.canvas);
+		this.container.append(this.canvas);
 	}
 
 	doit() {
@@ -73,11 +69,11 @@ export default class Scratcher {
 
 		bg.src = BG;
 		bg.style.display = 'none';
-		this.dom.container.append(bg);
+		this.container.append(bg);
 
 		brush.src = Brush;
 		brush.style.display = 'none';
-		this.dom.container.append(brush);
+		this.container.append(brush);
 
 		bg.onload = () =>
 			this.canvas.dispatchEvent(
@@ -128,7 +124,11 @@ export default class Scratcher {
 		const assetsReady = this.assets.bg && this.assets.brush;
 
 		if (assetsReady) {
-			this.draw(x, y);
+			const { ctx } = this;
+			const { brush } = this.assets;
+
+			ctx.globalCompositeOperation = 'destination-out';
+			ctx.drawImage(brush, x, y, BRUSH_W, BRUSH_H);
 
 			if (this.fillAmount(STRIDE) >= MAX_FILL_AMT) {
 				gsap.to(this.canvas, 2, {
@@ -137,14 +137,6 @@ export default class Scratcher {
 				});
 			}
 		}
-	}
-
-	draw(x, y) {
-		const { ctx } = this;
-		const { brush } = this.assets;
-
-		ctx.globalCompositeOperation = 'destination-out';
-		ctx.drawImage(brush, x, y, BRUSH_W, BRUSH_H);
 	}
 
 	fillAmount(stride) {
