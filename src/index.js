@@ -132,6 +132,24 @@ class App {
 
 			switch (index) {
 				case 2:
+
+					scene.fromTo(
+						target.querySelector('.texte'), 
+							1,
+							{
+								autoAlpha: 0,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							{	
+								autoAlpha: 1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							}
+						);
+
 					scene.to(target.querySelector('#oiseau'), 1, {
 						rotation: -15,
 						repeat: 5,
@@ -139,11 +157,6 @@ class App {
 						repeatDelay: 0,
 						ease: 1
 					});
-
-					scene.to(
-						target.querySelector('.texte'),1,{
-							rotation: 280
-						},"<");
 						
 					break;
 				default:
