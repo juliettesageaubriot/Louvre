@@ -10,7 +10,7 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 		animation: artemis 2.4s steps(15) 1;
 	}
 	&--biche {
-		animation: biche 2.4s steps(4) 1;
+		animation: biche 1s steps(4);
 	}
 }
 

@@ -76,7 +76,6 @@ class App {
 		);
 
 		this.select(classNames.BICHE).addEventListener('click', () =>
-		
 			biche.play()
 		);
 	}
@@ -95,7 +94,7 @@ class App {
 		cta(select('#cheval'), true);
 
 		this.animations.artemis = artemis(this.scroller, bounding(scenes[1]).x, 2.4);
-		this.animations.biche = biche(this.scroller, bounding(scenes[3]).x, 2.4);
+		this.animations.biche = biche(this.scroller, bounding(scenes[3]).x, 1);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 		
 
