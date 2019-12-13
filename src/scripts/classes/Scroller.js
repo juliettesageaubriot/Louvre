@@ -5,7 +5,11 @@ export default class Scroller {
 		this.config = { velocity, debug, autoIntervalID: null, auto: false };
 		this.app = scrollingElement;
 		this.appDebugger = appDebugger;
-		this.data = {};
+		this.data = {
+			direction: 'RIGHT',
+			x: this.app.scrollLeft,
+			autoScroll: false
+		};
 
 		this.init();
 	}
@@ -52,12 +56,15 @@ export default class Scroller {
 			: Math.max(-1, Math.min(1, wheelDelta));
 		const scrollLeft_ = gsap.getProperty(app, 'scrollLeft');
 
+		// Normal behaviour
 		if (!scrollTo) {
 			gsap.to(app, {
 				scrollLeft: scrollLeft_ - delta * config.velocity,
 				ease: 'power2.out'
 			});
-		} else {
+
+			// Auto Scroll to a specific position
+		} else if (scrollTo && config.auto) {
 			gsap.to(app, {
 				scrollLeft: scrollTo,
 				ease: 'power2.out',
@@ -68,6 +75,7 @@ export default class Scroller {
 
 		// data
 		this.data = {
+			...this.data,
 			direction: delta < 0 ? 'RIGHT' : 'LEFT',
 			x: app.scrollLeft,
 			autoScroll: config.auto
@@ -91,6 +99,7 @@ export default class Scroller {
 
 	clearAuto() {
 		clearInterval(this.config.autoIntervalID);
+		gsap.killTweensOf(this.app);
 	}
 
 	toggleAuto() {

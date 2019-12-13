@@ -61,8 +61,10 @@ class App {
 		};
 
 		window.addEventListener('keypress', handlerKeypress);
-		this.select(classNames.ARTEMIS).addEventListener('click', () =>
-			artemis.play()
+		this.select(classNames.ARTEMIS).addEventListener(
+			'click',
+			() => artemis.play(),
+			false
 		);
 	}
 
@@ -78,7 +80,11 @@ class App {
 		cta(select('#loup'), true);
 		cta(select('#cheval'), true);
 
-		this.animations.artemis = artemis(this.scroller, bounding(scenes[1]).x, 2.4);
+		this.animations.artemis = artemis(
+			this.scroller,
+			bounding(scenes[1]).x / 2,
+			2
+		);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3

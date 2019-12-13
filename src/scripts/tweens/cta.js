@@ -40,7 +40,7 @@ const tween = (element, useAlpha = false) => {
 	if (element instanceof HTMLImageElement) {
 		element.onclick = onClick;
 	} else {
-		element.addEventListener('click', onClick);
+		element.addEventListener('click', onClick, false);
 	}
 
 	return timeline;
