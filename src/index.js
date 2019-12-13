@@ -58,18 +58,15 @@ class App {
 	}
 
 	tweens() {
-		const { artemis_arrow: artemisShootsArrow, shatter } = tweens;
+		const { shatter } = tweens;
 
-		this.animations.artemis = artemisShootsArrow(this.scroller);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
-
-		this.animations.artemis.timeline.play();
 
 		//scene 3
 		// loup qui saute sur le bouc et qui emet un son
 		let loup = document.getElementById('loup');
 		let cheval = document.getElementById('cheval');
-		loup.addEventListener('click', () => {
+		loup.onclick = () => {
 			gsap.to(this.app.querySelector('#loup'), 1, {
 				y: -30,
 				x: 100,
@@ -81,10 +78,10 @@ class App {
 			});
 			let audio = document.getElementById('v1');
 			if (audio) audio.play().catch(() => audio.play());
-		});
+		};
 
 		// loup qui grossit au hover
-		loup.addEventListener('mouseover', () => {
+		loup.onmouseover = () => {
 			gsap.to(this.app.querySelector('#loup'), 1, {
 				scale: 1.15,
 				repeat: 1,
@@ -92,13 +89,13 @@ class App {
 				yoyo: true,
 				ease: 1
 			});
-		});
+		};
 
 		//hover du cheval, il emet un bruit
-		cheval.addEventListener('mouseover', () => {
+		cheval.onmouseover = () => {
 			let audio = document.getElementById('v2');
 			if (audio) audio.play().catch(() => audio.play());
-		});
+		};
 	}
 
 	scenes() {
@@ -110,30 +107,36 @@ class App {
 
 		// timeline for each section
 		targets.forEach((target, index) => {
-			const tl = gsap.timeline({ paused: true });
+			const { artemis_arrow: artemisShootsArrow } = tweens;
+			let scene = gsap.timeline({ paused: true });
 
-			if (index === 2) {
-				tl.to(target.querySelector('#oiseau'), 1, {
-					rotation: -15,
-					repeat: 5,
-					yoyo: true,
-					repeatDelay: 0,
-					ease: 1
-				});
+			switch (index) {
+				case 1:
+					scene = artemisShootsArrow(this.scroller).timeline;
+					break;
+				case 2:
+					scene.to(target.querySelector('#oiseau'), 1, {
+						rotation: -15,
+						repeat: 5,
+						yoyo: true,
+						repeatDelay: 0,
+						ease: 1
+					});
 
-				tl.to(
-					target.querySelector('#loup'),
-					1,
-					{
-						scale: 1.08
-					},
-					0
-				);
-			} else {
-				null;
+					scene.to(
+						target.querySelector('#loup'),
+						1,
+						{
+							scale: 1.08
+						},
+						0
+					);
+					break;
+				default:
+					break;
 			}
 
-			timelines.push(tl);
+			timelines.push(scene);
 		});
 
 		this.animations.scenes = {

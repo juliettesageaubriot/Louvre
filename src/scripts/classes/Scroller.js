@@ -32,6 +32,10 @@ export default class Scroller {
 			return true;
 		}
 
+		if (this.config.auto && this.data.direction === 'RIGHT') {
+			this.toggleAuto();
+		}
+
 		this.scroll({ wheelDelta: e.wheelDelta || -e.detail });
 	}
 
