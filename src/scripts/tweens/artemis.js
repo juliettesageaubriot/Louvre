@@ -8,6 +8,7 @@ const tween = (appScroller, scrollTo = 0, duration = 0) => {
 	const artemis = document.querySelector(ARTEMIS);
 
 	const play = () => {
+
 		gsap.set(ARROW, { autoAlpha: 0 });
 		artemis.classList.remove(ARTEMIS_ANIM);
 

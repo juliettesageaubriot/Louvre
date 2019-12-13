@@ -1,6 +1,6 @@
 import './styles.scss';
 
-import { gsap } from 'gsap';
+import { gsap, SteppedEase } from 'gsap';
 import Debugger from './scripts/classes/Debugger';
 import Scroller from './scripts/classes/Scroller';
 import tweens from './scripts/tweens';
@@ -62,6 +62,16 @@ class App {
 
 		window.addEventListener('keypress', handlerKeypress);
 		this.select(classNames.ARTEMIS).addEventListener('click', () =>
+		gsap.fromTo(this.app.querySelector('.artemis'), 2.4,
+		{
+			backgroundPosition: "0 0"
+		},
+		{	
+			backgroundPosition: "-8085px 0",
+			ease:SteppedEase.config(15),
+			repeat: -1
+		}),
+		
 			artemis.play()
 		);
 	}
