@@ -140,14 +140,14 @@ class App {
 						ease: 1
 					});
 
-					scene.to(
-						target.querySelector('#loup'),
-						1,
-						{
-							scale: 1.08
-						},
-						0
-					);
+					// scene.to(
+					// 	target.querySelector('#loup'),
+					// 	1,
+					// 	{
+					// 		scale: 1.08
+					// 	},
+					// 	0
+					// );
 					break;
 				default:
 					break;
