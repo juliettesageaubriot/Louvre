@@ -4,7 +4,7 @@ import configs from '../../configs';
 const { ARTEMIS, ARROW } = configs.classNames;
 const { ARTEMIS: ARTEMIS_ANIM } = configs.classAnimations;
 
-const tween = (appScroller, scrollTo = 0) => {
+const tween = (appScroller, scrollTo = 0, duration = 0) => {
 	const artemis = document.querySelector(ARTEMIS);
 
 	const play = () => {
@@ -16,7 +16,7 @@ const tween = (appScroller, scrollTo = 0) => {
 		artemis.classList.add(ARTEMIS_ANIM);
 
 		artemis.addEventListener('animationend', () => {
-			scrollTo && appScroller.auto(scrollTo);
+			scrollTo && appScroller.auto(scrollTo, duration);
 			gsap.set(ARROW, { autoAlpha: 1 });
 		});
 	};
