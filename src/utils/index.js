@@ -25,9 +25,9 @@ const utils = {
 	},
 	extractRGB: (color) =>
 		color
-		.split(',')
-		.map((c) => parseInt(c.match(/\d+/)))
-		.filter((c) => !isNaN(c)),
+			.split(',')
+			.map((c) => parseInt(c.match(/\d+/)))
+			.filter((c) => !isNaN(c)),
 	alpha: (color, opacity) => color.replace('o', opacity),
 	randomIntegerInRange: (min, max) =>
 		Math.floor(Math.random() * (max - min + 1)) + min,
@@ -42,10 +42,11 @@ const utils = {
 		return arr;
 	},
 	chunk: (arr, size) =>
-		Array.from({
+		Array.from(
+			{
 				length: Math.ceil(arr.length / size)
-			}, (v, i) =>
-			arr.slice(i * size, i * size + size)
+			},
+			(v, i) => arr.slice(i * size, i * size + size)
 		),
 	radian: () => (Math.random() * 360 * Math.PI) / 180,
 	distance: (x1, y1, x2, y2) => {
@@ -53,7 +54,8 @@ const utils = {
 		const dy = y1 - y2;
 		return Math.sqrt(dx * dx + dy * dy);
 	},
-	tick: (cb, t) => setTimeout(() => cb(), t)
+	tick: (cb, t) => setTimeout(() => cb(), t),
+	bounding: (el) => el.getBoundingClientRect()
 };
 
 export default utils;

@@ -112,10 +112,6 @@ body {
 						@include size(100%, 100%);
 						background-image: url('./assets/videos/artemis/anim-artemis.png');
 						background-repeat: no-repeat;
-						animation-name: artemis;
-						animation-timing-function: steps(15);
-						animation-iteration-count: infinite;
-						animation-play-state: paused;
 						cursor: pointer;
 					}
 				}

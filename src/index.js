@@ -5,7 +5,9 @@ import Debugger from './scripts/classes/Debugger';
 import Scroller from './scripts/classes/Scroller';
 import tweens from './scripts/tweens';
 import configs from './configs';
+import utils from './utils';
 
+const { bounding } = utils;
 const { classNames } = configs;
 
 class App {
@@ -29,8 +31,8 @@ class App {
 
 		this.bind();
 
-		this.tweens();
 		this.scenes();
+		this.tweens();
 		this.observer();
 		this.events();
 	}
@@ -57,30 +59,26 @@ class App {
 					break;
 			}
 		};
+
 		window.addEventListener('keypress', handlerKeypress);
 		this.select(classNames.ARTEMIS).addEventListener('click', () =>
-			artemis.timeline.play()
+			artemis.play()
 		);
 	}
 
 	tweens() {
 		const { select } = this;
+		const { targets: scenes } = this.animations.scenes;
 		const { cta, artemis, shatter } = tweens;
 
 		/**
 		 * Set CTA for interactive elements
-		 * (for now, just blinking effect)
-		 *
-		 * use: cta(elementNode, useAlpha)
-		 * with:
-		 *   useAlpha === true => blinking with opacity
-		 *   useAlpha === false => blinking with filter: brightness
 		 */
-		cta(select(classNames.ARTEMIS));
+		cta(select(classNames.ARTEMIS).parentNode);
 		cta(select('#loup'), true);
 		cta(select('#cheval'), true);
 
-		this.animations.artemis = artemis(this.scroller, false);
+		this.animations.artemis = artemis(this.scroller, bounding(scenes[1]).x);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
