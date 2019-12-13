@@ -238,6 +238,55 @@ body {
 					left: 27%;
 				}
 			}
+			&:nth-of-type(7) {
+				#soleil {
+					top: 0;
+					left: 0;
+
+				}
+				#nuage-droite-7 {
+					top: 0;
+					left: 0;
+				}
+				#nuage-gauche-7 {
+					top: 0;
+					left: 0;
+
+				}
+				#nuage-bas-7 {
+					top: 0;
+					left: 0;
+
+				}
+				#apollon {
+					width: 20%;
+					bottom: 20%;
+					left: 15%;
+				}
+				#pierre {
+					top: 0;
+					left: 0;
+
+				}
+				#rocher {
+					width: 55%;
+					bottom: 18%;
+					left: 2%;
+				}
+				#plante-7 {
+					top: 0;
+					left: 0;
+
+				}
+				#temple {
+					width: 60%;
+					left: 30%;
+					bottom: 30%;
+				}
+				#paysage {
+					bottom: 19%;
+				}
+			}
 
 			.img {
 				position: absolute;
