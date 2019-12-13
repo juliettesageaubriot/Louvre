@@ -199,6 +199,107 @@ body {
 					right: 3%;
 				}
 			}
+			&:nth-of-type(6) {
+				#paysage {
+					bottom: 19%;
+
+				}
+				#bateau {
+					width: 15%;
+					bottom: 23%;
+					left: 10%;
+				}
+				#artemis {
+					width: 12%;
+					right: 6%;
+					bottom: 20%;
+				}
+				#plantes {
+					width: 10%;
+					right: 29%;
+					bottom: 30.5%;
+				}
+				#poisson {
+					width: 5%;
+					bottom: 20%;
+					left: 35%;
+				}
+				#vague {
+					width: 20%;
+					left: 8%;
+					bottom: 20%;
+				}
+				#nuages-droite {
+					width: 20%;
+					top: 30%;
+					left: 30%;
+				}
+				#nuages-gauche {
+					width: 19%;
+					top: 33%;
+					left: 10%;
+				}
+				#nuages-bas {
+					width: 21%;
+					top: 48%;
+					left: 26%;
+				}
+				#lune {
+					opacity: 0;
+					width: 6%;
+					top: 33%;
+					left: 27%;
+				}
+			}
+			&:nth-of-type(7) {
+				#soleil {
+					top: 0;
+					left: 0;
+
+				}
+				#nuage-droite-7 {
+					top: 0;
+					left: 0;
+				}
+				#nuage-gauche-7 {
+					top: 0;
+					left: 0;
+
+				}
+				#nuage-bas-7 {
+					top: 0;
+					left: 0;
+
+				}
+				#apollon {
+					width: 20%;
+					bottom: 20%;
+					left: 15%;
+				}
+				#pierre {
+					top: 0;
+					left: 0;
+
+				}
+				#rocher {
+					width: 55%;
+					bottom: 18%;
+					left: 2%;
+				}
+				#plante-7 {
+					top: 0;
+					left: 0;
+
+				}
+				#temple {
+					width: 60%;
+					left: 30%;
+					bottom: 30%;
+				}
+				#paysage {
+					bottom: 19%;
+				}
+			}
 
 			.img {
 				position: absolute;
