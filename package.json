@@ -7,11 +7,14 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "clean": "git rm -r --cached dist",
+    "clean": "git rm -rf --cached dist && rm -r dist .cache",
     "start": "parcel src/index.html",
-    "build-prod": "parcel build src/index.html"
+    "build-prod": "parcel build src/index.html",
+    "build-deploy-a": "npm run build-prod && surge dist https://artemis-demo.surge.sh",
+    "build-deploy-b": "npm run build-prod && surge dist https://artemis-demo-b.surge.sh"
   },
   "dependencies": {
+    "delaunator": "^4.0.1",
     "gsap": "^3.0.2",
     "scrollmagic": "^2.0.7",
     "scrollmagic-plugin-gsap": "^1.0.3",

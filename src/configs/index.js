@@ -1,5 +1,3 @@
-import utils from '../utils';
-
 const configs = {
 	dimensions: {
 		W: () => window.innerWidth,
@@ -15,7 +13,18 @@ const configs = {
 		size: {},
 		weight: {}
 	},
-	content: {}
+	content: {},
+	math: {
+		PI: Math.PI,
+		TWO_PI: Math.PI * 2
+	},
+	classNames: {
+		APP: '.app',
+		ARROW: '.arrow',
+		ARTEMIS: '.artemis',
+		SCENES: '.app__scenes',
+		SHATTER: '.app__scenes__fx--shattering'
+	}
 };
 
 export default configs;
