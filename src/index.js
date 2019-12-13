@@ -47,11 +47,11 @@ class App {
 		const handlerKeypress = ({ code }) => {
 			console.log(code);
 			switch (code) {
-				case 'Space':
-					this.scroller.toggleAuto();
-					break;
-				case 'KeyR':
-					this.scroller.scroll({ to: 0 });
+				case 'Enter':
+					!this.scroller.isAutoScrolling() &&
+						this.scroller.auto(1, 2, () =>
+							gsap.to(classNames.ARROW, 0.4, { autoAlpha: 0 })
+						);
 					break;
 				case 'KeyS':
 					shatter.doIt();
@@ -62,8 +62,10 @@ class App {
 		};
 
 		window.addEventListener('keypress', handlerKeypress);
-		this.select(classNames.ARTEMIS).addEventListener('click', () =>
-			artemis.play()
+		this.select(classNames.ARTEMIS).addEventListener(
+			'click',
+			() => artemis.play(),
+			false
 		);
 	}
 
@@ -79,7 +81,11 @@ class App {
 		cta(select('#loup'), true);
 		cta(select('#cheval'), true);
 
-		this.animations.artemis = artemis(this.scroller, bounding(scenes[1]).x, 2.4);
+		this.animations.artemis = artemis(
+			this.scroller,
+			bounding(scenes[1]).x / 2,
+			2
+		);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
