@@ -199,6 +199,24 @@ body {
 						background-repeat: no-repeat;
 						cursor: pointer;
 					}
+
+					.fleurs2 {
+						&__wrapper {
+							@include abs-center(
+								$transform: scale(1)
+							);
+							@include size(300px, 313px);
+							overflow: hidden;
+							transform-origin: bottom;
+							left: 46%;
+							top: 65%;
+						}
+
+						@include size(100%, 100%);
+						background-image: url('./assets/videos/fleurs-2/anim-fleurs-2.png');
+						background-repeat: no-repeat;
+						cursor: pointer;
+					}
 				}
 				#montagnes {
 					bottom: 18%;

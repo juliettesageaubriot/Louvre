@@ -43,3 +43,12 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 		background-position: -882px 0;
 	}
 }
+
+@keyframes fleurs-2 {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: -903px 0;
+	}
+}

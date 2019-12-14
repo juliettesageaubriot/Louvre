@@ -42,7 +42,7 @@ class App {
 	}
 
 	events() {
-		const { artemis, biche, shatter, fleurs } = this.animations;
+		const { artemis, biche, shatter, fleurs, fleurs2 } = this.animations;
 		const handlerKeypress = ({ code }) => {
 			console.log(code);
 			switch (code) {
@@ -82,12 +82,16 @@ class App {
 		this.select(classNames.FLEURS).addEventListener('click', () =>
 			fleurs.play()
 		);
+
+		this.select(classNames.FLEURS2).addEventListener('click', () =>
+			fleurs2.play()
+		);
 	}
 
 	tweens() {
 		const { select } = this;
 		const { targets: scenes } = this.animations.scenes;
-		const { cta, artemis, shatter, biche, fleurs } = tweens;
+		const { cta, artemis, shatter, biche, fleurs, fleurs2 } = tweens;
 
 		/**
 		 * Set CTA for interactive elements
@@ -95,12 +99,14 @@ class App {
 		cta(select(classNames.ARTEMIS).parentNode);
 		cta(select(classNames.BICHE).parentNode);
 		cta(select(classNames.FLEURS).parentNode);
+		cta(select(classNames.FLEURS2).parentNode);
 		cta(select('#loup'), true);
 		cta(select('#cheval'), true);
 
 		this.animations.artemis = artemis(this.scroller, bounding(scenes[1]).x, 2.4);
 		this.animations.biche = biche(this.scroller, bounding(scenes[3]).x, 1);
 		this.animations.fleurs = fleurs(this.scroller, bounding(scenes[4]).x, 1);
+		this.animations.fleurs2 = fleurs2(this.scroller, bounding(scenes[4]).x, 1);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 		
 

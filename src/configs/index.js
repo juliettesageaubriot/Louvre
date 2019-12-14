@@ -25,12 +25,14 @@ const configs = {
 		SCENES: '.app__scenes',
 		SHATTER: '.app__scenes__fx--shattering',
 		BICHE: '.biche',
-		FLEURS: '.fleurs'
+		FLEURS: '.fleurs',
+		FLEURS2: '.fleurs2'
 	},
 	classAnimations: {
 		ARTEMIS: 'animation--artemis',
 		BICHE: 'animation--biche',
-		FLEURS: 'animations--fleurs'
+		FLEURS: 'animations--fleurs',
+		FLEURS2: 'animations--fleurs2'
 	}
 };
 
