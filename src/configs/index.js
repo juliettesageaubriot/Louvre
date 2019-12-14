@@ -24,11 +24,13 @@ const configs = {
 		ARTEMIS: '.artemis',
 		SCENES: '.app__scenes',
 		SHATTER: '.app__scenes__fx--shattering',
-		BICHE: '.biche'
+		BICHE: '.biche',
+		FLEURS: '.fleurs'
 	},
 	classAnimations: {
 		ARTEMIS: 'animation--artemis',
-		BICHE: 'animation--biche'
+		BICHE: 'animation--biche',
+		FLEURS: 'animations--fleurs'
 	}
 };
 

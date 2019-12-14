@@ -119,14 +119,19 @@ body {
 						background-repeat: no-repeat;
 						cursor: pointer;
 					}
-
+				}
+			}
+			&:nth-of-type(3) {
+				@at-root {
 					.biche {
 						&__wrapper {
 							@include abs-center(
 								$vertical: 10%,
 								$transform: scale(0.7)
 							);
-							@include size(610px, 662px);
+							@include size(100%, 100%);
+							max-width: 610px;
+							max-height: 662px;
 							bottom: 20%;
 							left: 64%;
 							overflow: hidden;
@@ -139,8 +144,6 @@ body {
 						cursor: pointer;
 					}
 				}
-			}
-			&:nth-of-type(3) {
 				#artemise-cerf {
 					width: 30%;
 					bottom: 20%;
@@ -178,6 +181,25 @@ body {
 				}
 			}
 			&:nth-of-type(4) {
+				@at-root {
+					.fleurs {
+						&__wrapper {
+							@include abs-center(
+								$transform: scale(0.7)
+							);
+							@include size(300px, 453px);
+							overflow: hidden;
+							transform-origin: bottom;
+							left: 78%;
+							top: 58%;
+						}
+
+						@include size(100%, 100%);
+						background-image: url('./assets/videos/fleurs/anim-fleur.png');
+						background-repeat: no-repeat;
+						cursor: pointer;
+					}
+				}
 				#montagnes {
 					bottom: 18%;
 				}
@@ -265,7 +287,7 @@ body {
 					left: 26%;
 				}
 				#lune {
-					opacity: 0;
+					opacity: 1;
 					width: 6%;
 					top: 33%;
 					left: 27%;

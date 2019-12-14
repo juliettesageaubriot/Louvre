@@ -1,6 +1,6 @@
 import './styles.scss';
 
-import { gsap, SteppedEase } from 'gsap';
+import { gsap } from 'gsap';
 import Debugger from './scripts/classes/Debugger';
 import Scroller from './scripts/classes/Scroller';
 import tweens from './scripts/tweens';
@@ -42,7 +42,7 @@ class App {
 	}
 
 	events() {
-		const { artemis, biche, shatter } = this.animations;
+		const { artemis, biche, shatter, fleurs } = this.animations;
 		const handlerKeypress = ({ code }) => {
 			console.log(code);
 			switch (code) {
@@ -78,23 +78,29 @@ class App {
 		this.select(classNames.BICHE).addEventListener('click', () =>
 			biche.play()
 		);
+
+		this.select(classNames.FLEURS).addEventListener('click', () =>
+			fleurs.play()
+		);
 	}
 
 	tweens() {
 		const { select } = this;
 		const { targets: scenes } = this.animations.scenes;
-		const { cta, artemis, shatter, biche } = tweens;
+		const { cta, artemis, shatter, biche, fleurs } = tweens;
 
 		/**
 		 * Set CTA for interactive elements
 		 */
 		cta(select(classNames.ARTEMIS).parentNode);
 		cta(select(classNames.BICHE).parentNode);
+		cta(select(classNames.FLEURS).parentNode);
 		cta(select('#loup'), true);
 		cta(select('#cheval'), true);
 
 		this.animations.artemis = artemis(this.scroller, bounding(scenes[1]).x, 2.4);
 		this.animations.biche = biche(this.scroller, bounding(scenes[3]).x, 1);
+		this.animations.fleurs = fleurs(this.scroller, bounding(scenes[4]).x, 1);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 		
 

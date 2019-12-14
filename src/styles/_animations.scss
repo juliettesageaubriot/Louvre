@@ -10,7 +10,10 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 		animation: artemis 2.4s steps(15) 1;
 	}
 	&--biche {
-		animation: biche 1s steps(4);
+		animation: biche 1s steps(4) 1;
+	}
+	&--fleurs {
+		animation: fleurs 1s steps(3) 1;
 	}
 }
 
@@ -29,5 +32,14 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	}
 	to {
 		background-position: -2488px 0;
+	}
+}
+
+@keyframes fleurs {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: -882px 0;
 	}
 }
