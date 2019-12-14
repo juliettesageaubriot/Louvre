@@ -62,22 +62,16 @@ class App {
 
 		window.addEventListener('keypress', handlerKeypress);
 		this.select(classNames.ARTEMIS).addEventListener('click', () =>
-		// gsap.fromTo(this.app.querySelector('.artemis'), 2.4,
-		// {
-		// 	backgroundPosition: "0 0"
-		// },
-		// {	
-		// 	backgroundPosition: "-8085px 0",
-		// 	ease:SteppedEase.config(15),
-		// 	repeat: 1
-		// }),
 		
-			artemis.play()
+			artemis.play(),
+			false
 		);
 
-		this.select(classNames.BICHE).addEventListener('click', () =>
-			biche.play()
-		);
+		this.select(classNames.BICHE).addEventListener(
+			'click',
+			() => biche.play(),
+			false
+			);
 
 		this.select(classNames.FLEURS).addEventListener('click', () =>
 			fleurs.play()
