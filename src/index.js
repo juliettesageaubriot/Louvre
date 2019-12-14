@@ -76,7 +76,7 @@ class App {
 		/**
 		 * Set CTA for interactive elements
 		 */
-		cta(select(classNames.ARTEMIS).parentNode);
+		// cta(select(classNames.ARTEMIS).parentNode);
 		cta(select('#loup'), true);
 		cta(select('#cheval'), true);
 
