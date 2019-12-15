@@ -12,6 +12,7 @@ const tween = () => {
         //void = assure qu'on peut replay l'animation
 		void fleurs2.offsetWidth;
 		fleurs2.classList.add(FLEURS2_ANIM)
+		console.log('click2')
 	};
 
 	return { play };

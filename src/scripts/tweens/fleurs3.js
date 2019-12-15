@@ -11,7 +11,8 @@ const tween = () => {
         fleurs3.classList.remove(FLEURS3_ANIM);
         //void = assure qu'on peut replay l'animation
 		void fleurs3.offsetWidth;
-		fleurs3.classList.add(FLEURS3_ANIM)
+        fleurs3.classList.add(FLEURS3_ANIM)
+        console.log('click3')
 	};
 
 	return { play };

@@ -149,16 +149,16 @@ body {
 					.biche {
 						&__wrapper {
 							position: relative;
-							width: 100%;
-							transform-origin: bottom;
+							width: 30%;
+							//transform-origin: bottom;
+							margin: 0 auto 0 auto;
 
 							&:before {
 								content: "";
 								display: block;
-								padding-top: 98.24%;
-								height: 0;
+								padding-top: 98.25%;
 							}
-
+						}
 						position: absolute;
 						left: 0;
 						right: 0;
@@ -168,9 +168,9 @@ body {
 						background-repeat: no-repeat;
 						background-size: 100%;
 						background-position: 0 0;
-						 display: block;
+						display: block;
 						cursor: pointer;
-					}
+					
 				}
 				
 				}
@@ -199,14 +199,19 @@ body {
 					right: 5%;
 				}
 				#oiseau {
-					width: 15%;
+					width: 20%;
 					top: 25%;
 					left: 5%;
 				}
 				#plante-accrochee {
 					width: 25%;
-					top: 14%;
+					top: 15%;
 					left: 30%;
+				}
+				#myrtille {
+					width: 25%;
+					bottom: 19%;
+					right: 0;
 				}
 			}
 			&:nth-of-type(4) {
@@ -237,7 +242,7 @@ body {
 							@include size(300px, 313px);
 							overflow: hidden;
 							transform-origin: bottom;
-							left: 46%;
+							left: 43%;
 							top: 65%;
 						}
 
@@ -254,7 +259,7 @@ body {
 							@include size(216px, 293px);
 							overflow: hidden;
 							transform-origin: bottom;
-							left: 70%;
+							left: 75%;
 							top: 65%;
 						}
 
@@ -271,6 +276,9 @@ body {
 					width: 55%;
 					left: 16%;
 					top: 14%;
+				}
+				#fleurs-fixes {
+					bottom: 19%;
 				}
 				#premier-plan {
 					bottom: 18%;
@@ -294,12 +302,22 @@ body {
 				#artemis {
 					width: 19%;
 					bottom: 19%;
-					right: 23%;
+					right: 35%;
+				}
+				#lamare {
+					width: 25%;
+					bottom: 19%;
+					right: 0;
+				}
+				#poissons {
+					width: 10%;
+					right: 5%;
+					bottom: 21%;
 				}
 				#femme-penchee {
 					width: 17%;
 					bottom: 25%;
-					right: 3%;
+					right: 15%;
 				}
 			}
 			&:nth-of-type(6) {
@@ -313,8 +331,8 @@ body {
 					left: 10%;
 				}
 				#artemis {
-					width: 12%;
-					right: 6%;
+					width: 22%;
+					right: 0%;
 					bottom: 20%;
 				}
 				#plantes {
