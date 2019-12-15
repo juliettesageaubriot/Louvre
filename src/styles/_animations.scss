@@ -9,12 +9,21 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	&--artemis {
 		animation: artemis 2.4s steps(15);
 		animation-iteration-count: 1;
-	}
+ 	}
+	// &--biche {
+	// 	animation: biche 1s steps(4) 1;
+	// }
 	&--biche {
-		animation: biche 1s steps(4) 1;
+		animation: bicheVerticale 1s steps(4) 1;
 	}
 	&--fleurs {
 		animation: fleurs 1s steps(3) 1;
+	}
+	&--fleurs2 {
+		animation: fleurs-2 .8s steps(3) 1;
+	}
+	&--fleurs3 {
+		animation: fleurs-3 .8s steps(3) 1;
 	}
 }
 
@@ -27,12 +36,21 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	}
 }
 
-@keyframes biche {
+// @keyframes biche {
+// 	from {
+// 		background-position: 0 0;
+// 	}
+// 	to {
+// 		background-position: -2488px 0;
+// 	}
+// }
+
+@keyframes bicheVerticale {
 	from {
-		background-position: 0 0;
+		background-position-y: 0;
 	}
 	to {
-		background-position: -2488px 0;
+		background-position-y:-614px*4;
 	}
 }
 
@@ -51,5 +69,14 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	}
 	to {
 		background-position: -903px 0;
+	}
+}
+
+@keyframes fleurs-3 {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: -648px 0;
 	}
 }

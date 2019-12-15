@@ -123,26 +123,56 @@ body {
 			}
 			&:nth-of-type(3) {
 				@at-root {
+					// .biche {
+					// 	&__wrapper {
+					// 		@include abs-center(
+					// 			$vertical: 10%,
+					// 			$transform: scale(0.7)
+					// 		);
+					// 		@include size(100%, 100%);
+					// 		max-width: 610px;
+					// 		max-height: 662px;
+					// 		bottom: 20%;
+					// 		left: 64%;
+					// 		overflow: hidden;
+					// 		transform-origin: bottom;
+					// 	}
+
+					// 	@include size(100%, 100%);
+					// 	background-image: url('./assets/videos/biche/anim-biche.png');
+					// 	background-repeat: no-repeat;
+					// 	cursor: pointer;
+					// }
+
+
+					//vertical
 					.biche {
 						&__wrapper {
-							@include abs-center(
-								$vertical: 10%,
-								$transform: scale(0.7)
-							);
-							@include size(100%, 100%);
-							max-width: 610px;
-							max-height: 662px;
-							bottom: 20%;
-							left: 64%;
-							overflow: hidden;
+							position: relative;
+							width: 100%;
 							transform-origin: bottom;
-						}
 
-						@include size(100%, 100%);
-						background-image: url('./assets/videos/biche/anim-biche.png');
+							&:before {
+								content: "";
+								display: block;
+								padding-top: 98.24%;
+								height: 0;
+							}
+
+						position: absolute;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
+						background: url('./assets/videos/biche/anim-biche-verticale.png');
 						background-repeat: no-repeat;
+						background-size: 100%;
+						background-position: 0 0;
+						 display: block;
 						cursor: pointer;
 					}
+				}
+				
 				}
 				#artemise-cerf {
 					width: 30%;
@@ -164,13 +194,12 @@ body {
 					}
 				}
 				#cheval {
-					width: 20%;
+					width: 15%;
 					bottom: 20%;
-					right: 0;
-					margin-right: 10px;
+					right: 5%;
 				}
 				#oiseau {
-					width: 12%;
+					width: 15%;
 					top: 25%;
 					left: 5%;
 				}
@@ -190,7 +219,7 @@ body {
 							@include size(300px, 453px);
 							overflow: hidden;
 							transform-origin: bottom;
-							left: 78%;
+							left: 15%;
 							top: 58%;
 						}
 
@@ -217,11 +246,25 @@ body {
 						background-repeat: no-repeat;
 						cursor: pointer;
 					}
+					.fleurs3 {
+						&__wrapper {
+							@include abs-center(
+								$transform: scale(1)
+							);
+							@include size(216px, 293px);
+							overflow: hidden;
+							transform-origin: bottom;
+							left: 70%;
+							top: 65%;
+						}
+
+						@include size(100%, 100%);
+						background-image: url('./assets/videos/fleurs-3/anim-fleurs-3.png');
+						background-repeat: no-repeat;
+						cursor: pointer;
+					}
 				}
 				#montagnes {
-					bottom: 18%;
-				}
-				#fleurs {
 					bottom: 18%;
 				}
 				#plante-tombee {
