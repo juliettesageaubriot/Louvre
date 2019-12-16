@@ -23,6 +23,11 @@ body {
 	@include base-lettering;
 	@include montserrat;
 
+	canvas {
+		@include abs-center;
+		@include size(100%, 100%);
+	}
+
 	&__fixed {
 		@include size(100%, 100%);
 		@include abs-pos;

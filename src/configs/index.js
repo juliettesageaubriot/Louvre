@@ -23,6 +23,8 @@ const configs = {
 		ARROW: '.arrow',
 		ARTEMIS: '.artemis',
 		SCENES: '.app__scenes',
+		SCENE: '.scene',
+		SCENE_CONTENT: '.scene__content',
 		SHATTER: '.app__scenes__fx--shattering',
 		BICHE: '.biche',
 		FLEURS: '.fleurs',
