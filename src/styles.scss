@@ -118,6 +118,10 @@ body {
 							bottom: 20%;
 							transform-origin: bottom;
 							cursor: pointer;
+
+							> * {
+								@include noselect;
+							}
 						}
 
 						&__fragment {
@@ -125,7 +129,6 @@ body {
 							display: block;
 							z-index: 1;
 							opacity: 1;
-							pointer-events: none;
 						}
 
 						@include size(100%, 100%);

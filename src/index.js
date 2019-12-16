@@ -92,7 +92,11 @@ class App {
 		// cta(select('#loup'), true);
 		// cta(select('#cheval'), true);
 
-		this.animations.artemis = artemis(this.scroller, bounding(scenes[1]).x, 2.4);
+		this.animations.artemis = artemis(
+			this.scroller,
+			bounding(scenes[1]).x / 2 + 1,
+			2.4
+		);
 		this.animations.biche = biche(this.scroller, bounding(scenes[3]).x, 1);
 		this.animations.fleurs = fleurs(this.scroller, bounding(scenes[4]).x, 1);
 		this.animations.fleurs2 = fleurs2(this.scroller, bounding(scenes[4]).x, 1);
@@ -144,11 +148,16 @@ class App {
 
 		// timeline for each section
 		targets.forEach((target, index) => {
-			let scene = gsap.timeline({ paused: true });
+			let scene = gsap.timeline({
+				paused: true
+			});
 
 			switch (index) {
 				case 0:
 					this.animations.scratcher = new Scratcher(target);
+					break;
+				case 1:
+					this.scroller.addBlockZones({ min: 0, max: bounding(target).x / 2 });
 					break;
 				case 2:
 					scene.fromTo(

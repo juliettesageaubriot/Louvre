@@ -10,7 +10,8 @@ export default class Scroller {
 			debug,
 			autoIntervalID: null,
 			auto: false,
-
+			doScroll: true,
+			blockZones: [],
 			animationsOnScroll: []
 		};
 		this.app = scrollingElement;
@@ -43,7 +44,18 @@ export default class Scroller {
 
 		// block scroll left/right
 		if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
-			return true;
+			this.config.doScroll = false;
+		}
+
+		console.log(this.data.x);
+
+		// Block scroll
+		if (
+			this.config.blockZones.some(
+				(zone) => this.data.x >= zone.min && this.data.x <= zone.max
+			)
+		) {
+			this.config.doScroll = false;
 		}
 
 		// I don't know why I wrote this but apparently do not remove it...
@@ -71,22 +83,24 @@ export default class Scroller {
 		const scrollLeft_ = gsap.getProperty(app, 'scrollLeft');
 
 		// Normal behaviour
-		if (!scrollTo) {
-			gsap.to(app, {
-				scrollLeft: scrollLeft_ - delta * config.velocity,
-				ease: 'power2.out'
-			});
+		if (this.config.doScroll) {
+			if (!scrollTo) {
+				gsap.to(app, {
+					scrollLeft: scrollLeft_ - delta * config.velocity,
+					ease: 'power2.out'
+				});
 
-			// Auto Scroll to a specific position
-		} else if (scrollTo && config.auto) {
-			gsap.to(app, {
-				scrollLeft: scrollTo,
-				...(duration ? { duration } : {}),
-				onComplete: () => {
-					this.clearAuto();
-					cb && cb();
-				}
-			});
+				// Auto Scroll to a specific position
+			} else if (scrollTo && config.auto) {
+				gsap.to(app, {
+					scrollLeft: scrollTo,
+					...(duration ? { duration } : {}),
+					onComplete: () => {
+						this.clearAuto();
+						cb && cb();
+					}
+				});
+			}
 		}
 
 		// Data
@@ -148,5 +162,9 @@ export default class Scroller {
 
 	addAnimation(tween) {
 		this.config.animationsOnScroll = [...this.config.animationsOnScroll, tween];
+	}
+
+	addBlockZones(zone) {
+		this.config.blockZones = [...this.config.blockZones, zone];
 	}
 }
