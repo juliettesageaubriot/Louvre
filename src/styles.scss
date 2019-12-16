@@ -127,28 +127,25 @@ body {
 				}
 			}
 			&:nth-of-type(3) {
-				@at-root {
-					.biche {
-						&__wrapper {
-							@include abs-center(
-								$vertical: 10%,
-								$transform: scale(0.7)
-							);
-							@include size(100%, 100%);
-							max-width: 610px;
-							max-height: 662px;
-							bottom: 20%;
-							left: 64%;
-							overflow: hidden;
-							transform-origin: bottom;
-						}
-
+				.biche {
+					&__wrapper {
+						@include abs-center($vertical: false, $horizontal: true);
 						@include size(100%, 100%);
-						background-image: url('./assets/videos/biche/anim-biche.png');
-						background-repeat: no-repeat;
-						cursor: pointer;
+						max-width: 610px;
+						max-height: 662px;
+
+						// bottom: 20%;
+						left: 64%;
+						overflow: hidden;
+						transform-origin: bottom;
 					}
+
+					@include size(100%, 100%);
+					background-image: url('./assets/videos/biche/anim-biche.png');
+					background-repeat: no-repeat;
+					cursor: pointer;
 				}
+
 				#artemise-cerf {
 					width: 30%;
 					bottom: 20%;
@@ -189,9 +186,7 @@ body {
 				@at-root {
 					.fleurs {
 						&__wrapper {
-							@include abs-center(
-								$transform: scale(0.7)
-							);
+							@include abs-center($transform: scale(0.7));
 							@include size(300px, 453px);
 							overflow: hidden;
 							transform-origin: bottom;
@@ -207,9 +202,7 @@ body {
 
 					.fleurs2 {
 						&__wrapper {
-							@include abs-center(
-								$transform: scale(1)
-							);
+							@include abs-center($transform: scale(1));
 							@include size(300px, 313px);
 							overflow: hidden;
 							transform-origin: bottom;
@@ -267,7 +260,6 @@ body {
 			&:nth-of-type(6) {
 				#paysage {
 					bottom: 19%;
-
 				}
 				#bateau {
 					width: 15%;

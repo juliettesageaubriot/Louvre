@@ -92,6 +92,40 @@ class App {
 		// cta(select('#loup'), true);
 		// cta(select('#cheval'), true);
 
+		const { bottom, height } = bounding(select('#loup'));
+
+		const baseline = document.createElement('div');
+		this.app.append(baseline);
+		gsap.set(baseline, {
+			position: 'fixed',
+			bottom: 0,
+			y: -(bottom - height) / 4,
+			width: '100%',
+			height: 2,
+			zIndex: 999,
+			backgroundColor: 'red'
+		});
+
+		gsap.set(select(classNames.BICHE).parentNode, {
+			y: -(bottom - height) / 4,
+			scale: 0.7,
+			bottom: 0
+		});
+		gsap.set(select('#cheval'), {
+			y: -(bottom - height) / 4,
+			bottom: 0
+		});
+		gsap.set(select('#antilope'), {
+			y: -(bottom - height) / 4,
+			bottom: 0
+		});
+		gsap.set(select('#loup'), {
+			y: -(bottom - height) / 4,
+			bottom: 0
+		});
+
+		console.log(bounding(select('#loup')), bounding(select('#cheval')));
+
 		this.animations.artemis = artemis(this.scroller, bounding(scenes[1]).x, 2.4);
 		this.animations.biche = biche(this.scroller, bounding(scenes[3]).x, 1);
 		this.animations.fleurs = fleurs(this.scroller, bounding(scenes[4]).x, 1);
