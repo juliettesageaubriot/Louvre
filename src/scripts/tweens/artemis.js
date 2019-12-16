@@ -15,6 +15,7 @@ const tween = (appScroller, scrollTo = 0, duration = 0) => {
 	appScroller.addAnimation(tweenArrow);
 
 	const play = () => {
+
 		gsap.set(ARROW, { autoAlpha: 0 });
 		artemis.classList.remove(ARTEMIS_ANIM);
 

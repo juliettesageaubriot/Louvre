@@ -36,9 +36,9 @@ body {
 			opacity: 0;
 		}
 
-		.instructions {
-			@include abs-pos(90%, 50%, -50%, -50%);
-		}
+		// .instructions {
+		// 	@include abs-pos(90%, 50%, -50%, -50%);
+		// }
 
 		#song {
 			//width: 2%;
@@ -83,6 +83,11 @@ body {
 			}
 		}
 
+		.texte {
+			@include abs-pos(90%, 50%, -50%, -50%);
+			opacity: 1;
+		}
+
 		section {
 			@include size(100%/9, 100%);
 			@include center-content;
@@ -117,6 +122,28 @@ body {
 				}
 			}
 			&:nth-of-type(3) {
+				@at-root {
+					.biche {
+						&__wrapper {
+							@include abs-center(
+								$vertical: 10%,
+								$transform: scale(0.7)
+							);
+							@include size(100%, 100%);
+							max-width: 610px;
+							max-height: 662px;
+							bottom: 20%;
+							left: 64%;
+							overflow: hidden;
+							transform-origin: bottom;
+						}
+
+						@include size(100%, 100%);
+						background-image: url('./assets/videos/biche/anim-biche.png');
+						background-repeat: no-repeat;
+						cursor: pointer;
+					}
+				}
 				#artemise-cerf {
 					width: 30%;
 					bottom: 20%;
@@ -125,12 +152,12 @@ body {
 				#antilope {
 					width: 20%;
 					bottom: 20%;
-					left: 28%;
+					left: 23%;
 				}
 				#loup {
 					width: 25%;
 					bottom: 20%;
-					left: 4%;
+					left: 2%;
 
 					&:hover {
 						cursor: pointer;
@@ -154,6 +181,43 @@ body {
 				}
 			}
 			&:nth-of-type(4) {
+				@at-root {
+					.fleurs {
+						&__wrapper {
+							@include abs-center(
+								$transform: scale(0.7)
+							);
+							@include size(300px, 453px);
+							overflow: hidden;
+							transform-origin: bottom;
+							left: 78%;
+							top: 58%;
+						}
+
+						@include size(100%, 100%);
+						background-image: url('./assets/videos/fleurs/anim-fleur.png');
+						background-repeat: no-repeat;
+						cursor: pointer;
+					}
+
+					.fleurs2 {
+						&__wrapper {
+							@include abs-center(
+								$transform: scale(1)
+							);
+							@include size(300px, 313px);
+							overflow: hidden;
+							transform-origin: bottom;
+							left: 46%;
+							top: 65%;
+						}
+
+						@include size(100%, 100%);
+						background-image: url('./assets/videos/fleurs-2/anim-fleurs-2.png');
+						background-repeat: no-repeat;
+						cursor: pointer;
+					}
+				}
 				#montagnes {
 					bottom: 18%;
 				}
@@ -193,6 +257,108 @@ body {
 					width: 17%;
 					bottom: 25%;
 					right: 3%;
+				}
+			}
+			&:nth-of-type(6) {
+				#paysage {
+					bottom: 19%;
+
+				}
+				#bateau {
+					width: 15%;
+					bottom: 23%;
+					left: 10%;
+				}
+				#artemis {
+					width: 12%;
+					right: 6%;
+					bottom: 20%;
+				}
+				#plantes {
+					width: 10%;
+					right: 29%;
+					bottom: 30.5%;
+				}
+				#poisson {
+					width: 5%;
+					bottom: 20%;
+					left: 35%;
+				}
+				#vague {
+					width: 20%;
+					left: 8%;
+					bottom: 20%;
+				}
+				#nuages-droite {
+					width: 20%;
+					top: 30%;
+					left: 30%;
+				}
+				#nuages-gauche {
+					width: 19%;
+					top: 33%;
+					left: 10%;
+				}
+				#nuages-bas {
+					width: 21%;
+					top: 48%;
+					left: 26%;
+				}
+				#lune {
+					opacity: 1;
+					width: 6%;
+					top: 33%;
+					left: 27%;
+				}
+			}
+			&:nth-of-type(7) {
+				#soleil {
+					width: 6%;
+					right: 18%;
+					top: 28%;
+				}
+				#nuage-droite-7 {
+					width: 17%;
+					right: 3%;
+					top: 25%;
+				}
+				#nuage-gauche-7 {
+					width: 20%;
+					right: 17%;
+					top: 30%;
+				}
+				#nuage-bas-7 {
+					right: 17%;
+					width: 15%;
+					top: 45%;
+				}
+				#apollon {
+					width: 15%;
+					bottom: 20%;
+					left: 15%;
+				}
+				#pierre {
+					bottom: 19%;
+					left: 36%;
+					width: 10%;
+				}
+				#rocher {
+					width: 40%;
+					bottom: 18%;
+					left: 2%;
+				}
+				#plante-7 {
+					bottom: 19%;
+					width: 15%;
+					right: 35%;
+				}
+				#temple {
+					width: 40%;
+					left: 22%;
+					bottom: 35%;
+				}
+				#paysage {
+					bottom: 19%;
 				}
 			}
 

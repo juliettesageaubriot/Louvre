@@ -42,7 +42,7 @@ class App {
 	}
 
 	events() {
-		const { artemis, shatter } = this.animations;
+		const { artemis, biche, shatter, fleurs, fleurs2 } = this.animations;
 		const handlerKeypress = ({ code }) => {
 			console.log(code);
 			switch (code) {
@@ -66,31 +66,42 @@ class App {
 			() => artemis.play(),
 			false
 		);
+
+		this.select(classNames.BICHE).addEventListener('click', () => biche.play());
+
+		this.select(classNames.FLEURS).addEventListener('click', () => fleurs.play());
+
+		this.select(classNames.FLEURS2).addEventListener('click', () =>
+			fleurs2.play()
+		);
 	}
 
 	tweens() {
 		const { select } = this;
 		const { targets: scenes } = this.animations.scenes;
-		const { cta, artemis, shatter } = tweens;
+		const { cta, artemis, shatter, biche, fleurs, fleurs2 } = tweens;
 
 		/**
 		 * Set CTA for interactive elements
 		 */
 		// cta(select(classNames.ARTEMIS).parentNode);
-		cta(select('#loup'), true);
-		cta(select('#cheval'), true);
+		// cta(select(classNames.BICHE).parentNode);
+		// cta(select(classNames.FLEURS).parentNode);
+		// cta(select(classNames.FLEURS2).parentNode);
+		// cta(select('#loup'), true);
+		// cta(select('#cheval'), true);
 
-		this.animations.artemis = artemis(
-			this.scroller,
-			bounding(scenes[1]).x / 2,
-			2
-		);
+		this.animations.artemis = artemis(this.scroller, bounding(scenes[1]).x, 2.4);
+		this.animations.biche = biche(this.scroller, bounding(scenes[3]).x, 1);
+		this.animations.fleurs = fleurs(this.scroller, bounding(scenes[4]).x, 1);
+		this.animations.fleurs2 = fleurs2(this.scroller, bounding(scenes[4]).x, 1);
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
 		// loup qui saute sur le bouc et qui emet un son
 		let loup = document.getElementById('loup');
 		let cheval = document.getElementById('cheval');
+
 		loup.onclick = () => {
 			gsap.to(this.app.querySelector('#loup'), 1, {
 				y: -30,
@@ -136,6 +147,23 @@ class App {
 
 			switch (index) {
 				case 2:
+					scene.fromTo(
+						target.querySelector('.texte'),
+						1,
+						{
+							autoAlpha: 0,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},
+						{
+							autoAlpha: 1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						}
+					);
+
 					scene.to(target.querySelector('#oiseau'), 1, {
 						rotation: -15,
 						repeat: 5,
@@ -144,14 +172,6 @@ class App {
 						ease: 1
 					});
 
-					scene.to(
-						target.querySelector('#loup'),
-						1,
-						{
-							scale: 1.08
-						},
-						0
-					);
 					break;
 				default:
 					break;
