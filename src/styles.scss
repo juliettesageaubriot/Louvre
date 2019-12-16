@@ -104,15 +104,24 @@ body {
 								$transform: scale(0.7)
 							);
 							@include size(539px, 662px);
+							@include center-content;
 							bottom: 20%;
-							overflow: hidden;
 							transform-origin: bottom;
+							cursor: pointer;
+						}
+
+						&__fragment {
+							position: relative;
+							display: block;
+							z-index: 1;
+							opacity: 1;
 						}
 
 						@include size(100%, 100%);
+						position: absolute;
 						background-image: url('./assets/videos/artemis/anim-artemis.png');
 						background-repeat: no-repeat;
-						cursor: pointer;
+						opacity: 0;
 					}
 				}
 			}

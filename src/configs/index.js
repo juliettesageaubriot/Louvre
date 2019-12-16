@@ -22,6 +22,7 @@ const configs = {
 		APP: '.app',
 		ARROW: '.arrow',
 		ARTEMIS: '.artemis',
+		ARTEMIS_FRAGMENT: '.artemis__fragment',
 		SCENES: '.app__scenes',
 		SHATTER: '.app__scenes__fx--shattering'
 	},
