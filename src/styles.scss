@@ -98,8 +98,10 @@ body {
 			border: 1px solid red;
 
 			&:nth-of-type(1) {
+				display:none;
 			}
 			&:nth-of-type(2) {
+				display:none;
 				@at-root {
 					.artemis {
 						&__wrapper {
@@ -121,7 +123,7 @@ body {
 					}
 				}
 			}
-			&:nth-of-type(3) {
+			&#three {
 				@at-root {
 					// .biche {
 					// 	&__wrapper {
@@ -150,30 +152,39 @@ body {
 						&__wrapper {
 							position: relative;
 							width: 30%;
-							//transform-origin: bottom;
+							transform-origin: bottom;
 							margin: 0 auto 0 auto;
+							padding: 0;
 
 							&:before {
 								content: "";
 								display: block;
-								padding-top: 98.25%;
+								padding-top: 98.7%;
 							}
 						}
+
+						margin: 0;
+						padding: 0;
+
 						position: absolute;
 						left: 0;
 						right: 0;
 						top: 0;
 						bottom: 0;
 						background: url('./assets/videos/biche/anim-biche-verticale.png');
-						background-repeat: no-repeat;
-						background-size: 100%;
+						// background-repeat: no-repeat;
+						background-size: 400%;
+						-webkit-background-size: cover;
+						//width: 200px;
+						// padding-bottom: 100%;
 						background-position: 0 0;
 						display: block;
 						cursor: pointer;
 					
-				}
+					}
 				
 				}
+
 				#artemise-cerf {
 					width: 30%;
 					bottom: 20%;

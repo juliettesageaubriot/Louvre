@@ -14,7 +14,7 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	// 	animation: biche 1s steps(4) 1;
 	// }
 	&--biche {
-		animation: bicheVerticale 1s steps(4) 1;
+		animation: bicheVerticale 1s steps(4) infinite;
 	}
 	&--fleurs {
 		animation: fleurs 1s steps(3) 1;
@@ -47,10 +47,10 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 
 @keyframes bicheVerticale {
 	from {
-		background-position-y: 0;
+		background-position: 0 0;
 	}
 	to {
-		background-position-y:-2456px;
+		background-position: 0 -400%;
 	}
 }
 
