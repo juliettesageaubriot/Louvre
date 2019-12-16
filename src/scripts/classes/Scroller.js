@@ -11,7 +11,6 @@ export default class Scroller {
 			autoIntervalID: null,
 			auto: false,
 			doScroll: true,
-			blockZones: [],
 			animationsOnScroll: []
 		};
 		this.app = scrollingElement;
@@ -44,17 +43,6 @@ export default class Scroller {
 
 		// block scroll left/right
 		if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
-			this.config.doScroll = false;
-		}
-
-		console.log(this.data.x);
-
-		// Block scroll
-		if (
-			this.config.blockZones.some(
-				(zone) => this.data.x >= zone.min && this.data.x <= zone.max
-			)
-		) {
 			this.config.doScroll = false;
 		}
 
@@ -164,7 +152,7 @@ export default class Scroller {
 		this.config.animationsOnScroll = [...this.config.animationsOnScroll, tween];
 	}
 
-	addBlockZones(zone) {
-		this.config.blockZones = [...this.config.blockZones, zone];
+	setDoScroll(value) {
+		this.config.doScroll = value;
 	}
 }

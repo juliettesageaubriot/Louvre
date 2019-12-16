@@ -154,10 +154,7 @@ class App {
 
 			switch (index) {
 				case 0:
-					this.animations.scratcher = new Scratcher(target);
-					break;
-				case 1:
-					this.scroller.addBlockZones({ min: 0, max: bounding(target).x / 2 });
+					this.animations.scratcher = new Scratcher(target, this.scroller);
 					break;
 				case 2:
 					scene.fromTo(

@@ -19,8 +19,9 @@ const BRUSH_W = 74;
 const BRUSH_H = 56;
 
 export default class Scratcher {
-	constructor(container) {
+	constructor(container, appScroller) {
 		this.container = container;
+		this.appScroller = appScroller;
 
 		this.assets = {
 			bg: null,
@@ -43,6 +44,8 @@ export default class Scratcher {
 		this.ctx = this.canvas.getContext('2d');
 
 		this.container.append(this.canvas);
+
+		this.appScroller.setDoScroll(false);
 	}
 
 	doit() {
@@ -133,7 +136,8 @@ export default class Scratcher {
 			if (this.fillAmount(STRIDE) >= MAX_FILL_AMT) {
 				gsap.to(this.canvas, 2, {
 					autoAlpha: 0,
-					pointerEvents: 'none'
+					pointerEvents: 'none',
+					onComplete: () => this.appScroller.setDoScroll(true)
 				});
 			}
 		}

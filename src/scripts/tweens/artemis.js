@@ -24,7 +24,6 @@ const tween = (appScroller, scrollTo = 0, duration = 0) => {
 
 		artemis.addEventListener('animationend', () => {
 			scrollTo && appScroller.auto(scrollTo, duration);
-			appScroller.config.doScroll = true;
 			gsap.set(ARROW, { autoAlpha: 1 });
 		});
 	};
