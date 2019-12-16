@@ -27,14 +27,16 @@ const configs = {
 		BICHE: '.biche',
 		FLEURS: '.fleurs',
 		FLEURS2: '.fleurs2',
-		FLEURS3: '.fleurs3'
+		FLEURS3: '.fleurs3',
+		BEBE: '.bebe'
 	},
 	classAnimations: {
 		ARTEMIS: 'animation--artemis',
 		BICHE: 'animation--biche',
 		FLEURS: 'animation--fleurs',
 		FLEURS2: 'animation--fleurs2',
-		FLEURS3: 'animation--fleurs3'
+		FLEURS3: 'animation--fleurs3',
+		BEBE: 'animation--bebe'
 	}
 };
 

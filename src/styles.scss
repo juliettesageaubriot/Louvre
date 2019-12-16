@@ -161,7 +161,7 @@ body {
 						background: url('./assets/videos/biche/anim-biche-verticale.png');
 						// background-repeat: no-repeat;
 						// background-size: 400%;
-						-webkit-background-size: cover;
+						background-size: cover;
 						//width: 200px;
 						// padding-bottom: 100%;
 						background-position: 0 0;
@@ -169,7 +169,7 @@ body {
 						cursor: pointer;
 					
 					}
-				
+
 				}
 
 				#artemise-cerf {
@@ -339,6 +339,41 @@ body {
 				}
 			}
 			&:nth-of-type(5) {
+				@at-root {
+					.bebe {
+					&__wrapper {
+						// position: relative;
+						position: absolute;
+						width: 12%;
+						transform-origin: bottom;
+						padding: 0;
+						bottom: 19%;
+    					left: 38%;
+
+						&:before {
+							content: "";
+							display: block;
+							padding-top: 231.88%;
+						}
+					}
+
+					margin: 0;
+					padding: 0;
+
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					background: url('./assets/videos/femme-bebe/anim-femme-bebe-vertical.png');
+					background-repeat: repeat-y;
+					background-size: cover;
+					background-position: 0 0;
+					display: block;
+					cursor: pointer;
+				
+				}
+			}
 				#enfant {
 					width: 10%;
 					bottom: 19%;
@@ -349,14 +384,10 @@ body {
 					bottom: 19%;
 					left: 5%;
 				}
-				#femme-bebe {
-					width: 14%;
-					bottom: 19%;
-				}
 				#artemis {
-					width: 19%;
+					width: 17%;
 					bottom: 19%;
-					right: 35%;
+					right: 33%;
 				}
 				#lamare {
 					width: 25%;
@@ -375,6 +406,7 @@ body {
 				}
 			}
 			&:nth-of-type(6) {
+				
 				#paysage {
 					bottom: 19%;
 

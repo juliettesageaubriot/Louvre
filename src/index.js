@@ -42,7 +42,7 @@ class App {
 	}
 
 	events() {
-		const { artemis, biche, shatter, fleurs, fleurs2, fleurs3 } = this.animations;
+		const { artemis, biche, shatter, fleurs, fleurs2, fleurs3, bebe } = this.animations;
 		const handlerKeypress = ({ code }) => {
 			console.log(code);
 			switch (code) {
@@ -90,12 +90,17 @@ class App {
 			() => fleurs3.play(),
 			false
 		);
+		this.select(classNames.BEBE).addEventListener(
+			'click',
+			() => bebe.play(),
+			false
+		);
 	}
 
 	tweens() {
 		const { select } = this;
 		const { targets: scenes } = this.animations.scenes;
-		const { cta, artemis, shatter, biche, fleurs, fleurs2, fleurs3 } = tweens;
+		const { cta, artemis, shatter, biche, fleurs, fleurs2, fleurs3, bebe } = tweens;
 
 		/**
 		 * Set CTA for interactive elements
@@ -106,6 +111,7 @@ class App {
 		// cta(select(classNames.FLEURS).parentNode);
 		// cta(select(classNames.FLEURS2).parentNode);
 		// cta(select(classNames.FLEURS3).parentNode);
+		// cta(select(classNames.BEBE).parentNode);
 		cta(select('#loup'), true);
 		cta(select('#cheval'), true);
 
@@ -132,6 +138,11 @@ class App {
 		this.animations.fleurs3 = fleurs3(
 			this.scroller, 
 			bounding(scenes[4]).x / 2, 
+			2
+		);
+		this.animations.bebe = bebe(
+			this.scroller, 
+			bounding(scenes[5]).x / 2, 
 			2
 		);
 
