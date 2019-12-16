@@ -114,15 +114,25 @@ body {
 								$transform: scale(0.7)
 							);
 							@include size(539px, 662px);
+							@include center-content;
 							bottom: 20%;
-							overflow: hidden;
 							transform-origin: bottom;
+							cursor: pointer;
+						}
+
+						&__fragment {
+							position: relative;
+							display: block;
+							z-index: 1;
+							opacity: 1;
+							pointer-events: none;
 						}
 
 						@include size(100%, 100%);
+						position: absolute;
 						background-image: url('./assets/videos/artemis/anim-artemis.png');
 						background-repeat: no-repeat;
-						cursor: pointer;
+						opacity: 0;
 					}
 				}
 			}
@@ -130,10 +140,7 @@ body {
 				@at-root {
 					.biche {
 						&__wrapper {
-							@include abs-center(
-								$vertical: 10%,
-								$transform: scale(0.7)
-							);
+							@include abs-center($vertical: 10%, $transform: scale(0.7));
 							@include size(100%, 100%);
 							max-width: 610px;
 							max-height: 662px;
@@ -189,9 +196,7 @@ body {
 				@at-root {
 					.fleurs {
 						&__wrapper {
-							@include abs-center(
-								$transform: scale(0.7)
-							);
+							@include abs-center($transform: scale(0.7));
 							@include size(300px, 453px);
 							overflow: hidden;
 							transform-origin: bottom;
@@ -207,9 +212,7 @@ body {
 
 					.fleurs2 {
 						&__wrapper {
-							@include abs-center(
-								$transform: scale(1)
-							);
+							@include abs-center($transform: scale(1));
 							@include size(300px, 313px);
 							overflow: hidden;
 							transform-origin: bottom;
@@ -267,7 +270,6 @@ body {
 			&:nth-of-type(6) {
 				#paysage {
 					bottom: 19%;
-
 				}
 				#bateau {
 					width: 15%;

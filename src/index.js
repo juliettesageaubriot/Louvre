@@ -62,9 +62,9 @@ class App {
 		};
 
 		window.addEventListener('keypress', handlerKeypress);
-		this.select(classNames.ARTEMIS).addEventListener(
+		this.select(classNames.ARTEMIS).parentNode.addEventListener(
 			'click',
-			() => artemis.play(),
+			() => artemis.timeline.play(),
 			false
 		);
 
