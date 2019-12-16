@@ -125,41 +125,27 @@ body {
 			}
 			&#three {
 				@at-root {
-					// .biche {
-					// 	&__wrapper {
-					// 		@include abs-center(
-					// 			$vertical: 10%,
-					// 			$transform: scale(0.7)
-					// 		);
-					// 		@include size(100%, 100%);
-					// 		max-width: 610px;
-					// 		max-height: 662px;
-					// 		bottom: 20%;
-					// 		left: 64%;
-					// 		overflow: hidden;
-					// 		transform-origin: bottom;
-					// 	}
-
-					// 	@include size(100%, 100%);
-					// 	background-image: url('./assets/videos/biche/anim-biche.png');
-					// 	background-repeat: no-repeat;
-					// 	cursor: pointer;
-					// }
-
 
 					//vertical
 					.biche {
 						&__wrapper {
-							position: relative;
-							width: 30%;
+							// position: relative;
+							position: absolute;
+							width: 25%;
 							transform-origin: bottom;
-							margin: 0 auto 0 auto;
+							// margin: 0 auto 0 auto;
 							padding: 0;
+							bottom: 19%;
+							right: 25%;
+
+							//transform: translate(-150%);
+
+							//left: 50%;
 
 							&:before {
 								content: "";
 								display: block;
-								padding-top: 98.7%;
+								padding-top: 98.85%;
 							}
 						}
 
@@ -173,7 +159,7 @@ body {
 						bottom: 0;
 						background: url('./assets/videos/biche/anim-biche-verticale.png');
 						// background-repeat: no-repeat;
-						background-size: 400%;
+						// background-size: 400%;
 						-webkit-background-size: cover;
 						//width: 200px;
 						// padding-bottom: 100%;
@@ -228,56 +214,109 @@ body {
 			&:nth-of-type(4) {
 				@at-root {
 					.fleurs {
-						&__wrapper {
-							@include abs-center(
-								$transform: scale(0.7)
-							);
-							@include size(300px, 453px);
-							overflow: hidden;
-							transform-origin: bottom;
-							left: 15%;
-							top: 58%;
-						}
 
-						@include size(100%, 100%);
-						background-image: url('./assets/videos/fleurs/anim-fleur.png');
-						background-repeat: no-repeat;
-						cursor: pointer;
+					&__wrapper {
+						// position: relative;
+						position: absolute;
+						width: 15%;
+						transform-origin: bottom;
+						padding: 0;
+						bottom: 19%;
+    					left: 7%;
+
+						&:before {
+							content: "";
+							display: block;
+							padding-top: 145.71%;
+						}
 					}
 
-					.fleurs2 {
-						&__wrapper {
-							@include abs-center(
-								$transform: scale(1)
-							);
-							@include size(300px, 313px);
-							overflow: hidden;
-							transform-origin: bottom;
-							left: 43%;
-							top: 65%;
-						}
+					margin: 0;
+					padding: 0;
 
-						@include size(100%, 100%);
-						background-image: url('./assets/videos/fleurs-2/anim-fleurs-2.png');
-						background-repeat: no-repeat;
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					background: url('./assets/videos/fleurs/anim-fleur-verticale.png');
+					// background-size: 300%;
+					background-repeat: repeat-y;
+					background-size: cover;
+					background-position: 0 0;
+					display: block;
+					cursor: pointer;
+				
+				}
+
+					.fleurs2 {
+
+						&__wrapper {
+							// position: relative;
+							position: absolute;
+							width: 18%;
+							transform-origin: bottom;
+							padding: 0;
+							bottom: 19%;
+							right: 46%;
+	
+							&:before {
+								content: "";
+								display: block;
+								padding-top: 103.95%;
+							}
+						}
+	
+						margin: 0;
+						padding: 0;
+	
+						position: absolute;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
+						background: url('./assets/videos/fleurs-2/anim-fleurs-2-verticale.png');
+						// background-size: 300%;
+						background-repeat: repeat-y;
+						background-size: cover;
+						background-position: 0 0;
+						display: block;
 						cursor: pointer;
+					
 					}
 					.fleurs3 {
 						&__wrapper {
-							@include abs-center(
-								$transform: scale(1)
-							);
-							@include size(216px, 293px);
-							overflow: hidden;
+							// position: relative;
+							position: absolute;
+							width: 15%;
 							transform-origin: bottom;
-							left: 75%;
-							top: 65%;
+							padding: 0;
+							bottom: 20%;
+							right: 16%;
+	
+							&:before {
+								content: "";
+								display: block;
+								padding-top: 134.71%;
+							}
 						}
-
-						@include size(100%, 100%);
-						background-image: url('./assets/videos/fleurs-3/anim-fleurs-3.png');
-						background-repeat: no-repeat;
+	
+						margin: 0;
+						padding: 0;
+	
+						position: absolute;
+						left: 0;
+						right: 0;
+						top: 0;
+						bottom: 0;
+						background: url('./assets/videos/fleurs-3/anim-fleurs-3-verticale.png');
+						// background-size: 300%;
+						background-repeat: repeat-y;
+						background-size: cover;
+						background-position: 0 0;
+						display: block;
 						cursor: pointer;
+					
 					}
 				}
 				#montagnes {

@@ -14,7 +14,7 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	// 	animation: biche 1s steps(4) 1;
 	// }
 	&--biche {
-		animation: bicheVerticale 1s steps(4) infinite;
+		animation: bicheVerticale 1s steps(4) 1;
 	}
 	&--fleurs {
 		animation: fleurs 1s steps(3) 1;
@@ -59,7 +59,7 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 		background-position: 0 0;
 	}
 	to {
-		background-position: -882px 0;
+		background-position: 0 -300%;
 	}
 }
 
@@ -68,7 +68,7 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 		background-position: 0 0;
 	}
 	to {
-		background-position: -903px 0;
+		background-position: 0 -300%;
 	}
 }
 
@@ -77,6 +77,6 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 		background-position: 0 0;
 	}
 	to {
-		background-position: -648px 0;
+		background-position: 0 -300%;
 	}
 }
