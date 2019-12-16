@@ -95,36 +95,38 @@ class App {
 		const { bottom, height } = bounding(select('#loup'));
 
 		const baseline = document.createElement('div');
+		const BASELINE = -100;
+		baseline.classList.add('baseline');
 		this.app.append(baseline);
+
 		gsap.set(baseline, {
 			position: 'fixed',
 			bottom: 0,
-			y: -(bottom - height) / 4,
+			y: BASELINE,
 			width: '100%',
 			height: 2,
 			zIndex: 999,
 			backgroundColor: 'red'
 		});
-
 		gsap.set(select(classNames.BICHE).parentNode, {
-			y: -(bottom - height) / 4,
+			y: BASELINE,
 			scale: 0.7,
 			bottom: 0
 		});
 		gsap.set(select('#cheval'), {
-			y: -(bottom - height) / 4,
+			y: BASELINE,
 			bottom: 0
 		});
 		gsap.set(select('#antilope'), {
-			y: -(bottom - height) / 4,
+			y: BASELINE,
 			bottom: 0
 		});
 		gsap.set(select('#loup'), {
-			y: -(bottom - height) / 4,
+			y: BASELINE,
 			bottom: 0
 		});
 
-		console.log(bounding(select('#loup')), bounding(select('#cheval')));
+		console.log(bounding(select('.baseline')));
 
 		this.animations.artemis = artemis(this.scroller, bounding(scenes[1]).x, 2.4);
 		this.animations.biche = biche(this.scroller, bounding(scenes[3]).x, 1);
