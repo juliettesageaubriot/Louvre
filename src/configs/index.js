@@ -9,7 +9,7 @@ const configs = {
 	},
 	menu: [],
 	font: {
-		family: 'Montserrat',
+		family: 'Mansalva',
 		size: {},
 		weight: {}
 	},

@@ -18,9 +18,9 @@ $black: 900;
 }
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,500,900&display=swap');
 
-@mixin montserrat(
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+@mixin mansalva(
 	$size: $base-font-size,
 	$style: normal,
 	$decoration: none,
@@ -29,7 +29,7 @@ $black: 900;
 	$lh: $base-line-height,
 	$spacing: $base-letter-spacing
 ) {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Mansalva', sans-serif;
 	font-style: $style;
 	font-size: $size;
 	font-weight: $weight;

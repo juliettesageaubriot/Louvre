@@ -257,10 +257,14 @@ class App {
 				const i = targets.indexOf(target);
 				const tl = timelines[i];
 
+				// console.log(target)
+
 				if (isIntersecting) this.playScene(tl);
+
+				// console.log(isIntersecting)
+		
 			});
 		};
-
 		/**
 		 * Create observer & observe
 		 */

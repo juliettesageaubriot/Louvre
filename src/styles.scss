@@ -21,7 +21,7 @@ body {
 	background: $bg;
 
 	@include base-lettering;
-	@include montserrat;
+	@include mansalva;
 
 	&__fixed {
 		@include size(100%, 100%);
@@ -85,7 +85,9 @@ body {
 
 		.texte {
 			@include abs-pos(90%, 50%, -50%, -50%);
-			opacity: 1;
+			font-family: 'Mansalva', sans-serif;
+
+			// opacity: 1;
 		}
 
 		section {
@@ -99,10 +101,8 @@ body {
 			border: 1px solid red;
 
 			&:nth-of-type(1) {
-				display:none;
 			}
 			&:nth-of-type(2) {
-				display:none;
 				@at-root {
 					.artemis {
 						&__wrapper {
@@ -203,7 +203,7 @@ body {
 				}
 				#plante-accrochee {
 					width: 25%;
-					top: 15%;
+					top: 17%;
 					left: 30%;
 				}
 				#myrtille {
@@ -322,17 +322,20 @@ body {
 				}
 				#montagnes {
 					bottom: 18%;
+					width: 180vh;
 				}
 				#plante-tombee {
 					width: 55%;
 					left: 16%;
-					top: 14%;
+					top: 16%;
 				}
 				#fleurs-fixes {
-					bottom: 19%;
+					bottom: 18%;
+					width: 180vh;
 				}
 				#premier-plan {
 					bottom: 18%;
+					width: 180vh;
 				}
 			}
 			&:nth-of-type(5) {
