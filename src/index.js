@@ -92,10 +92,9 @@ class App {
 		// cta(select('#loup'), true);
 		// cta(select('#cheval'), true);
 
-		const { bottom, height } = bounding(select('#loup'));
-
 		const baseline = document.createElement('div');
-		const BASELINE = -100;
+		const { bottom, height } = bounding(select('#loup'));
+		const BASELINE = -(bottom - height) / 4; //-100;
 		baseline.classList.add('baseline');
 		this.app.append(baseline);
 
