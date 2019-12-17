@@ -91,8 +91,9 @@ export default class Observer {
 	playScene(timeline) {
 		if (this.app.scroller.data.direction === 'RIGHT') {
 			timeline.play();
-		} else {
-			timeline.reverse();
-		}
+		} 
+		// else {
+		// 	timeline.reverse();
+		// }
 	}
 }

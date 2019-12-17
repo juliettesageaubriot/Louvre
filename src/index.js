@@ -205,7 +205,7 @@ class App {
 
 			switch (index) {
 				case 0:
-					this.animations.scratcher = new Scratcher(target, this.scroller);
+					// this.animations.scratcher = new Scratcher(target, this.scroller);
 					break;
 				case 1:
 

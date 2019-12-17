@@ -93,7 +93,7 @@ body {
 		}
 
 		.texte {
-			font-family: 'Mansalva', sans-serif;
+			// font-family: 'Mansalva', sans-serif;
 			text-align: center;
 			font-size: 20px;
 
@@ -483,14 +483,14 @@ body {
 				}
 				#lune {
 					width: 6%;
-					bottom: 300px;
-					left: 170px;
+					bottom: 280px;
+					left: 150px;
 					opacity: 0;
 				}
 			}
 			&#six {
 				.texte-7 {
-					@include abs-pos(70%, 62%, -50%, -50%);
+					@include abs-pos(71%, 62%, -50%, -50%);
 					width: 45vh;
 				}
 				#soleil {
