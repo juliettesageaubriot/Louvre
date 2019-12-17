@@ -1,13 +1,13 @@
 import './styles.scss';
 
 import { gsap } from 'gsap';
-import IntersectionObserver from 'intersection-observer-polyfill';
 import Debugger from './scripts/classes/Debugger';
 import Scroller from './scripts/classes/Scroller';
 import Scratcher from './scripts/classes/Scratcher';
 import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
+import Observer from './scripts/classes/Observer';
 
 const { bounding } = utils;
 const { classNames } = configs;
@@ -32,11 +32,11 @@ class App {
 		);
 
 		this.bind();
-
 		this.scenes();
 		this.tweens();
-		this.observer();
 		this.events();
+
+		this.observer = new Observer(this);
 	}
 
 	bind() {
@@ -149,6 +149,8 @@ class App {
 		this.animations.fleurs = fleurs();
 		this.animations.fleurs2 = fleurs2();
 		this.animations.fleurs3 = fleurs3();
+		this.animations.bebe = bebe();
+		this.animations.artemisarc = artemisarc();
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
@@ -357,8 +359,6 @@ class App {
 						}
 					);
 					break;
-
-					break;
 				default:
 					break;
 			}
@@ -374,48 +374,6 @@ class App {
 		if (this.config.debug) {
 			this.debugger.add('animation', this.animations);
 			this.debugger.log(['animation']);
-		}
-	}
-
-	observer() {
-		/**
-		 * Config Intersection Observer
-		 */
-		const threshold = 0.6; // trigger
-		const options = {
-			root: null,
-			rootMargin: '0px',
-			threshold
-		};
-
-		/**
-		 * Observer handler
-		 */
-		const { targets, timelines } = this.animations.scenes;
-		const animHandler = (entries, observer) => {
-			entries.forEach(({ target, isIntersecting }) => {
-				const i = targets.indexOf(target);
-				const tl = timelines[i];
-
-				//console.log(target)
-
-				if (isIntersecting) this.playScene(tl);
-
-				console.log(isIntersecting);
-			});
-		};
-		/**
-		 * Create observer & observe
-		 */
-		const observer = new IntersectionObserver(animHandler, options);
-		targets.forEach((target) => observer.observe(target));
-	}
-
-	playScene(timeline) {
-		if (this.scroller.data.direction === 'RIGHT') {
-			timeline.play();
-		} else {
-			timeline.reverse();
 		}
 	}
 

@@ -1,4 +1,5 @@
 const utils = {
+	isMobile: () => /Mobi|Android/i.test(navigator.userAgent),
 	lerp: (start, end, amt) => {
 		return (1 - amt) * start + amt * end;
 	},
