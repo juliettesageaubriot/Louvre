@@ -26,7 +26,6 @@ const configs = {
 		SCENES: '.app__scenes',
 		SCENE: '.scene',
 		SCENE_CONTENT: '.scene__content',
-		SHATTER: '.app__scenes__fx--shattering',
 		BICHE: '.biche',
 		FLEURS: '.fleurs',
 		FLEURS2: '.fleurs2'
@@ -35,7 +34,8 @@ const configs = {
 		ARTEMIS: 'animation--artemis',
 		BICHE: 'animation--biche',
 		FLEURS: 'animations--fleurs',
-		FLEURS2: 'animations--fleurs2'
+		FLEURS2: 'animations--fleurs2',
+		SHATTER: 'animation--shatter'
 	}
 };
 

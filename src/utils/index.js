@@ -32,6 +32,7 @@ const utils = {
 	randomIntegerInRange: (min, max) =>
 		Math.floor(Math.random() * (max - min + 1)) + min,
 	randomNumberInRange: (min, max) => Math.random() * (max - min) + min,
+	last: (array) => array[array.length - 1],
 	sample: (array) => array[Math.floor(Math.random() * array.length)],
 	shuffle: ([...arr]) => {
 		let m = arr.length;

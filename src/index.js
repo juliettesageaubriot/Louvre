@@ -7,6 +7,7 @@ import Scratcher from './scripts/classes/Scratcher';
 import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
+import Shatterer from './scripts/classes/Shatterer';
 
 const { bounding } = utils;
 const { classNames } = configs;
@@ -80,7 +81,7 @@ class App {
 	tweens() {
 		const { select } = this;
 		const { targets: scenes } = this.animations.scenes;
-		const { cta, artemis, shatter, biche, fleurs, fleurs2 } = tweens;
+		const { cta, artemis, biche, fleurs, fleurs2 } = tweens;
 
 		/**
 		 * Set CTA for interactive elements
@@ -100,7 +101,6 @@ class App {
 		this.animations.biche = biche(this.scroller, bounding(scenes[3]).x, 1);
 		this.animations.fleurs = fleurs(this.scroller, bounding(scenes[4]).x, 1);
 		this.animations.fleurs2 = fleurs2(this.scroller, bounding(scenes[4]).x, 1);
-		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
 		// loup qui saute sur le bouc et qui emet un son
@@ -154,7 +154,10 @@ class App {
 
 			switch (index) {
 				case 0:
-					this.animations.scratcher = new Scratcher(target, this.scroller);
+					// this.animations.scratcher = new Scratcher(target, this.scroller);
+					break;
+				case 1:
+					this.animations.shatter = new Shatterer(target, this.scroller);
 					break;
 				case 2:
 					scene.fromTo(
@@ -181,7 +184,9 @@ class App {
 						repeatDelay: 0,
 						ease: 1
 					});
-
+					break;
+				case 8:
+					// this.animations.shatter = new Shatterer(target, this.scroller);
 					break;
 				default:
 					break;
