@@ -188,6 +188,17 @@ class App {
 					break;
 				case 1:
 
+				//apparition scène
+				
+				scene.to((target.querySelectorAll('.appear')), 1, {
+					opacity: 1,
+					repeat: 0,
+					repeatDelay: 0,
+					ease: 1
+				})
+
+				//apparition texte + animation différents éléments
+
 					let textWrapper2 = document.querySelector('.span-2');
 					textWrapper2.innerHTML = textWrapper2.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 					scene.fromTo(
@@ -229,6 +240,17 @@ class App {
 					
 
 					case 2:
+
+						//apparition scène
+				
+						scene.to((target.querySelectorAll('.appear')), 1, {
+							opacity: 1,
+							repeat: 0,
+							repeatDelay: 0,
+							ease: 1
+						})
+		
+						//apparition texte + animation différents éléments
 					let textWrapper3 = document.querySelector('.span-3');
 					textWrapper3.innerHTML = textWrapper3.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 					scene.fromTo(
@@ -250,6 +272,18 @@ class App {
 							);
 					break;
 					case 3:
+
+						//apparition scène
+				
+						scene.to((target.querySelectorAll('.appear')), 1, {
+							opacity: 1,
+							repeat: 0,
+							repeatDelay: 0,
+							ease: 1
+						})
+		
+						//apparition texte + animation différents éléments
+
 					let textWrapper4 = document.querySelector('.span-4');
 					textWrapper4.innerHTML = textWrapper4.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 					scene.fromTo(
@@ -289,6 +323,18 @@ class App {
 
 					break;
 					case 4:
+
+						//apparition scène
+				
+						scene.to((target.querySelectorAll('.appear')), 1, {
+							opacity: 1,
+							repeat: 0,
+							repeatDelay: 0,
+							ease: 1
+						})
+		
+						//apparition texte + animation différents éléments
+
 						let textWrapper5 = document.querySelector('.span-5');
 					textWrapper5.innerHTML = textWrapper5.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 					scene.fromTo(
@@ -332,6 +378,18 @@ class App {
 
 					break;
 					case 5:
+
+						//apparition scène
+				
+						scene.to((target.querySelectorAll('.appear')), 1, {
+							opacity: 1,
+							repeat: 0,
+							repeatDelay: 0,
+							ease: 1
+						})
+		
+						//apparition texte + animation différents éléments
+
 						let textWrapper6 = document.querySelector('.span-6');
 					textWrapper6.innerHTML = textWrapper6.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 					scene.fromTo(
@@ -353,6 +411,18 @@ class App {
 							);
 					break;
 					case 6:
+
+						//apparition scène
+				
+						scene.to((target.querySelectorAll('.appear')), 1, {
+							opacity: 1,
+							repeat: 0,
+							repeatDelay: 0,
+							ease: 1
+						})
+		
+						//apparition texte + animation différents éléments
+						
 						let textWrapper7 = document.querySelector('.span-7');
 					textWrapper7.innerHTML = textWrapper7.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 					scene.fromTo(

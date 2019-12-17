@@ -60,7 +60,7 @@ body {
 	}
 
 	&__scenes {
-		@include size(180vh, 100vh);
+		@include size(100vw, 100vh);
 		overflow: hidden;
 
 		&__wrapper {
@@ -543,6 +543,7 @@ body {
 				#arbre-7 {
 					width: 10%;
 					left: 0;
+					bottom: 21%;
 				}
 				#pierre-haut {
 					width: 8%;
@@ -612,6 +613,10 @@ body {
 
 			.img {
 				position: absolute;
+			}
+			.appear {
+				opacity: 0;
+				width: 180vh;
 			}
 		}
 	}
