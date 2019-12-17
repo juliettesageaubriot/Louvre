@@ -1,6 +1,7 @@
 import './styles.scss';
 
 import { gsap } from 'gsap';
+import IntersectionObserver from 'intersection-observer-polyfill';
 import Debugger from './scripts/classes/Debugger';
 import Scroller from './scripts/classes/Scroller';
 import Scratcher from './scripts/classes/Scratcher';
@@ -239,11 +240,7 @@ class App {
 				const i = targets.indexOf(target);
 				const tl = timelines[i];
 
-				// console.log(target)
-
 				if (isIntersecting) this.playScene(tl);
-
-				// console.log(isIntersecting)
 			});
 		};
 		/**
