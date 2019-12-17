@@ -126,32 +126,6 @@ class App {
 			bounding(scenes[1]).x / 2 + 1,
 			2.4
 		);
-		this.animations.biche = biche(
-			this.scroller, 
-			bounding(scenes[3]).x / 2, 
-			1
-		);
-
-		this.animations.fleurs = fleurs(
-			this.scroller, 
-			bounding(scenes[4]).x / 2, 
-			2
-		);
-		this.animations.fleurs2 = fleurs2(
-			this.scroller, 
-			bounding(scenes[4]).x / 2, 
-			2
-		);
-		this.animations.bebe = bebe(
-			this.scroller, 
-			bounding(scenes[5]).x / 2, 
-			2
-		);
-		this.animations.artemisarc = artemisarc(
-			this.scroller, 
-			bounding(scenes[7]).x / 2, 
-			2
-		);
 
 		// cta(select(classNames.ARTEMIS).parentNode);
 		cta(select('#loup'), true);
@@ -212,36 +186,12 @@ class App {
 				case 0:
 					// this.animations.scratcher = new Scratcher(target, this.scroller);
 					break;
-				case 2:
-					// scene.fromTo(
-					// 	target.querySelector('.texte-3'), 
-					// 		1,
-					// 		{
-					// 			autoAlpha: 0,
-					// 			yoyo: true,
-					// 			repeatDelay: 0,
-					// 			ease: 1
-					// 		},
-					// 		{	
-					// 			autoAlpha: 1,
-					// 			yoyo: true,
-					// 			repeatDelay: 0,
-					// 			ease: 1
-					// 		}
-					// 	);
+				case 1:
 
-					// scene.to(target.querySelector('#oiseau'), 1, {
-					// 	rotation: -15,
-					// 	repeat: 5,
-					// 	yoyo: true,
-					// 	repeatDelay: 0,
-					// 	ease: 1
-					// });
-
-					let textWrapper = document.querySelector('.ml3');
-					textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+					let textWrapper2 = document.querySelector('.span-2');
+					textWrapper2.innerHTML = textWrapper2.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 					scene.fromTo(
-							textWrapper.querySelectorAll("span"), 
+							textWrapper2.querySelectorAll("span"), 
 								1,
 								{
 									autoAlpha: 0,
@@ -268,95 +218,53 @@ class App {
 
 					
 
+					case 2:
+					let textWrapper3 = document.querySelector('.span-3');
+					textWrapper3.innerHTML = textWrapper3.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+					scene.fromTo(
+							textWrapper3.querySelectorAll("span"), 
+								1,
+								{
+									autoAlpha: 0,
+									yoyo: true,
+									repeatDelay: 0,
+									ease: 1
+								},
+								{	
+									autoAlpha: 1,
+									yoyo: true,
+									repeatDelay: 0,
+									ease: 1,
+									stagger: 0.05
+								}
+							);
+					break;
 					case 3:
-						scene.fromTo(
-						target.querySelector('.texte-4'), 
-							1,
-							{
-								autoAlpha: 0,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							},
-							{	
-								autoAlpha: 1,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							}
-						);
+					let textWrapper4 = document.querySelector('.span-4');
+					textWrapper4.innerHTML = textWrapper4.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+					scene.fromTo(
+							textWrapper4.querySelectorAll("span"), 
+								1,
+								{
+									autoAlpha: 0,
+									yoyo: true,
+									repeatDelay: 0,
+									ease: 1
+								},
+								{	
+									autoAlpha: 1,
+									yoyo: true,
+									repeatDelay: 0,
+									ease: 1,
+									stagger: 0.05
+								}
+							);
 					break;
 					case 4:
-						scene.fromTo(
-						target.querySelector('.texte-5'), 
-							1,
-							{
-								autoAlpha: 0,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							},
-							{	
-								autoAlpha: 1,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							}
-						);
 					break;
 					case 5:
-						scene.fromTo(
-						target.querySelector('.texte-6'), 
-							1,
-							{
-								autoAlpha: 0,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							},
-							{	
-								autoAlpha: 1,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							}
-						);
 					break;
 					case 6:
-						scene.fromTo(
-						target.querySelector('.texte-7'), 
-							1,
-							{
-								autoAlpha: 0,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							},
-							{	
-								autoAlpha: 1,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							}
-						);
-					break;
-					case 7:
-						scene.fromTo(
-						target.querySelector('.texte-8'), 
-							1,
-							{
-								autoAlpha: 0,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							},
-							{	
-								autoAlpha: 1,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							}
-						);
 					break;
 
 					break;
