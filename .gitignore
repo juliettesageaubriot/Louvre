@@ -72,3 +72,5 @@ yarn-error.log
 # Misc
 *.psd
 *._*.*
+*.zip
+*.mp4

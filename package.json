@@ -16,6 +16,7 @@
   "dependencies": {
     "delaunator": "^4.0.1",
     "gsap": "^3.0.2",
+    "hammerjs": "^2.0.8",
     "scrollmagic": "^2.0.7",
     "scrollmagic-plugin-gsap": "^1.0.3",
     "wipe.css": "^1.1.2"
