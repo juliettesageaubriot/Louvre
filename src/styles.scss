@@ -391,7 +391,7 @@ body {
 				}
 				#lamare {
 					width: 25%;
-					bottom: 19%;
+					bottom: 18%;
 					right: 0;
 				}
 				#poissons {
@@ -409,12 +409,13 @@ body {
 				
 				#paysage {
 					bottom: 19%;
+					width: 180vh;
 
 				}
 				#bateau {
-					width: 15%;
+					width: 18%;
 					bottom: 23%;
-					left: 10%;
+					left: 3%;
 				}
 				#artemis {
 					width: 22%;
@@ -424,7 +425,7 @@ body {
 				#plantes {
 					width: 10%;
 					right: 29%;
-					bottom: 30.5%;
+					bottom: 38.5%;
 				}
 				#poisson {
 					width: 5%;
@@ -432,9 +433,9 @@ body {
 					left: 35%;
 				}
 				#vague {
-					width: 20%;
-					left: 8%;
-					bottom: 20%;
+					width: 18%;
+					left: 4%;
+					bottom: 19%;
 				}
 				#nuages-droite {
 					width: 20%;
@@ -450,6 +451,11 @@ body {
 					width: 21%;
 					top: 48%;
 					left: 26%;
+				}
+				#pierre {
+					width: 22%;
+					bottom: 19%;
+					right: 32%;
 				}
 				#lune {
 					opacity: 1;
@@ -485,14 +491,9 @@ body {
 					left: 15%;
 				}
 				#pierre {
+					width: 22%;
 					bottom: 19%;
-					left: 36%;
-					width: 10%;
-				}
-				#rocher {
-					width: 40%;
-					bottom: 18%;
-					left: 2%;
+					right: 32%;
 				}
 				#plante-7 {
 					bottom: 19%;
@@ -501,12 +502,77 @@ body {
 				}
 				#temple {
 					width: 40%;
-					left: 22%;
-					bottom: 35%;
+					left: 18%;
+					bottom: 40%;
 				}
 				#paysage {
 					bottom: 19%;
+					width: 180vh;
 				}
+				#arbre-7 {
+					width: 10%;
+					left: 0;
+				}
+				#pierre-haut {
+					width: 8%;
+					left: 38%;
+					bottom: 35%;
+
+				}
+				#pierre-droite {
+					width: 10%;
+					right: 20%;
+					bottom: 21%;
+
+				}
+				#pierre-gauche {
+					width: 12%;
+					left: 37%;
+					bottom: 18%;
+				}
+				#rocher {
+					width: 40%;
+					bottom: 18%;
+					left: 2%;
+				}
+			}
+			&:nth-of-type(8) {
+				@at-root {
+					.artemisarc {
+					&__wrapper {
+						// position: relative;
+						position: absolute;
+						width: 50%;
+						transform-origin: bottom;
+						padding: 0;
+						bottom: 13.5%;
+						left: 50%;
+						transform: translate(-40%, 0);
+
+						&:before {
+							content: "";
+							display: block;
+							padding-top: 73.1%;
+						}
+					}
+
+					margin: 0;
+					padding: 0;
+
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					background: url('./assets/videos/artemis-arc/anim-artemis-arc-vertical.png');
+					background-repeat: repeat-y;
+					background-size: cover;
+					background-position: 0 0;
+					display: block;
+					cursor: pointer;
+				
+				}
+			}
 			}
 
 			.img {
