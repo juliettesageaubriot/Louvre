@@ -91,6 +91,7 @@ body {
 		.texte {
 			font-family: 'Mansalva', sans-serif;
 			font-size: 20px;
+			text-align: center;
 		}
 
 		section {
@@ -104,6 +105,7 @@ body {
 			border: 1px solid red;
 
 			&:nth-of-type(1) {
+				width: 100vw;
 			}
 			&:nth-of-type(2) {
 				@at-root {
@@ -398,8 +400,8 @@ body {
 				}
 			}
 			.texte-5 {
-				@include abs-pos(80%, 19%, -50%, -50%);
-				width: 40vh;
+				@include abs-pos(30%, 82%, -50%, -50%);
+				width: 50vh;
 			}
 				#enfant {
 					width: 10%;
@@ -433,7 +435,11 @@ body {
 				}
 			}
 			&:nth-of-type(6) {
-				
+
+				.texte-6 {
+					@include abs-pos(30%, 67%, -50%, -50%);
+					width: 50vh;
+				}
 				#paysage {
 					bottom: 19%;
 					width: 180vh;
@@ -491,6 +497,10 @@ body {
 				}
 			}
 			&:nth-of-type(7) {
+				.texte-7 {
+					@include abs-pos(70%, 62%, -50%, -50%);
+					width: 45vh;
+				}
 				#soleil {
 					width: 6%;
 					right: 18%;
@@ -522,9 +532,9 @@ body {
 					right: 32%;
 				}
 				#plante-7 {
-					bottom: 19%;
+					bottom: 18%;
 					width: 15%;
-					right: 35%;
+					right: 13%;
 				}
 				#temple {
 					width: 40%;
@@ -547,7 +557,7 @@ body {
 				}
 				#pierre-droite {
 					width: 10%;
-					right: 20%;
+					right: 15%;
 					bottom: 21%;
 
 				}
@@ -599,6 +609,11 @@ body {
 				
 				}
 			}
+			.texte-8 {
+				@include abs-pos(50%, 20%, -50%, -50%);
+				width: 45vh;
+			}
+
 			}
 
 			.img {

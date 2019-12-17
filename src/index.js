@@ -131,17 +131,13 @@ class App {
 			bounding(scenes[3]).x / 2, 
 			1
 		);
+
 		this.animations.fleurs = fleurs(
 			this.scroller, 
 			bounding(scenes[4]).x / 2, 
 			2
 		);
 		this.animations.fleurs2 = fleurs2(
-			this.scroller, 
-			bounding(scenes[4]).x / 2, 
-			2
-		);
-		this.animations.fleurs3 = fleurs3(
 			this.scroller, 
 			bounding(scenes[4]).x / 2, 
 			2
@@ -214,11 +210,67 @@ class App {
 
 			switch (index) {
 				case 0:
-					this.animations.scratcher = new Scratcher(target, this.scroller);
+					// this.animations.scratcher = new Scratcher(target, this.scroller);
 					break;
 				case 2:
+					// scene.fromTo(
+					// 	target.querySelector('.texte-3'), 
+					// 		1,
+					// 		{
+					// 			autoAlpha: 0,
+					// 			yoyo: true,
+					// 			repeatDelay: 0,
+					// 			ease: 1
+					// 		},
+					// 		{	
+					// 			autoAlpha: 1,
+					// 			yoyo: true,
+					// 			repeatDelay: 0,
+					// 			ease: 1
+					// 		}
+					// 	);
+
+					// scene.to(target.querySelector('#oiseau'), 1, {
+					// 	rotation: -15,
+					// 	repeat: 5,
+					// 	yoyo: true,
+					// 	repeatDelay: 0,
+					// 	ease: 1
+					// });
+
+					let textWrapper = document.querySelector('.ml3');
+					textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 					scene.fromTo(
-						target.querySelector('.texte-3'), 
+							textWrapper.querySelectorAll("span"), 
+								1,
+								{
+									autoAlpha: 0,
+									yoyo: true,
+									repeatDelay: 0,
+									ease: 1
+								},
+								{	
+									autoAlpha: 1,
+									yoyo: true,
+									repeatDelay: 0,
+									ease: 1,
+									stagger: 0.05
+								}
+							);
+
+					scene.to(target.querySelector('#oiseau'), 1, {
+						rotation: -15,
+						repeat: 5,
+						yoyo: true,
+						repeatDelay: 0,
+						ease: 1
+					});
+
+					
+
+					case 3:
+						scene.fromTo(
+						target.querySelector('.texte-4'), 
 							1,
 							{
 								autoAlpha: 0,
@@ -233,14 +285,79 @@ class App {
 								ease: 1
 							}
 						);
-
-					scene.to(target.querySelector('#oiseau'), 1, {
-						rotation: -15,
-						repeat: 5,
-						yoyo: true,
-						repeatDelay: 0,
-						ease: 1
-					});
+					break;
+					case 4:
+						scene.fromTo(
+						target.querySelector('.texte-5'), 
+							1,
+							{
+								autoAlpha: 0,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							{	
+								autoAlpha: 1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							}
+						);
+					break;
+					case 5:
+						scene.fromTo(
+						target.querySelector('.texte-6'), 
+							1,
+							{
+								autoAlpha: 0,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							{	
+								autoAlpha: 1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							}
+						);
+					break;
+					case 6:
+						scene.fromTo(
+						target.querySelector('.texte-7'), 
+							1,
+							{
+								autoAlpha: 0,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							{	
+								autoAlpha: 1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							}
+						);
+					break;
+					case 7:
+						scene.fromTo(
+						target.querySelector('.texte-8'), 
+							1,
+							{
+								autoAlpha: 0,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							{	
+								autoAlpha: 1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							}
+						);
+					break;
 
 					break;
 				default:
@@ -285,7 +402,7 @@ class App {
 
 				if (isIntersecting) this.playScene(tl);
 
-				//console.log(isIntersecting)
+				console.log(isIntersecting)
 		
 			});
 		};
