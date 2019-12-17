@@ -216,7 +216,7 @@ class App {
 				case 2:
 
 					scene.fromTo(
-						target.querySelector('.texte'), 
+						target.querySelector('.texte-3'), 
 							1,
 							{
 								autoAlpha: 0,
@@ -279,11 +279,11 @@ class App {
 				const i = targets.indexOf(target);
 				const tl = timelines[i];
 
-				// console.log(target)
+				//console.log(target)
 
 				if (isIntersecting) this.playScene(tl);
 
-				// console.log(isIntersecting)
+				//console.log(isIntersecting)
 		
 			});
 		};

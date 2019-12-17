@@ -84,10 +84,8 @@ body {
 		}
 
 		.texte {
-			@include abs-pos(90%, 50%, -50%, -50%);
 			font-family: 'Mansalva', sans-serif;
-
-			// opacity: 1;
+			font-size: 20px;
 		}
 
 		section {
@@ -126,8 +124,6 @@ body {
 			}
 			&#three {
 				@at-root {
-
-					//vertical
 					.biche {
 						&__wrapper {
 							// position: relative;
@@ -171,7 +167,10 @@ body {
 					}
 
 				}
-
+				.texte-3 {
+					@include abs-pos(48%, 35%, -50%, -50%);
+					width: 50vh;
+				}
 				#artemise-cerf {
 					width: 30%;
 					bottom: 20%;
@@ -320,13 +319,17 @@ body {
 					
 					}
 				}
+				.texte-4 {
+					@include abs-pos(32%, 19%, -50%, -50%);
+					width: 40vh;
+				}
 				#montagnes {
 					bottom: 18%;
 					width: 180vh;
 				}
 				#plante-tombee {
 					width: 55%;
-					left: 16%;
+					left: 2%;
 					top: 16%;
 				}
 				#fleurs-fixes {
@@ -373,6 +376,10 @@ body {
 					cursor: pointer;
 				
 				}
+			}
+			.texte-5 {
+				@include abs-pos(80%, 19%, -50%, -50%);
+				width: 40vh;
 			}
 				#enfant {
 					width: 10%;
@@ -552,7 +559,7 @@ body {
 						&:before {
 							content: "";
 							display: block;
-							padding-top: 73.1%;
+							padding-top: 73.12%;
 						}
 					}
 
