@@ -68,6 +68,11 @@ body {
 			display: flex;
 		}
 
+		&__assets {
+			display: none;
+			visibility: hidden;
+		}
+
 		&__fx {
 			> * {
 				position: absolute;

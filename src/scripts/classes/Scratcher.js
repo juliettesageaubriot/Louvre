@@ -8,13 +8,14 @@ import { gsap } from 'gsap';
 
 import configs from '../../configs';
 
-import BG from '../../assets/images/fond-scratch.jpg';
-import Brush from '../../assets/images/brush-scratch.png';
+import BG from '../../assets/images/scratch-bg.png';
+import Brush from '../../assets/images/scratch-brush.png';
+import SFX from '../../assets/sons/scratch.mp3';
 
 const { W, H } = configs.dimensions;
 
-const STRIDE = 32;
-const MAX_FILL_AMT = 0.48;
+const STRIDE = 1;
+const MAX_FILL_AMT = 0.4;
 const BRUSH_W = 74;
 const BRUSH_H = 56;
 
@@ -25,7 +26,8 @@ export default class Scratcher {
 
 		this.assets = {
 			bg: null,
-			brush: null
+			brush: null,
+			sfx: null
 		};
 
 		this.bindit();
@@ -51,7 +53,7 @@ export default class Scratcher {
 	doit() {
 		const { width: W, height: H } = this.canvas;
 
-		this.images();
+		this.loadAssets();
 
 		this.canvas.addEventListener('bgReady', ({ detail }) => {
 			this.assets.bg = detail.img;
@@ -62,13 +64,19 @@ export default class Scratcher {
 			this.assets.brush = detail.img;
 		});
 
+		this.canvas.addEventListener('sfxReady', ({ detail }) => {
+			this.assets.sfx = detail.sfx;
+			this.assets.sfx.volume = 1;
+		});
+
 		this.canvas.addEventListener('mousemove', this.handler);
 		this.canvas.addEventListener('touchmove', this.handler);
 	}
 
-	images() {
+	loadAssets() {
 		let bg = new Image(),
-			brush = new Image();
+			brush = new Image(),
+			sfx = new Audio(SFX);
 
 		bg.src = BG;
 		bg.style.display = 'none';
@@ -87,26 +95,45 @@ export default class Scratcher {
 			this.canvas.dispatchEvent(
 				new CustomEvent('brushReady', { detail: { img: brush } })
 			);
+
+		sfx.addEventListener('loadeddata', () =>
+			this.canvas.dispatchEvent(new CustomEvent('sfxReady', { detail: { sfx } }))
+		);
 	}
 
 	handler(e) {
 		e.preventDefault();
 
+		const assetsReady = this.assets.bg && this.assets.brush && this.assets.sfx;
 		const { type } = e;
 		let xy,
 			doScratching = false;
-		if (type === 'mousemove') {
-			doScratching = this.detectClick(e);
-			xy = { x: e.x, y: e.y };
-		} else {
-			const touch = this.detectTouch(e);
-			if (touch) {
-				doScratching = true;
-				xy = { x: touch.clientX, y: touch.clientY };
+
+		if (assetsReady) {
+			if (type === 'mousemove') {
+				doScratching = this.detectClick(e);
+				xy = { x: e.x, y: e.y };
+			} else {
+				const touch = this.detectTouch(e);
+				if (touch) {
+					doScratching = true;
+					xy = { x: touch.clientX, y: touch.clientY };
+				}
 			}
 		}
 
-		if (doScratching) this.scratch(xy);
+		if (doScratching) {
+			this.scratch(xy);
+			this.playSFX();
+		} else this.pauseSFX();
+	}
+
+	playSFX() {
+		this.assets.sfx && this.assets.sfx.play();
+	}
+
+	pauseSFX() {
+		this.assets.sfx && this.assets.sfx.pause();
 	}
 
 	detectClick(event) {
@@ -124,22 +151,21 @@ export default class Scratcher {
 	}
 
 	scratch({ x, y }) {
-		const assetsReady = this.assets.bg && this.assets.brush;
+		const { ctx } = this;
+		const { brush } = this.assets;
 
-		if (assetsReady) {
-			const { ctx } = this;
-			const { brush } = this.assets;
+		ctx.globalCompositeOperation = 'destination-out';
+		ctx.drawImage(brush, x, y, BRUSH_W, BRUSH_H);
 
-			ctx.globalCompositeOperation = 'destination-out';
-			ctx.drawImage(brush, x, y, BRUSH_W, BRUSH_H);
-
-			if (this.fillAmount(STRIDE) >= MAX_FILL_AMT) {
-				gsap.to(this.canvas, 2, {
-					autoAlpha: 0,
-					pointerEvents: 'none',
-					onComplete: () => this.appScroller.setDoScroll(true)
-				});
-			}
+		if (this.fillAmount(STRIDE) >= MAX_FILL_AMT) {
+			gsap.to(this.canvas, 1.2, {
+				autoAlpha: 0,
+				pointerEvents: 'none',
+				onComplete: () => {
+					this.pauseSFX();
+					this.appScroller.setDoScroll(true);
+				}
+			});
 		}
 	}
 
