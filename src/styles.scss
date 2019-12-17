@@ -62,10 +62,14 @@ body {
 	&__scenes {
 		@include size(100vw, 100vh);
 		overflow: hidden;
-
 		&__wrapper {
-			@include size(100+(180vh*7), 100%);
+			@include size(calc(100vw + (180vh * 7)), 100%);
 			display: flex;
+		}
+
+		&__assets {
+			display: none;
+			visibility: hidden;
 		}
 
 		&__fx {
@@ -162,7 +166,7 @@ body {
 						//left: 50%;
 
 						&:before {
-							content: "";
+							content: '';
 							display: block;
 							padding-top: 98.85%;
 						}
@@ -185,7 +189,6 @@ body {
 					background-position: 0 0;
 					display: block;
 					cursor: pointer;
-				
 				}
 				.texte-3 {
 					@include abs-pos(48%, 35%, -50%, -50%);
@@ -233,43 +236,40 @@ body {
 			}
 			&#three {
 				.fleurs {
+					&__wrapper {
+						// position: relative;
+						position: absolute;
+						width: 15%;
+						transform-origin: bottom;
+						padding: 0;
+						bottom: 19%;
+						left: 7%;
 
-				&__wrapper {
-					// position: relative;
-					position: absolute;
-					width: 15%;
-					transform-origin: bottom;
-					padding: 0;
-					bottom: 19%;
-					left: 7%;
-
-					&:before {
-						content: "";
-						display: block;
-						padding-top: 145.93%;
+						&:before {
+							content: '';
+							display: block;
+							padding-top: 145.93%;
+						}
 					}
+
+					margin: 0;
+					padding: 0;
+
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					background: url('./assets/videos/fleurs/anim-fleur-verticale.png');
+					// background-size: 300%;
+					background-repeat: repeat-y;
+					background-size: cover;
+					background-position: 0 0;
+					display: block;
+					cursor: pointer;
 				}
 
-				margin: 0;
-				padding: 0;
-
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				background: url('./assets/videos/fleurs/anim-fleur-verticale.png');
-				// background-size: 300%;
-				background-repeat: repeat-y;
-				background-size: cover;
-				background-position: 0 0;
-				display: block;
-				cursor: pointer;
-			
-			}
-
 				.fleurs2 {
-
 					&__wrapper {
 						// position: relative;
 						position: absolute;
@@ -281,7 +281,7 @@ body {
 						right: 46%;
 
 						&:before {
-							content: "";
+							content: '';
 							display: block;
 							padding-top: 103.95%;
 						}
@@ -302,7 +302,6 @@ body {
 					background-position: 0 0;
 					display: block;
 					cursor: pointer;
-				
 				}
 				.fleurs3 {
 					&__wrapper {
@@ -315,7 +314,7 @@ body {
 						right: 16%;
 
 						&:before {
-							content: "";
+							content: '';
 							display: block;
 							padding-top: 134.71%;
 						}
@@ -336,7 +335,6 @@ body {
 					background-position: 0 0;
 					display: block;
 					cursor: pointer;
-				
 				}
 				.texte-4 {
 					@include abs-pos(32%, 19%, -50%, -50%);
@@ -362,42 +360,42 @@ body {
 			}
 			&#four {
 				.bebe {
-				&__wrapper {
-					// position: relative;
-					position: absolute;
-					width: 12%;
-					transform-origin: bottom;
-					padding: 0;
-					bottom: 19%;
-					left: 38%;
+					&__wrapper {
+						// position: relative;
+						position: absolute;
+						width: 12%;
+						transform-origin: bottom;
+						padding: 0;
+						bottom: 19%;
+						left: 38%;
 
-					&:before {
-						content: "";
-						display: block;
-						padding-top: 231.88%;
+						&:before {
+							content: '';
+							display: block;
+							padding-top: 231.88%;
+						}
 					}
+
+					margin: 0;
+					padding: 0;
+
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					background: url('./assets/videos/femme-bebe/anim-femme-bebe-vertical.png');
+					background-repeat: repeat-y;
+					background-size: cover;
+					background-position: 0 0;
+					display: block;
+					cursor: pointer;
 				}
 
-				margin: 0;
-				padding: 0;
-
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				background: url('./assets/videos/femme-bebe/anim-femme-bebe-vertical.png');
-				background-repeat: repeat-y;
-				background-size: cover;
-				background-position: 0 0;
-				display: block;
-				cursor: pointer;
-			}
-			
-			.texte-5 {
-				@include abs-pos(30%, 82%, -50%, -50%);
-				width: 50vh;
-			}
+				.texte-5 {
+					@include abs-pos(30%, 82%, -50%, -50%);
+					width: 50vh;
+				}
 				#enfant {
 					width: 10%;
 					bottom: 19%;
@@ -430,7 +428,6 @@ body {
 				}
 			}
 			&#five {
-
 				.texte-6 {
 					@include abs-pos(30%, 67%, -50%, -50%);
 					width: 50vh;
@@ -549,13 +546,11 @@ body {
 					width: 8%;
 					left: 38%;
 					bottom: 35%;
-
 				}
 				#pierre-droite {
 					width: 10%;
 					right: 15%;
 					bottom: 21%;
-
 				}
 				#pierre-gauche {
 					width: 12%;
@@ -570,45 +565,43 @@ body {
 			}
 			&#seven {
 				.artemisarc {
-				&__wrapper {
-					// position: relative;
-					position: absolute;
-					width: 50%;
-					transform-origin: bottom;
-					padding: 0;
-					bottom: 13.5%;
-					left: 50%;
-					transform: translate(-40%, 0);
+					&__wrapper {
+						// position: relative;
+						position: absolute;
+						width: 50%;
+						transform-origin: bottom;
+						padding: 0;
+						bottom: 13.5%;
+						left: 50%;
+						transform: translate(-40%, 0);
 
-					&:before {
-						content: "";
-						display: block;
-						padding-top: 73.12%;
+						&:before {
+							content: '';
+							display: block;
+							padding-top: 73.12%;
+						}
 					}
+
+					margin: 0;
+					padding: 0;
+
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					background: url('./assets/videos/artemis-arc/anim-artemis-arc-vertical.png');
+					background-repeat: repeat-y;
+					background-size: cover;
+					background-position: 0 0;
+					display: block;
+					cursor: pointer;
 				}
 
-				margin: 0;
-				padding: 0;
-
-				position: absolute;
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				background: url('./assets/videos/artemis-arc/anim-artemis-arc-vertical.png');
-				background-repeat: repeat-y;
-				background-size: cover;
-				background-position: 0 0;
-				display: block;
-				cursor: pointer;
-			
-			}
-			
-			.texte-8 {
-				@include abs-pos(50%, 20%, -50%, -50%);
-				width: 45vh;
-			}
-
+				.texte-8 {
+					@include abs-pos(50%, 20%, -50%, -50%);
+					width: 45vh;
+				}
 			}
 
 			.img {

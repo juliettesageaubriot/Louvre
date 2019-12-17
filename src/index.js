@@ -7,6 +7,7 @@ import Scratcher from './scripts/classes/Scratcher';
 import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
+import Observer from './scripts/classes/Observer';
 
 const { bounding } = utils;
 const { classNames } = configs;
@@ -31,11 +32,11 @@ class App {
 		);
 
 		this.bind();
-
 		this.scenes();
 		this.tweens();
-		this.observer();
 		this.events();
+
+		this.observer = new Observer(this);
 	}
 
 	bind() {
@@ -43,7 +44,16 @@ class App {
 	}
 
 	events() {
-		const { artemis, biche, shatter, fleurs, fleurs2, fleurs3, bebe, artemisarc} = this.animations;
+		const {
+			artemis,
+			biche,
+			shatter,
+			fleurs,
+			fleurs2,
+			fleurs3,
+			bebe,
+			artemisarc
+		} = this.animations;
 		const handlerKeypress = ({ code }) => {
 			console.log(code);
 			switch (code) {
@@ -74,19 +84,19 @@ class App {
 		);
 
 		this.select(classNames.FLEURS).addEventListener(
-			'click', 
+			'click',
 			() => fleurs.play(),
 			false
 		);
 
 		this.select(classNames.FLEURS2).addEventListener(
-			'click', 
+			'click',
 			() => fleurs2.play(),
 			false
 		);
 
 		this.select(classNames.FLEURS3).addEventListener(
-			'click', 
+			'click',
 			() => fleurs3.play(),
 			false
 		);
@@ -105,12 +115,21 @@ class App {
 	tweens() {
 		const { select } = this;
 		const { targets: scenes } = this.animations.scenes;
-		const { cta, artemis, shatter, biche, fleurs, fleurs2, fleurs3, bebe, artemisarc } = tweens;
+		const {
+			cta,
+			artemis,
+			shatter,
+			biche,
+			fleurs,
+			fleurs2,
+			fleurs3,
+			bebe,
+			artemisarc
+		} = tweens;
 
 		/**
 		 * Set CTA for interactive elements
 		 */
-
 		// cta(select(classNames.ARTEMIS).parentNode);
 		// cta(select(classNames.BICHE).parentNode);
 		// cta(select(classNames.FLEURS).parentNode);
@@ -118,18 +137,20 @@ class App {
 		// cta(select(classNames.FLEURS3).parentNode);
 		// cta(select(classNames.BEBE).parentNode);
 		// cta(select(classNames.ARTEMISARC).parentNode);
-		cta(select('#loup'), true);
-		cta(select('#cheval'), true);
+		// cta(select('#loup'), true);
+		// cta(select('#cheval'), true);
 
 		this.animations.artemis = artemis(
 			this.scroller,
 			bounding(scenes[1]).x / 2 + 1,
 			2.4
 		);
-
-		// cta(select(classNames.ARTEMIS).parentNode);
-		cta(select('#loup'), true);
-		cta(select('#cheval'), true);
+		this.animations.biche = biche();
+		this.animations.fleurs = fleurs();
+		this.animations.fleurs2 = fleurs2();
+		this.animations.fleurs3 = fleurs3();
+		this.animations.bebe = bebe();
+		this.animations.artemisarc = artemisarc();
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
@@ -184,9 +205,10 @@ class App {
 
 			switch (index) {
 				case 0:
-					// this.animations.scratcher = new Scratcher(target, this.scroller);
+					this.animations.scratcher = new Scratcher(target, this.scroller);
 					break;
 				case 1:
+
 
 				//apparition scène
 				
@@ -200,24 +222,27 @@ class App {
 				//apparition texte + animation différents éléments
 
 					let textWrapper2 = document.querySelector('.span-2');
-					textWrapper2.innerHTML = textWrapper2.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+					textWrapper2.innerHTML = textWrapper2.textContent.replace(
+						/\S/g,
+						"<span class='letter'>$&</span>"
+					);
 					scene.fromTo(
-							textWrapper2.querySelectorAll("span"), 
-								1,
-								{
-									autoAlpha: 0,
-									yoyo: true,
-									repeatDelay: 0,
-									ease: 1
-								},
-								{	
-									autoAlpha: 1,
-									yoyo: true,
-									repeatDelay: 0,
-									ease: 1,
-									stagger: 0.05
-								}
-							);
+						textWrapper2.querySelectorAll('span'),
+						1,
+						{
+							autoAlpha: 0,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},
+						{
+							autoAlpha: 1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1,
+							stagger: 0.05
+						}
+					);
 
 					scene.to(target.querySelector('#oiseau'), 1, {
 						rotation: -15,
@@ -225,6 +250,7 @@ class App {
 						yoyo: true,
 						repeatDelay: 0,
 						ease: 1
+
 					}, "<");
 
 
@@ -251,26 +277,31 @@ class App {
 						})
 		
 						//apparition texte + animation différents éléments
+
 					let textWrapper3 = document.querySelector('.span-3');
-					textWrapper3.innerHTML = textWrapper3.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+					textWrapper3.innerHTML = textWrapper3.textContent.replace(
+						/\S/g,
+						"<span class='letter'>$&</span>"
+					);
 					scene.fromTo(
-							textWrapper3.querySelectorAll("span"), 
-								1,
-								{
-									autoAlpha: 0,
-									yoyo: true,
-									repeatDelay: 0,
-									ease: 1
-								},
-								{	
-									autoAlpha: 1,
-									yoyo: true,
-									repeatDelay: 0,
-									ease: 1,
-									stagger: 0.05
-								}
-							);
+						textWrapper3.querySelectorAll('span'),
+						1,
+						{
+							autoAlpha: 0,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},
+						{
+							autoAlpha: 1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1,
+							stagger: 0.05
+						}
+					);
 					break;
+
 					case 3:
 
 						//apparition scène
@@ -284,9 +315,14 @@ class App {
 		
 						//apparition texte + animation différents éléments
 
+
 					let textWrapper4 = document.querySelector('.span-4');
-					textWrapper4.innerHTML = textWrapper4.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+					textWrapper4.innerHTML = textWrapper4.textContent.replace(
+						/\S/g,
+						"<span class='letter'>$&</span>"
+					);
 					scene.fromTo(
+
 						textWrapper4.querySelectorAll("span"), 
 							1,
 							{
@@ -392,24 +428,26 @@ class App {
 
 						let textWrapper6 = document.querySelector('.span-6');
 					textWrapper6.innerHTML = textWrapper6.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
 					scene.fromTo(
-						textWrapper6.querySelectorAll("span"), 
-							1,
-							{
-								autoAlpha: 0,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							},
-							{	
-								autoAlpha: 1,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1,
-								stagger: 0.05
-							}
-							);
+						textWrapper6.querySelectorAll('span'),
+						1,
+						{
+							autoAlpha: 0,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},
+						{
+							autoAlpha: 1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1,
+							stagger: 0.05
+						}
+					);
 					break;
+
 					case 6:
 
 						//apparition scène
@@ -426,24 +464,22 @@ class App {
 						let textWrapper7 = document.querySelector('.span-7');
 					textWrapper7.innerHTML = textWrapper7.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 					scene.fromTo(
-						textWrapper7.querySelectorAll("span"), 
-							1,
-							{
-								autoAlpha: 0,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1
-							},
-							{	
-								autoAlpha: 1,
-								yoyo: true,
-								repeatDelay: 0,
-								ease: 1,
-								stagger: 0.05
-							}
-							);
-					break;
-
+						textWrapper7.querySelectorAll('span'),
+						1,
+						{
+							autoAlpha: 0,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},
+						{
+							autoAlpha: 1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1,
+							stagger: 0.05
+						}
+					);
 					break;
 				default:
 					break;
@@ -462,6 +498,7 @@ class App {
 			this.debugger.log(['animation']);
 		}
 	}
+
 
 	observer() {
 		/**
@@ -506,6 +543,7 @@ class App {
 		// 	timeline.reverse();
 		// }
 	}
+
 
 	select(query) {
 		return this.app.querySelector(query);
