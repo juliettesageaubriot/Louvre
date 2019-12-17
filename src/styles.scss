@@ -91,11 +91,11 @@ body {
 		.texte {
 			font-family: 'Mansalva', sans-serif;
 			text-align: center;
-			font-size: 13px;
+			font-size: 20px;
 
 			@media screen and (max-width: 375px) and (max-height: 812px) {
-				font-size: 20px;
-			  }
+				font-size: 13px;
+			}
 		}
 
 		section {
@@ -476,7 +476,7 @@ body {
 				}
 				#nuages-bas {
 					width: 21%;
-					top: 48%;
+					top: 50%;
 					left: 26%;
 				}
 				#pierre {
@@ -485,10 +485,10 @@ body {
 					right: 32%;
 				}
 				#lune {
-					opacity: 1;
 					width: 6%;
-					top: 33%;
-					left: 27%;
+					bottom: 300px;
+					left: 170px;
+					opacity: 0;
 				}
 			}
 			&#six {

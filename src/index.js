@@ -214,7 +214,17 @@ class App {
 						yoyo: true,
 						repeatDelay: 0,
 						ease: 1
-					});
+					}, "<");
+
+
+
+					scene.to(target.querySelector('#myrtille'), 1, {
+						rotation: 5,
+						repeat: -1,
+						yoyo: true,
+						repeatDelay: 0,
+						ease: 1
+					}, "<");
 
 					
 
@@ -258,7 +268,25 @@ class App {
 								ease: 1,
 								stagger: 0.05
 							}
-							);
+						);
+
+						scene.to(target.querySelector('#enfant'), 1, {
+							y: "15px",
+							repeat: 5,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						}, "<");
+
+						scene.to(target.querySelector('#poissons'), 1, {
+							rotation: 10,
+							x: "25px",
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						}, "<");
+
 					break;
 					case 4:
 						let textWrapper5 = document.querySelector('.span-5');
@@ -279,7 +307,29 @@ class App {
 								ease: 1,
 								stagger: 0.05
 							}
-							);
+						);
+
+						scene.to(target.querySelector('#lune'), 2, {
+							x: "280px",
+							y:"-200px",
+							opacity: 1,
+							ease: 1
+						},"<")
+						.to(target.querySelector('#lune'), 2, {
+							rotation: "-15px",
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},">")
+						.to(target.querySelector('#nuage-bas'), 3, {
+							x: "-15px",
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						}, 3);
+
 					break;
 					case 5:
 						let textWrapper6 = document.querySelector('.span-6');
