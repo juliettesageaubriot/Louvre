@@ -64,7 +64,7 @@ body {
 		overflow: hidden;
 
 		&__wrapper {
-			@include size(900%, 100%);
+			@include size(100+(180vh*7), 100%);
 			display: flex;
 		}
 
@@ -104,10 +104,8 @@ body {
 			background-repeat: no-repeat;
 			border: 1px solid red;
 
-			&:nth-of-type(1) {
+			&#one {
 				width: 100vw;
-			}
-			&:nth-of-type(2) {
 				@at-root {
 					.artemis {
 						&__wrapper {
@@ -142,51 +140,48 @@ body {
 					}
 				}
 			}
-			&#three {
-				@at-root {
-					.biche {
-						&__wrapper {
-							// position: relative;
-							position: absolute;
-							width: 25%;
-
-							transform-origin: bottom;
-							// margin: 0 auto 0 auto;
-							padding: 0;
-							bottom: 19%;
-							right: 25%;
-
-							//transform: translate(-150%);
-
-							//left: 50%;
-
-							&:before {
-								content: "";
-								display: block;
-								padding-top: 98.85%;
-							}
-						}
-
-						margin: 0;
-						padding: 0;
-
+			&#two {
+				.biche {
+					&__wrapper {
+						// position: relative;
 						position: absolute;
-						left: 0;
-						right: 0;
-						top: 0;
-						bottom: 0;
-						background: url('./assets/videos/biche/anim-biche-verticale.png');
-						// background-repeat: no-repeat;
-						// background-size: 400%;
-						background-size: cover;
-						//width: 200px;
-						// padding-bottom: 100%;
-						background-position: 0 0;
-						display: block;
-						cursor: pointer;
-					
+						width: 25%;
+
+						transform-origin: bottom;
+						// margin: 0 auto 0 auto;
+						padding: 0;
+						bottom: 19%;
+						right: 25%;
+
+						//transform: translate(-150%);
+
+						//left: 50%;
+
+						&:before {
+							content: "";
+							display: block;
+							padding-top: 98.85%;
+						}
 					}
 
+					margin: 0;
+					padding: 0;
+
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					background: url('./assets/videos/biche/anim-biche-verticale.png');
+					// background-repeat: no-repeat;
+					// background-size: 400%;
+					background-size: cover;
+					//width: 200px;
+					// padding-bottom: 100%;
+					background-position: 0 0;
+					display: block;
+					cursor: pointer;
+				
 				}
 				.texte-3 {
 					@include abs-pos(48%, 35%, -50%, -50%);
@@ -232,23 +227,59 @@ body {
 					right: 0;
 				}
 			}
-			&:nth-of-type(4) {
-				@at-root {
-					.fleurs {
+			&#three {
+				.fleurs {
+
+				&__wrapper {
+					// position: relative;
+					position: absolute;
+					width: 15%;
+					transform-origin: bottom;
+					padding: 0;
+					bottom: 19%;
+					left: 7%;
+
+					&:before {
+						content: "";
+						display: block;
+						padding-top: 145.93%;
+					}
+				}
+
+				margin: 0;
+				padding: 0;
+
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background: url('./assets/videos/fleurs/anim-fleur-verticale.png');
+				// background-size: 300%;
+				background-repeat: repeat-y;
+				background-size: cover;
+				background-position: 0 0;
+				display: block;
+				cursor: pointer;
+			
+			}
+
+				.fleurs2 {
 
 					&__wrapper {
 						// position: relative;
 						position: absolute;
-						width: 15%;
+						width: 18%;
+
 						transform-origin: bottom;
 						padding: 0;
 						bottom: 19%;
-    					left: 7%;
+						right: 46%;
 
 						&:before {
 							content: "";
 							display: block;
-							padding-top: 145.93%;
+							padding-top: 103.95%;
 						}
 					}
 
@@ -260,7 +291,7 @@ body {
 					right: 0;
 					top: 0;
 					bottom: 0;
-					background: url('./assets/videos/fleurs/anim-fleur-verticale.png');
+					background: url('./assets/videos/fleurs-2/anim-fleurs-2-verticale.png');
 					// background-size: 300%;
 					background-repeat: repeat-y;
 					background-size: cover;
@@ -269,77 +300,39 @@ body {
 					cursor: pointer;
 				
 				}
-
-					.fleurs2 {
-
-						&__wrapper {
-							// position: relative;
-							position: absolute;
-							width: 18%;
-
-							transform-origin: bottom;
-							padding: 0;
-							bottom: 19%;
-							right: 46%;
-	
-							&:before {
-								content: "";
-								display: block;
-								padding-top: 103.95%;
-							}
-						}
-	
-						margin: 0;
-						padding: 0;
-	
+				.fleurs3 {
+					&__wrapper {
+						// position: relative;
 						position: absolute;
-						left: 0;
-						right: 0;
-						top: 0;
-						bottom: 0;
-						background: url('./assets/videos/fleurs-2/anim-fleurs-2-verticale.png');
-						// background-size: 300%;
-						background-repeat: repeat-y;
-						background-size: cover;
-						background-position: 0 0;
-						display: block;
-						cursor: pointer;
-					
-					}
-					.fleurs3 {
-						&__wrapper {
-							// position: relative;
-							position: absolute;
-							width: 15%;
-							transform-origin: bottom;
-							padding: 0;
-							bottom: 20%;
-							right: 16%;
-	
-							&:before {
-								content: "";
-								display: block;
-								padding-top: 134.71%;
-							}
-						}
-	
-						margin: 0;
+						width: 15%;
+						transform-origin: bottom;
 						padding: 0;
-	
-						position: absolute;
-						left: 0;
-						right: 0;
-						top: 0;
-						bottom: 0;
-						background: url('./assets/videos/fleurs-3/anim-fleurs-3-verticale.png');
-						// background-size: 300%;
-						background-repeat: repeat-y;
-						background-size: cover;
-						background-position: 0 0;
-						display: block;
-						cursor: pointer;
-					
+						bottom: 20%;
+						right: 16%;
+
+						&:before {
+							content: "";
+							display: block;
+							padding-top: 134.71%;
+						}
 					}
+
+					margin: 0;
+					padding: 0;
+
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					background: url('./assets/videos/fleurs-3/anim-fleurs-3-verticale.png');
+					// background-size: 300%;
+					background-repeat: repeat-y;
+					background-size: cover;
+					background-position: 0 0;
+					display: block;
+					cursor: pointer;
+				
 				}
 				.texte-4 {
 					@include abs-pos(32%, 19%, -50%, -50%);
@@ -363,42 +356,40 @@ body {
 					width: 180vh;
 				}
 			}
-			&:nth-of-type(5) {
-				@at-root {
-					.bebe {
-					&__wrapper {
-						// position: relative;
-						position: absolute;
-						width: 12%;
-						transform-origin: bottom;
-						padding: 0;
-						bottom: 19%;
-    					left: 38%;
-
-						&:before {
-							content: "";
-							display: block;
-							padding-top: 231.88%;
-						}
-					}
-
-					margin: 0;
-					padding: 0;
-
+			&#four {
+				.bebe {
+				&__wrapper {
+					// position: relative;
 					position: absolute;
-					left: 0;
-					right: 0;
-					top: 0;
-					bottom: 0;
-					background: url('./assets/videos/femme-bebe/anim-femme-bebe-vertical.png');
-					background-repeat: repeat-y;
-					background-size: cover;
-					background-position: 0 0;
-					display: block;
-					cursor: pointer;
-				
+					width: 12%;
+					transform-origin: bottom;
+					padding: 0;
+					bottom: 19%;
+					left: 38%;
+
+					&:before {
+						content: "";
+						display: block;
+						padding-top: 231.88%;
+					}
 				}
+
+				margin: 0;
+				padding: 0;
+
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background: url('./assets/videos/femme-bebe/anim-femme-bebe-vertical.png');
+				background-repeat: repeat-y;
+				background-size: cover;
+				background-position: 0 0;
+				display: block;
+				cursor: pointer;
 			}
+			
 			.texte-5 {
 				@include abs-pos(30%, 82%, -50%, -50%);
 				width: 50vh;
@@ -434,7 +425,7 @@ body {
 					right: 15%;
 				}
 			}
-			&:nth-of-type(6) {
+			&#five {
 
 				.texte-6 {
 					@include abs-pos(30%, 67%, -50%, -50%);
@@ -496,7 +487,7 @@ body {
 					left: 27%;
 				}
 			}
-			&:nth-of-type(7) {
+			&#six {
 				.texte-7 {
 					@include abs-pos(70%, 62%, -50%, -50%);
 					width: 45vh;
@@ -572,43 +563,42 @@ body {
 					left: 2%;
 				}
 			}
-			&:nth-of-type(8) {
-				@at-root {
-					.artemisarc {
-					&__wrapper {
-						// position: relative;
-						position: absolute;
-						width: 50%;
-						transform-origin: bottom;
-						padding: 0;
-						bottom: 13.5%;
-						left: 50%;
-						transform: translate(-40%, 0);
-
-						&:before {
-							content: "";
-							display: block;
-							padding-top: 73.12%;
-						}
-					}
-
-					margin: 0;
-					padding: 0;
-
+			&#seven {
+				.artemisarc {
+				&__wrapper {
+					// position: relative;
 					position: absolute;
-					left: 0;
-					right: 0;
-					top: 0;
-					bottom: 0;
-					background: url('./assets/videos/artemis-arc/anim-artemis-arc-vertical.png');
-					background-repeat: repeat-y;
-					background-size: cover;
-					background-position: 0 0;
-					display: block;
-					cursor: pointer;
-				
+					width: 50%;
+					transform-origin: bottom;
+					padding: 0;
+					bottom: 13.5%;
+					left: 50%;
+					transform: translate(-40%, 0);
+
+					&:before {
+						content: "";
+						display: block;
+						padding-top: 73.12%;
+					}
 				}
+
+				margin: 0;
+				padding: 0;
+
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				background: url('./assets/videos/artemis-arc/anim-artemis-arc-vertical.png');
+				background-repeat: repeat-y;
+				background-size: cover;
+				background-position: 0 0;
+				display: block;
+				cursor: pointer;
+			
 			}
+			
 			.texte-8 {
 				@include abs-pos(50%, 20%, -50%, -50%);
 				width: 45vh;
