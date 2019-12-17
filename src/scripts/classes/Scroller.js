@@ -2,6 +2,7 @@
 // ...
 
 import { gsap } from 'gsap';
+import Hammer from 'hammerjs';
 
 export default class Scroller {
 	constructor(scrollingElement, appDebugger, debug = true, velocity = 200) {
@@ -10,10 +11,11 @@ export default class Scroller {
 			debug,
 			autoIntervalID: null,
 			auto: false,
-
+			doScroll: true,
 			animationsOnScroll: []
 		};
 		this.app = scrollingElement;
+		this.hammertime = new Hammer(window);
 		this.appDebugger = appDebugger;
 		this.data = {
 			direction: 'RIGHT',
@@ -27,24 +29,44 @@ export default class Scroller {
 	init() {
 		this.bind();
 
-		const { handler } = this;
+		const { handler, hammertime } = this;
+
 		window.addEventListener('mousewheel', handler, { passive: false });
 		window.addEventListener('DOMMouseScroll', handler, { passive: false });
+
+		if ('ontouchstart' in document.documentElement) {
+			hammertime
+				.get('pan')
+				.set({ direction: Hammer.DIRECTION_HORIZONTAL, threshold: 0 });
+			hammertime
+				.get('swipe')
+				.set({ direction: Hammer.DIRECTION_HORIZONTAL, threshold: 0 });
+			hammertime.on('panleft panright swipeleft swiperight', (e) =>
+				handler(e, true)
+			);
+		}
+	}
+
+	release() {
+		const { handler, hammertime } = this;
+		window.removeEventListener('mousewheel', handler, { passive: false });
+		window.removeEventListener('DOMMouseScroll', handler, { passive: false });
+		hammertime.off('panleft panright swipeleft swiperight');
 	}
 
 	bind() {
 		this.handler = this.handler.bind(this);
 	}
 
-	handler(e) {
-		e = window.event || e;
+	handler(e, isTouchEvents = false) {
+		e = isTouchEvents ? e : window.event || e;
 
 		e.preventDefault();
 
-		// block scroll left/right
-		if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY)) {
-			return true;
-		}
+		// block scroll left/right on Desktop
+		if (Math.abs(e.wheelDeltaX) > Math.abs(e.wheelDeltaY))
+			this.config.doScroll = false;
+		else this.config.doScroll = true;
 
 		// I don't know why I wrote this but apparently do not remove it...
 		if (this.config.auto && this.data.direction === 'RIGHT') {
@@ -54,12 +76,20 @@ export default class Scroller {
 		// Kill any existing auto scroll if manually scrolling
 		gsap.killTweensOf(this.app);
 
-		this.scroll({ wheelDelta: e.wheelDelta || -e.detail });
+		this.scroll({
+			wheelDelta: isTouchEvents ? e.deltaX : e.wheelDelta || -e.detail,
+			...(isTouchEvents
+				? {
+						isTouchEvents,
+						direction: e.type.includes('left') ? 'RIGHT' : 'LEFT'
+				  }
+				: {})
+		});
 	}
 
 	scroll(conf = {}) {
 		const { app, appDebugger, config } = this;
-		const { wheelDelta, scrollTo, duration, cb } = conf;
+		const { wheelDelta, scrollTo, duration, cb, isTouchEvents, direction } = conf;
 
 		// scroll converter
 		// -1 = RIGHT, 1 = LEFT, 0 when !wheeldelta
@@ -68,12 +98,18 @@ export default class Scroller {
 			: !wheelDelta
 			? 0
 			: Math.max(-1, Math.min(1, wheelDelta));
+		const tDelta =
+			direction === 'RIGHT' ? -1 : direction === 'LEFT' ? 1 : undefined;
 		const scrollLeft_ = gsap.getProperty(app, 'scrollLeft');
 
 		// Normal behaviour
 		if (!scrollTo) {
 			gsap.to(app, {
-				scrollLeft: scrollLeft_ - delta * config.velocity,
+				scrollLeft:
+					scrollLeft_ -
+					(isTouchEvents ? tDelta : delta) *
+						config.velocity *
+						(isTouchEvents ? 2 : 1),
 				ease: 'power2.out'
 			});
 
@@ -92,7 +128,7 @@ export default class Scroller {
 		// Data
 		this.data = {
 			...this.data,
-			direction: delta < 0 ? 'RIGHT' : 'LEFT',
+			direction: isTouchEvents ? direction : delta < 0 ? 'RIGHT' : 'LEFT',
 			x: app.scrollLeft,
 			autoScroll: config.auto
 		};
@@ -148,5 +184,12 @@ export default class Scroller {
 
 	addAnimation(tween) {
 		this.config.animationsOnScroll = [...this.config.animationsOnScroll, tween];
+	}
+
+	setDoScroll(value) {
+		this.config.doScroll = value;
+
+		if (this.config.doScroll) this.init();
+		else this.release();
 	}
 }

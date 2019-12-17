@@ -23,6 +23,11 @@ body {
 	@include base-lettering;
 	@include mansalva;
 
+	canvas {
+		@include abs-center;
+		@include size(100%, 100%);
+	}
+
 	&__fixed {
 		@include size(100%, 100%);
 		@include abs-pos;
@@ -110,15 +115,28 @@ body {
 								$transform: scale(0.7)
 							);
 							@include size(539px, 662px);
+							@include center-content;
 							bottom: 20%;
-							overflow: hidden;
 							transform-origin: bottom;
+							cursor: pointer;
+
+							> * {
+								@include noselect;
+							}
+						}
+
+						&__fragment {
+							position: relative;
+							display: block;
+							z-index: 1;
+							opacity: 1;
 						}
 
 						@include size(100%, 100%);
+						position: absolute;
 						background-image: url('./assets/videos/artemis/anim-artemis.png');
 						background-repeat: no-repeat;
-						cursor: pointer;
+						opacity: 0;
 					}
 				}
 			}
@@ -129,6 +147,7 @@ body {
 							// position: relative;
 							position: absolute;
 							width: 25%;
+
 							transform-origin: bottom;
 							// margin: 0 auto 0 auto;
 							padding: 0;
@@ -255,6 +274,7 @@ body {
 							// position: relative;
 							position: absolute;
 							width: 18%;
+
 							transform-origin: bottom;
 							padding: 0;
 							bottom: 19%;
@@ -417,7 +437,6 @@ body {
 				#paysage {
 					bottom: 19%;
 					width: 180vh;
-
 				}
 				#bateau {
 					width: 18%;

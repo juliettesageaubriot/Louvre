@@ -3,6 +3,7 @@ import './styles.scss';
 import { gsap } from 'gsap';
 import Debugger from './scripts/classes/Debugger';
 import Scroller from './scripts/classes/Scroller';
+import Scratcher from './scripts/classes/Scratcher';
 import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
@@ -61,12 +62,11 @@ class App {
 		};
 
 		window.addEventListener('keypress', handlerKeypress);
-		this.select(classNames.ARTEMIS).addEventListener(
+		this.select(classNames.ARTEMIS).parentNode.addEventListener(
 			'click',
-			() => artemis.play(),
+			() => artemis.timeline.play(),
 			false
 		);
-
 		this.select(classNames.BICHE).addEventListener(
 			'click',
 			() => biche.play(),
@@ -123,8 +123,8 @@ class App {
 
 		this.animations.artemis = artemis(
 			this.scroller,
-			bounding(scenes[1]).x / 2,
-			2
+			bounding(scenes[1]).x / 2 + 1,
+			2.4
 		);
 		this.animations.biche = biche(
 			this.scroller, 
@@ -160,9 +160,7 @@ class App {
 		// cta(select(classNames.ARTEMIS).parentNode);
 		cta(select('#loup'), true);
 		cta(select('#cheval'), true);
-
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
-		
 
 		//scene 3
 		// loup qui saute sur le bouc et qui emet un son
@@ -210,11 +208,15 @@ class App {
 
 		// timeline for each section
 		targets.forEach((target, index) => {
-			let scene = gsap.timeline({ paused: true });
+			let scene = gsap.timeline({
+				paused: true
+			});
 
 			switch (index) {
+				case 0:
+					this.animations.scratcher = new Scratcher(target, this.scroller);
+					break;
 				case 2:
-
 					scene.fromTo(
 						target.querySelector('.texte-3'), 
 							1,
@@ -239,7 +241,7 @@ class App {
 						repeatDelay: 0,
 						ease: 1
 					});
-						
+
 					break;
 				default:
 					break;
