@@ -25,6 +25,12 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	&--fleurs3 {
 		animation: fleurs-3 .8s steps(3) 1;
 	}
+	&--bebe {
+		animation: bebe 1s steps(3) 1;
+	}
+	&--artemisarc {
+		animation: artemisarc 1.8s steps(7) 1;
+	}
 }
 
 @keyframes artemis {
@@ -35,15 +41,6 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 		background-position: -8085px 0;
 	}
 }
-
-// @keyframes biche {
-// 	from {
-// 		background-position: 0 0;
-// 	}
-// 	to {
-// 		background-position: -2488px 0;
-// 	}
-// }
 
 @keyframes bicheVerticale {
 	from {
@@ -78,5 +75,23 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	}
 	to {
 		background-position: 0 -300%;
+	}
+}
+
+@keyframes bebe{
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 0 -300%;
+	}
+}
+
+@keyframes artemisarc{
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 0 -700%;
 	}
 }
