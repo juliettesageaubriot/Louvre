@@ -422,7 +422,7 @@ class App {
 						})
 		
 						//apparition texte + animation différents éléments
-						
+
 						let textWrapper7 = document.querySelector('.span-7');
 					textWrapper7.innerHTML = textWrapper7.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 					scene.fromTo(
@@ -501,9 +501,10 @@ class App {
 	playScene(timeline) {
 		if (this.scroller.data.direction === 'RIGHT') {
 			timeline.play();
-		} else {
-			timeline.reverse();
-		}
+		} 
+		// else {
+		// 	timeline.reverse();
+		// }
 	}
 
 	select(query) {
