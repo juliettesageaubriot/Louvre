@@ -43,7 +43,7 @@ class App {
 	}
 
 	events() {
-		const { artemis, biche, shatter, fleurs, fleurs2 } = this.animations;
+		const { artemis, biche, shatter, fleurs, fleurs2, fleurs3 } = this.animations;
 		const handlerKeypress = ({ code }) => {
 			console.log(code);
 			switch (code) {
@@ -68,19 +68,35 @@ class App {
 			false
 		);
 
-		this.select(classNames.BICHE).addEventListener('click', () => biche.play());
+		this.select(classNames.BICHE).addEventListener(
+			'click',
+			() => biche.play(),
+			false
+		);
 
-		this.select(classNames.FLEURS).addEventListener('click', () => fleurs.play());
+		this.select(classNames.FLEURS).addEventListener(
+			'click',
+			() => fleurs.play(),
+			false
+		);
 
-		this.select(classNames.FLEURS2).addEventListener('click', () =>
-			fleurs2.play()
+		this.select(classNames.FLEURS2).addEventListener(
+			'click',
+			() => fleurs2.play(),
+			false
+		);
+
+		this.select(classNames.FLEURS3).addEventListener(
+			'click',
+			() => fleurs3.play(),
+			false
 		);
 	}
 
 	tweens() {
 		const { select } = this;
 		const { targets: scenes } = this.animations.scenes;
-		const { cta, artemis, shatter, biche, fleurs, fleurs2 } = tweens;
+		const { cta, artemis, shatter, biche, fleurs, fleurs2, fleurs3 } = tweens;
 
 		/**
 		 * Set CTA for interactive elements
@@ -89,17 +105,19 @@ class App {
 		// cta(select(classNames.BICHE).parentNode);
 		// cta(select(classNames.FLEURS).parentNode);
 		// cta(select(classNames.FLEURS2).parentNode);
-		// cta(select('#loup'), true);
-		// cta(select('#cheval'), true);
+		// cta(select(classNames.FLEURS3).parentNode);
+		cta(select('#loup'), true);
+		cta(select('#cheval'), true);
 
 		this.animations.artemis = artemis(
 			this.scroller,
 			bounding(scenes[1]).x / 2 + 1,
 			2.4
 		);
-		this.animations.biche = biche(this.scroller, bounding(scenes[3]).x, 1);
-		this.animations.fleurs = fleurs(this.scroller, bounding(scenes[4]).x, 1);
-		this.animations.fleurs2 = fleurs2(this.scroller, bounding(scenes[4]).x, 1);
+		this.animations.biche = biche();
+		this.animations.fleurs = fleurs();
+		this.animations.fleurs2 = fleurs2();
+		this.animations.fleurs3 = fleurs3();
 		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
@@ -154,7 +172,7 @@ class App {
 
 			switch (index) {
 				case 0:
-					this.animations.scratcher = new Scratcher(target, this.scroller);
+					// this.animations.scratcher = new Scratcher(target, this.scroller);
 					break;
 				case 2:
 					scene.fromTo(
@@ -221,10 +239,13 @@ class App {
 				const i = targets.indexOf(target);
 				const tl = timelines[i];
 
+				// console.log(target)
+
 				if (isIntersecting) this.playScene(tl);
+
+				// console.log(isIntersecting)
 			});
 		};
-
 		/**
 		 * Create observer & observe
 		 */

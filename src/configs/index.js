@@ -9,7 +9,7 @@ const configs = {
 	},
 	menu: [],
 	font: {
-		family: 'Montserrat',
+		family: 'Mansalva',
 		size: {},
 		weight: {}
 	},
@@ -29,13 +29,15 @@ const configs = {
 		SHATTER: '.app__scenes__fx--shattering',
 		BICHE: '.biche',
 		FLEURS: '.fleurs',
-		FLEURS2: '.fleurs2'
+		FLEURS2: '.fleurs2',
+		FLEURS3: '.fleurs3'
 	},
 	classAnimations: {
 		ARTEMIS: 'animation--artemis',
 		BICHE: 'animation--biche',
-		FLEURS: 'animations--fleurs',
-		FLEURS2: 'animations--fleurs2'
+		FLEURS: 'animation--fleurs',
+		FLEURS2: 'animation--fleurs2',
+		FLEURS3: 'animation--fleurs3'
 	}
 };
 
