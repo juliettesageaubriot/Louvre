@@ -293,6 +293,20 @@ class App {
 							stagger: 0.05
 						}
 					);
+
+					scene.to(
+						target.querySelector('#plante-tombee'),
+						1,
+						{
+							rotation: -1,
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},
+						'<'
+					);
+
 					break;
 
 				case 3:
@@ -455,8 +469,6 @@ class App {
 							target.querySelector('#lune'),
 							2,
 							{
-								// x: "280px",
-								// y:"-200px",
 								x: '30vh',
 								y: '-22vh',
 								opacity: 1,
@@ -545,6 +557,30 @@ class App {
 							ease: 1
 						}
 					);
+
+					scene.to(
+						target.querySelector('#soleil'),
+						3,
+						{
+							x: "-50vh",
+							y: "-20vh",
+							ease: 1
+						},
+						'<'
+					)
+					scene.to(
+						target.querySelector('#soleil'),
+						30,
+						{
+							rotation: 360,
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},
+						'<'
+					);
+
 					break;
 
 				case 6:
