@@ -11,6 +11,8 @@ import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
 
+import SOUND from './assets/sons/global.mp3';
+
 const { bounding, last } = utils;
 const { classNames, classAnimations, colors } = configs;
 
@@ -33,6 +35,13 @@ class App {
 			false
 		);
 
+		this.sfx = new Audio(SOUND);
+
+		this.sfx.addEventListener('loadeddata', () => {
+			this.sfx.volume = 1;
+			this.sfx.loop = true;
+		});
+
 		this.loader();
 
 		this.bind();
@@ -47,25 +56,22 @@ class App {
 		const overlay = document.querySelector(classNames.LOADER);
 		const img = overlay.querySelector('img');
 		const div = overlay.querySelector('div');
-	
-		
-		const {width, height} = bounding(img);
-		gsap.set(div, {width, height})
 
-		const start = () => div.classList.add(classAnimations.LOADER)
-		const update = () => img.style.opacity = tl.progress()/2;
-		const complete = () => {
-			gsap.to(img, 0.6, {alpha: 1});
-			setTimeout(() => {
-				gsap.to(overlay, 1.2, { autoAlpha: 0, scale: 2, zIndex: -999 });
-			}, 600)
-		};
+		const { width, height } = bounding(img);
+		gsap.set(div, { width, height });
 
 		const tl = gsap.timeline({
 			duration: 6,
-			onStart: start,
-			onUpdate: update,
-			onComplete: complete
+			onStart: () => div.classList.add(classAnimations.LOADER),
+			onUpdate: () => (img.style.opacity = tl.progress() / 2),
+			onComplete: () => {
+				gsap.to(img, 0.6, { alpha: 1 });
+				setTimeout(() => {
+					gsap.to(overlay, 1.2, { autoAlpha: 0, scale: 2, zIndex: -999 });
+				}, 600);
+
+				this.sfx && this.sfx.play();
+			}
 		});
 	}
 
