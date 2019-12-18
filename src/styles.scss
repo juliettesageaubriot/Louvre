@@ -32,30 +32,11 @@ body {
 		@include size(100%, 100%);
 		@include abs-center;
 		@include center-content;
-		background-image: url('./assets/images/fond.jpg');
-		background-size: cover;
-		background-repeat: no-repeat;
 
-		&__overlay {
-			pointer-events: none;
-			position: absolute;
-			z-index: 999;
-			top: 0;
-			left: 0;
-			opacity: 0;
-			@include size(100vw, 100vh);
-			background-color: black;
-
-			& > div {
-				@include size(100%, 100%);
-				@include abs-center;
-				@include center-content;
-				text-align: center;
-				font-size: 2.4rem;
-				background-color: black;
-				color: white;
-			}
-		}
+		-webkit-mask: url('./assets/videos/shatter.png');
+		mask: url('./assets/videos/shatter.png');
+		-webkit-mask-size: 100% 2900%;
+		mask-size: 100% 2900%;
 	}
 
 	&__fixed {
@@ -120,7 +101,7 @@ body {
 			background-image: url('./assets/images/fond.jpg');
 			background-size: cover;
 			background-repeat: no-repeat;
-			border: 1px solid red;
+			border: 2px solid black;
 
 			&#one {
 				width: 100vw;
@@ -618,7 +599,7 @@ body {
 					right: 0;
 					top: 0;
 					bottom: 0;
-					background: url('./assets/videos/artemis-arc/anim-artemis-arc-vertical.png');
+					background-image: url('./assets/videos/artemis-arc/anim-artemis-arc-vertical.png');
 					background-repeat: repeat-y;
 					background-size: cover;
 					background-position: 0 0;
@@ -632,10 +613,50 @@ body {
 				}
 			}
 
+			&#end {
+				pointer-events: none;
+				position: fixed;
+				z-index: 999;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				@include size(100vw, 100vh);
+				background-image: url('./assets/images/fond-black.svg');
+				background-size: cover;
+
+				& > div {
+					@include size(100%, 100%);
+					@include abs-center;
+					@include center-content;
+					text-align: center;
+					font-size: 2.4rem;
+					background-color: rgba(0, 0, 0, 0.8);
+					color: $gold;
+					opacity: 0;
+
+					p {
+						text-align: center;
+						margin: 20px 0;
+					}
+
+					span {
+						filter: brightness(90%);
+						font-size: 2rem;
+					}
+
+					img {
+						display: inline-block;
+						width: 36%;
+					}
+				}
+			}
+
 			.img {
 				position: absolute;
 			}
 			.appear {
+				@include size(100%, 100%);
+				@include abs-center;
 				opacity: 0;
 				width: 180vh;
 			}

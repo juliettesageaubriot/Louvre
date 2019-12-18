@@ -14,7 +14,7 @@ export default class Scroller {
 		scrollingElement,
 		appDebugger,
 		debug = true,
-		velocity = VELOCITY.prod
+		velocity = VELOCITY.dev
 	) {
 		this.config = {
 			velocity,

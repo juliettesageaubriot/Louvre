@@ -563,6 +563,7 @@ class App {
 
 				case 6:
 					this.animations.shatter = new Shatterer(target, this.scroller);
+
 					//apparition scène
 					scene.to(target.querySelectorAll('.appear'), 1, {
 						opacity: 1,

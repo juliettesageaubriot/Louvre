@@ -13,7 +13,7 @@ const tween = (shatterer = null) => {
 		artemisarc.classList.add(ARTEMISARC_ANIM);
 
 		artemisarc.addEventListener('animationend', () => {
-			if (shatterer) setTimeout(() => shatterer.doit(), 400);
+			if (shatterer) shatterer.doit();
 		});
 	};
 

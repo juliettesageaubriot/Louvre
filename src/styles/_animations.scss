@@ -1,6 +1,6 @@
-* {
-	transition: all ease 0.4s;
-}
+// * {
+// 	transition: all ease 0.4s;
+// }
 
 $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
@@ -29,15 +29,11 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 		animation: bebe 1s steps(3) 1;
 	}
 	&--artemisarc {
-		animation: artemisarc 1.8s steps(7) 1;
+		animation: artemisarc 1.8s steps(7) 1 backwards;
 	}
 	&--shatter {
-		-webkit-mask: url('./assets/videos/shatter.png');
-		mask: url('./assets/videos/shatter.png');
-		-webkit-mask-size: 100% 2900%;
-		mask-size: 100% 2900%;
-		-webkit-animation: shatter 2.4s steps(29) forwards;
-		animation: shatter 2.4s steps(29) forwards;
+		-webkit-animation: shatter 2.4s steps(29);
+		animation: shatter 2.4s steps(29);
 		animation-iteration-count: 1;
 	}
 }
@@ -107,14 +103,17 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 
 @keyframes shatter {
 	0% {
-		// -webkit-mask-position: 0 0;
-		// mask-position: 0 0;
+		-webkit-mask-position: 0 0;
+		mask-position: 0 0;
 		opacity: 1;
+		filter: blur(0) brightness(100%);
 	}
 
 	100% {
-		// -webkit-mask-position: 0 100%;
-		// mask-position: 0 100%;
+		-webkit-mask-position: 0 100%;
+		mask-position: 0 100%;
 		opacity: 0;
+		filter: blur(0.4px) brightness(80%);
+		background-color: black;
 	}
 }
