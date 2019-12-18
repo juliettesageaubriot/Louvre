@@ -356,6 +356,14 @@ class App {
 							repeatDelay: 0,
 							ease: 1
 						}, "<");
+						
+						scene.to(target.querySelector('#femme-penchee'), 1, {
+							rotation: 5,
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						}, "<");
 
 					break;
 					case 4:
@@ -391,6 +399,40 @@ class App {
 							}
 						);
 
+
+						scene.to(target.querySelector('#bateau'), 2, {
+							x: "50vh",
+							repeat: 0,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						}, "<")
+						.to(target.querySelector('#bateau'), 2, {
+							rotation: "-10px",
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},">").to(target.querySelector('#vague'), 2, {
+							opacity: 1
+						},"<")
+						.to(target.querySelector('#vague'), 2, {
+							rotation: "-10px",
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},"<")
+
+						.to(target.querySelector('#poisson'), 2, {
+							rotation: "-5px",
+							x: "15px",
+							y:"-5px",
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},">")
 						scene.to(target.querySelector('#lune'), 2, {
 							// x: "280px",
 							// y:"-200px",
@@ -398,7 +440,7 @@ class App {
 							y:"-22vh",
 							opacity: 1,
 							ease: 1
-						},"<")
+						},">")
 						.to(target.querySelector('#lune'), 2, {
 							rotation: "-15px",
 							repeat: -1,
@@ -406,13 +448,32 @@ class App {
 							repeatDelay: 0,
 							ease: 1
 						},">")
-						.to(target.querySelector('#nuage-bas'), 3, {
-							x: "-15px",
+						
+						scene.to(target.querySelector('#nuages-bas'), 1, {
+							y: "5px",
 							repeat: -1,
 							yoyo: true,
 							repeatDelay: 0,
 							ease: 1
-						}, 3);
+						}, "<");
+
+						scene.to(target.querySelector('#nuages-droite'), 1, {
+							x: "10px",
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						}, "<");
+
+						scene.to(target.querySelector('#nuages-gauche'), 1, {
+							x: "-10px",
+							y: "5px",
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						}, "<");
+
 
 					break;
 					case 5:

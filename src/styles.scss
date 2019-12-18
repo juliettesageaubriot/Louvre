@@ -439,7 +439,9 @@ body {
 				#bateau {
 					width: 18%;
 					bottom: 23%;
-					left: 3%;
+					//left: 3%;
+					left: -40vh;
+					// left: 30vh;
 				}
 				#artemis {
 					width: 22%;
@@ -460,6 +462,7 @@ body {
 					width: 18%;
 					left: 4%;
 					bottom: 19%;
+					opacity: 0;
 				}
 				#nuages-droite {
 					width: 20%;
