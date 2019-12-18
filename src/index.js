@@ -74,7 +74,7 @@ class App {
 		window.addEventListener('keypress', handlerKeypress);
 		this.select(classNames.ARTEMIS).parentNode.addEventListener(
 			'click',
-			() => artemis.timeline.play(),
+			() => artemis.shootArrow(),
 			false
 		);
 		this.select(classNames.BICHE).addEventListener(
@@ -205,7 +205,9 @@ class App {
 
 			switch (index) {
 				case 0:
-					// this.animations.scratcher = new Scratcher(target, this.scroller);
+					// this.animations.scratcher = new Scratcher(target, this.scroller, () =>
+					// 	this.animations.artemis.fragmentToArt.play()
+					// );
 					break;
 				case 1:
 					//apparition scène
@@ -224,22 +226,8 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
-					scene.fromTo(
-						textWrapper2.querySelectorAll('span'),
-						1,
-						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
-							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
-						}
+					[...textWrapper2.querySelectorAll('span')].forEach(
+						(span) => (span.style.opacity = 0)
 					);
 
 					scene.to(

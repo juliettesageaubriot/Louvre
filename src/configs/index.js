@@ -23,6 +23,7 @@ const configs = {
 		ARROW: '.arrow',
 		ARTEMIS: '.artemis',
 		ARTEMIS_FRAGMENT: '.artemis__fragment',
+		ARTEMIS_TEXT: '.artemis__text',
 		SCENES: '.app__scenes',
 		SCENE: '.scene',
 		SCENE_CONTENT: '.scene__content',
