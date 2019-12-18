@@ -226,6 +226,9 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
+
+					// Set opacity de tous les spans à 0, on peut faire
+					// ça aussi dans le css (j'ai commenté span-2 .span pour l'instant)
 					[...textWrapper2.querySelectorAll('span')].forEach(
 						(span) => (span.style.opacity = 0)
 					);
