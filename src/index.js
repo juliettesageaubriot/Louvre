@@ -231,21 +231,13 @@ class App {
 						console.log("error")
 					}
 					
-					scene.fromTo(
+					scene.to(
 						textWrapper2.querySelectorAll('span'),
 						1,
 						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
 							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
+							stagger: 0.05,
+							ease: 1
 						}
 					);
 
@@ -292,19 +284,11 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
-					scene.fromTo(
+					scene.to(
 						textWrapper3.querySelectorAll('span'),
 						1,
 						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
 							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
 							ease: 1,
 							stagger: 0.05
 						}
@@ -328,21 +312,13 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
-					scene.fromTo(
+					scene.to(
 						textWrapper4.querySelectorAll('span'),
 						1,
 						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
 							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
+							stagger: 0.05,
+							ease: 1
 						}
 					);
 
@@ -404,21 +380,13 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
-					scene.fromTo(
+					scene.to(
 						textWrapper5.querySelectorAll('span'),
 						1,
 						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
 							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
+							stagger: 0.05,
+							ease: 1
 						}
 					);
 
@@ -568,21 +536,13 @@ class App {
 						"<span class='letter'>$&</span>"
 					);
 
-					scene.fromTo(
+					scene.to(
 						textWrapper6.querySelectorAll('span'),
 						1,
 						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
 							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
+							stagger: 0.05,
+							ease: 1
 						}
 					);
 					break;
@@ -604,21 +564,13 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
-					scene.fromTo(
+					scene.to(
 						textWrapper7.querySelectorAll('span'),
 						1,
 						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
 							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
+							stagger: 0.05,
+							ease: 1
 						}
 					);
 					break;
