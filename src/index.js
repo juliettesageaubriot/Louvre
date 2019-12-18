@@ -11,10 +11,8 @@ import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
 
-import SOUND from './assets/sons/global.mp3';
-
-const { bounding, click } = utils;
-const { classNames, classAnimations, colors } = configs;
+const { bounding } = utils;
+const { classNames, classAnimations } = configs;
 
 class App {
 	constructor(debug = true, className = classNames.APP) {
@@ -28,8 +26,6 @@ class App {
 	}
 
 	init() {
-		click(this.app);
-
 		this.bindit();
 
 		if (this.config.debug) {
@@ -43,7 +39,7 @@ class App {
 			false
 		);
 
-		this.sfx = new Audio(SOUND);
+		this.sfx = this.select('#sfx');
 
 		this.loader();
 		this.scenes();
@@ -75,7 +71,7 @@ class App {
 					gsap.to(overlay, 1.2, { autoAlpha: 0, scale: 2, zIndex: -999 });
 				}, 600);
 
-				this.sfx && this.sfx.play();
+				this.sfx && this.sfx.play().catch(() => this.sfx.play());
 			}
 		});
 	}
@@ -106,11 +102,6 @@ class App {
 		};
 
 		window.addEventListener('keypress', handlerKeypress);
-
-		this.sfx.addEventListener('loadeddata', () => {
-			this.sfx.volume = 1;
-			this.sfx.loop = true;
-		});
 
 		this.select('#song').addEventListener('click', () => {
 			if (this.sfx) {

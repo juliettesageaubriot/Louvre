@@ -5,8 +5,7 @@ const configs = {
 	},
 	colors: {
 		text: 'rgba(0, 0, 0, o)',
-		bg: 'rgba(255, 255, 255, o)',
-		gold: '#c27036'
+		bg: 'rgba(255, 255, 255, o)'
 	},
 	menu: [],
 	font: {
