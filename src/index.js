@@ -138,7 +138,7 @@ class App {
 		// cta(select('#loup'), true);
 		// cta(select('#cheval'), true);
 
-		const scrollStart = bounding(scenes[1]).x / 2 + 1;
+		const scrollStart = (bounding(scenes[1]).x / 2 + 1) / 4;
 		const scrollEnd = bounding(scenes[scenes.length - 2]).right;
 		this.animations.artemis = artemis(this.scroller, scrollStart, scrollEnd, 2.4);
 
