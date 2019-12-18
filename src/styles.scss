@@ -28,6 +28,10 @@ body {
 		@include size(100%, 100%);
 	}
 
+	// .span-2 span {
+	// 	opacity: 0;
+	// }
+
 	&__fixed {
 		@include size(100%, 100%);
 		@include abs-pos;
@@ -40,10 +44,6 @@ body {
 			transform: translate(-50%, -50%) rotate(-2deg);
 			opacity: 0;
 		}
-
-		// .instructions {
-		// 	@include abs-pos(90%, 50%, -50%, -50%);
-		// }
 
 		#song {
 			//width: 2%;
@@ -114,6 +114,7 @@ body {
 
 			&#one {
 				width: 100vw;
+
 				@at-root {
 					.artemis {
 						&__wrapper {
@@ -130,6 +131,19 @@ body {
 
 							> * {
 								@include noselect;
+							}
+						}
+
+						&__text {
+							position: absolute;
+							left: 72%;
+							top: 64%;
+							width: 100%;
+							transform: scale(1.2);
+							text-align: center;
+
+							span {
+								opacity: 0;
 							}
 						}
 

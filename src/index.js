@@ -74,7 +74,7 @@ class App {
 		window.addEventListener('keypress', handlerKeypress);
 		this.select(classNames.ARTEMIS).parentNode.addEventListener(
 			'click',
-			() => artemis.timeline.play(),
+			() => artemis.shootArrow(),
 			false
 		);
 		this.select(classNames.BICHE).addEventListener(
@@ -205,7 +205,9 @@ class App {
 
 			switch (index) {
 				case 0:
-					// this.animations.scratcher = new Scratcher(target, this.scroller);
+					this.animations.scratcher = new Scratcher(target, this.scroller, () =>
+						this.animations.artemis.fragmentToArt.play()
+					);
 					break;
 				case 1:
 					//apparition scène
@@ -224,56 +226,24 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
-					scene.fromTo(
-						textWrapper2.querySelectorAll('span'),
-						1,
-						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
-							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
-						}
+
+					// Set opacity de tous les spans à 0, on peut faire
+					// ça aussi dans le css (j'ai commenté span-2 .span pour l'instant)
+					[...textWrapper2.querySelectorAll('span')].forEach(
+						(span) => (span.style.opacity = 0)
 					);
 
-					scene.to(
-						target.querySelector('#oiseau'),
-						1,
-						{
-							rotation: -15,
-							repeat: 5,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						'<'
-					);
+					// Change to to
+					scene.to(textWrapper2.querySelectorAll('span'), 1, {
+						autoAlpha: 1,
+						ease: 1,
+						stagger: 0.05
+					});
 
-					scene.to(
-						target.querySelector('#myrtille'),
-						1,
-						{
-							rotation: 5,
-							repeat: -1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						'<'
-					);
-					break;
-				case 2:
-					//apparition scène
-
-					scene.to(target.querySelectorAll('.appear'), 1, {
-						opacity: 1,
-						repeat: 0,
+					scene.to(target.querySelector('#oiseau'), 1, {
+						rotation: -15,
+						repeat: 5,
+						yoyo: true,
 						repeatDelay: 0,
 						ease: 1
 					});

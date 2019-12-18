@@ -15,14 +15,15 @@ import SFX from '../../assets/sons/scratch.mp3';
 const { W, H } = configs.dimensions;
 
 const STRIDE = 1;
-const MAX_FILL_AMT = 0.4;
+const MAX_FILL_AMT = 0.32;
 const BRUSH_W = 74;
 const BRUSH_H = 56;
 
 export default class Scratcher {
-	constructor(container, appScroller) {
+	constructor(container, appScroller, cb) {
 		this.container = container;
 		this.appScroller = appScroller;
+		this.cb = cb;
 
 		this.assets = {
 			bg: null,
@@ -162,6 +163,7 @@ export default class Scratcher {
 				autoAlpha: 0,
 				pointerEvents: 'none',
 				onComplete: () => {
+					this.cb();
 					this.pauseSFX();
 					this.appScroller.setDoScroll(true);
 				}
