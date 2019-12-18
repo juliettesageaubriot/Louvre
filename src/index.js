@@ -138,11 +138,10 @@ class App {
 		// cta(select('#loup'), true);
 		// cta(select('#cheval'), true);
 
-		this.animations.artemis = artemis(
-			this.scroller,
-			bounding(scenes[1]).x / 2 + 1,
-			2.4
-		);
+		const scrollStart = bounding(scenes[1]).x / 2 + 1;
+		const scrollEnd = bounding(scenes[scenes.length - 2]).right;
+		this.animations.artemis = artemis(this.scroller, scrollStart, scrollEnd, 2.4);
+
 		this.animations.biche = biche();
 		this.animations.fleurs = fleurs();
 		this.animations.fleurs2 = fleurs2();

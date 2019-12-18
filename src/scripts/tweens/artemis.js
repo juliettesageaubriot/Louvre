@@ -5,13 +5,14 @@ import configs from '../../configs';
 const { ARTEMIS, ARTEMIS_FRAGMENT, ARTEMIS_TEXT, ARROW } = configs.classNames;
 const { ARTEMIS: ARTEMIS_ANIM } = configs.classAnimations;
 
-const tween = (appScroller, scrollTo = 0, duration = 0) => {
+const tween = (appScroller, scrollStart = 0, scrollEnd = 0, duration = 0) => {
 	const artemis = document.querySelector(ARTEMIS);
 
 	charming(document.querySelector(ARTEMIS_TEXT));
 
 	const tweenArrow = () => {
-		if (appScroller.data.x <= scrollTo / 4) gsap.to(ARROW, 0.4, { autoAlpha: 0 });
+		if (appScroller.data.x <= scrollStart || appScroller.data.x >= scrollEnd)
+			gsap.to(ARROW, 0.4, { autoAlpha: 0 });
 		else gsap.to(ARROW, 0.4, { autoAlpha: 1 });
 	};
 
@@ -26,7 +27,7 @@ const tween = (appScroller, scrollTo = 0, duration = 0) => {
 		artemis.classList.add(ARTEMIS_ANIM);
 
 		artemis.addEventListener('animationend', () => {
-			scrollTo && appScroller.auto(scrollTo, duration);
+			scrollStart && appScroller.auto(scrollStart, duration);
 			gsap.set(ARROW, { autoAlpha: 1 });
 			// gsap.to(ARTEMIS_TEXT, 0.4, { autoAlpha: 0 });
 		});
