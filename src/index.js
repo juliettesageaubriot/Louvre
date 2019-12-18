@@ -98,13 +98,20 @@ class App {
 							gsap.to(classNames.ARROW, 0.4, { autoAlpha: 0 })
 						);
 					break;
-					break;
 				default:
 					break;
 			}
 		};
 
 		window.addEventListener('keypress', handlerKeypress);
+
+		this.select('#song').addEventListener('click', () => {
+			if (this.sfx) {
+				if (this.sfx.paused) this.sfx.play();
+				else this.sfx.pause();
+			}
+		});
+
 		this.select(classNames.ARTEMIS).parentNode.addEventListener(
 			'click',
 			() => artemis.shootArrow(),

@@ -21,11 +21,11 @@ body {
 		@include size(auto, 32%);
 		opacity: 0;
 	}
-	
+
 	div {
 		@include abs-center;
 		background-color: rgba(0, 0, 0, 0.63);
-		
+
 		mask-size: 10%;
 		mask-postion: center;
 		mask: url('./assets/images/loader-arrow-start.svg');
@@ -34,7 +34,7 @@ body {
 		-webkit-mask-postion: center center;
 		-webkit-mask: url('./assets/images/loader-arrow-start.svg');
 		-webkit-mask-repeat: no-repeat;
-		
+
 		&:after {
 			content: '';
 			display: block;
@@ -42,7 +42,7 @@ body {
 			@include size(100%, 100%);
 			background-color: $gold;
 		}
-		
+
 		&.loading {
 			&:after {
 				animation: loading 6s ease-in-out 1 forwards;
@@ -95,9 +95,10 @@ body {
 			@include abs-pos(90%, 95%, -50%, -50%);
 			cursor: pointer;
 			pointer-events: all;
-			path {
-				&:hover {
-					fill: red;
+			&:hover {
+				path {
+					fill: $white;
+					@include transition($duration: 0.8s);
 				}
 			}
 		}
