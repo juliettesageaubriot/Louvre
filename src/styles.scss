@@ -59,33 +59,13 @@ body {
 		@include size(100vw, 100vh);
 		overflow: hidden;
 		&__wrapper {
-			@include size(calc(100vw + (180vh * 7)), 100%);
+			@include size(calc((100vw * 2) + (180vh * 5)), 100%);
 			display: flex;
 		}
 
 		&__assets {
 			display: none;
 			visibility: hidden;
-		}
-
-		&__fx {
-			> * {
-				position: absolute;
-			}
-
-			&--shattering {
-				perspective: 500px;
-				&__content {
-					@include size(100%, 100%);
-					@include center-content;
-				}
-				canvas {
-					backface-visibility: hidden;
-					-webkit-backface-visibility: hidden;
-					-moz-backface-visibility: hidden;
-					-ms-backface-visibility: hidden;
-				}
-			}
 		}
 
 		.texte {
@@ -582,6 +562,8 @@ body {
 				}
 			}
 			&#seven {
+				width: 100vw;
+
 				.artemisarc {
 					&__wrapper {
 						// position: relative;

@@ -47,7 +47,6 @@ class App {
 		const {
 			artemis,
 			biche,
-			shatter,
 			fleurs,
 			fleurs2,
 			fleurs3,
@@ -63,8 +62,6 @@ class App {
 							gsap.to(classNames.ARROW, 0.4, { autoAlpha: 0 })
 						);
 					break;
-				case 'KeyS':
-					shatter.doIt();
 					break;
 				default:
 					break;
@@ -118,7 +115,6 @@ class App {
 		const {
 			cta,
 			artemis,
-			shatter,
 			biche,
 			fleurs,
 			fleurs2,
@@ -151,7 +147,6 @@ class App {
 		this.animations.fleurs3 = fleurs3();
 		this.animations.bebe = bebe();
 		this.animations.artemisarc = artemisarc();
-		this.animations.shatter = shatter(this.app.querySelector(classNames.SHATTER));
 
 		//scene 3
 		// loup qui saute sur le bouc et qui emet un son
