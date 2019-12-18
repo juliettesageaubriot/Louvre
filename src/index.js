@@ -13,7 +13,7 @@ import utils from './utils';
 
 import SOUND from './assets/sons/global.mp3';
 
-const { bounding, last } = utils;
+const { bounding, click } = utils;
 const { classNames, classAnimations, colors } = configs;
 
 class App {
@@ -23,6 +23,14 @@ class App {
 		this.config = {
 			debug
 		};
+
+		this.init();
+	}
+
+	init() {
+		click(this.app);
+
+		this.bindit();
 
 		if (this.config.debug) {
 			this.debugger = new Debugger();
@@ -37,19 +45,16 @@ class App {
 
 		this.sfx = new Audio(SOUND);
 
-		this.sfx.addEventListener('loadeddata', () => {
-			this.sfx.volume = 1;
-			this.sfx.loop = true;
-		});
-
 		this.loader();
-
-		this.bind();
 		this.scenes();
 		this.tweens();
 		this.events();
 
 		this.observer = new Observer(this);
+	}
+
+	bindit() {
+		this.select = this.select.bind(this);
 	}
 
 	loader() {
@@ -75,10 +80,6 @@ class App {
 		});
 	}
 
-	bind() {
-		this.select = this.select.bind(this);
-	}
-
 	events() {
 		const {
 			artemis,
@@ -89,6 +90,7 @@ class App {
 			bebe,
 			artemisarc
 		} = this.animations;
+
 		const handlerKeypress = ({ code }) => {
 			console.log(code);
 			switch (code) {
@@ -104,6 +106,11 @@ class App {
 		};
 
 		window.addEventListener('keypress', handlerKeypress);
+
+		this.sfx.addEventListener('loadeddata', () => {
+			this.sfx.volume = 1;
+			this.sfx.loop = true;
+		});
 
 		this.select('#song').addEventListener('click', () => {
 			if (this.sfx) {
@@ -682,49 +689,6 @@ class App {
 			this.debugger.add('animation', this.animations);
 			this.debugger.log(['animation']);
 		}
-	}
-
-	observer() {
-		/**
-		 * Config Intersection Observer
-		 */
-		const threshold = 0.6; // trigger
-		const options = {
-			root: null,
-			rootMargin: '0px',
-			threshold
-		};
-
-		/**
-		 * Observer handler
-		 */
-		const { targets, timelines } = this.animations.scenes;
-		const animHandler = (entries, observer) => {
-			entries.forEach(({ target, isIntersecting }) => {
-				const i = targets.indexOf(target);
-				const tl = timelines[i];
-
-				//console.log(target)
-
-				if (isIntersecting) this.playScene(tl);
-
-				console.log(isIntersecting);
-			});
-		};
-		/**
-		 * Create observer & observe
-		 */
-		const observer = new IntersectionObserver(animHandler, options);
-		targets.forEach((target) => observer.observe(target));
-	}
-
-	playScene(timeline) {
-		if (this.scroller.data.direction === 'RIGHT') {
-			timeline.play();
-		}
-		// else {
-		// 	timeline.reverse();
-		// }
 	}
 
 	select(query) {

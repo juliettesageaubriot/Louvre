@@ -47,19 +47,4 @@ export default class Shatterer {
 			400
 		);
 	}
-
-	click(el) {
-		// Simulate clicking on the specified element.
-		triggerEvent(el, 'click');
-
-		/**
-		 * Trigger the specified event on the specified element.
-		 * @param  {Object} el  the target element.
-		 * @param  {String} event the type of the event (e.g. 'click').
-		 */
-		function triggerEvent(el, event) {
-			var clickEvent = new Event(event); // Create the event.
-			el.dispatchEvent(clickEvent); // Dispatch the event.
-		}
-	}
 }

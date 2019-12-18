@@ -58,7 +58,21 @@ const utils = {
 		return Math.sqrt(dx * dx + dy * dy);
 	},
 	tick: (cb, t) => setTimeout(() => cb(), t),
-	bounding: (el) => el.getBoundingClientRect()
+	bounding: (el) => el.getBoundingClientRect(),
+	click(el) {
+		// Simulate clicking on the specified element.
+		triggerEvent(el, 'click');
+
+		/**
+		 * Trigger the specified event on the specified element.
+		 * @param  {Object} el  the target element.
+		 * @param  {String} event the type of the event (e.g. 'click').
+		 */
+		function triggerEvent(el, event) {
+			var clickEvent = new Event(event); // Create the event.
+			el.dispatchEvent(clickEvent); // Dispatch the event.
+		}
+	}
 };
 
 export default utils;
