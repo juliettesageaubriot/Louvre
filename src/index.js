@@ -227,11 +227,17 @@ class App {
 						"<span class='letter'>$&</span>"
 					);
 
-					// Set opacity de tous les spans à 0, on peut faire
-					// ça aussi dans le css (j'ai commenté span-2 .span pour l'instant)
-					[...textWrapper2.querySelectorAll('span')].forEach(
-						(span) => (span.style.opacity = 0)
-					);
+					if ("<span class='letter'>.</span>" === true) {
+						console.log('capte le point');
+					} else {
+						console.log('error');
+					}
+
+					scene.to(textWrapper2.querySelectorAll('span'), 1, {
+						autoAlpha: 1,
+						stagger: 0.05,
+						ease: 1
+					});
 
 					scene.to(
 						target.querySelector('#oiseau'),
@@ -276,23 +282,25 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
-					scene.fromTo(
-						textWrapper3.querySelectorAll('span'),
+					scene.to(textWrapper3.querySelectorAll('span'), 1, {
+						autoAlpha: 1,
+						ease: 1,
+						stagger: 0.05
+					});
+
+					scene.to(
+						target.querySelector('#plante-tombee'),
 						1,
 						{
-							autoAlpha: 0,
+							rotation: -1,
+							repeat: -1,
 							yoyo: true,
 							repeatDelay: 0,
 							ease: 1
 						},
-						{
-							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
-						}
+						'<'
 					);
+
 					break;
 
 				case 3:
@@ -312,23 +320,11 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
-					scene.fromTo(
-						textWrapper4.querySelectorAll('span'),
-						1,
-						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
-							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
-						}
-					);
+					scene.to(textWrapper4.querySelectorAll('span'), 1, {
+						autoAlpha: 1,
+						stagger: 0.05,
+						ease: 1
+					});
 
 					scene.to(
 						target.querySelector('#enfant'),
@@ -388,23 +384,11 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
-					scene.fromTo(
-						textWrapper5.querySelectorAll('span'),
-						1,
-						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
-							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
-						}
-					);
+					scene.to(textWrapper5.querySelectorAll('span'), 1, {
+						autoAlpha: 1,
+						stagger: 0.05,
+						ease: 1
+					});
 
 					scene
 						.to(
@@ -471,8 +455,6 @@ class App {
 							target.querySelector('#lune'),
 							2,
 							{
-								// x: "280px",
-								// y:"-200px",
 								x: '30vh',
 								y: '-22vh',
 								opacity: 1,
@@ -552,23 +534,35 @@ class App {
 						"<span class='letter'>$&</span>"
 					);
 
-					scene.fromTo(
-						textWrapper6.querySelectorAll('span'),
-						1,
+					scene.to(textWrapper6.querySelectorAll('span'), 1, {
+						autoAlpha: 1,
+						stagger: 0.05,
+						ease: 1
+					});
+
+					scene.to(
+						target.querySelector('#soleil'),
+						3,
 						{
-							autoAlpha: 0,
+							x: '-50vh',
+							y: '-20vh',
+							ease: 1
+						},
+						'<'
+					);
+					scene.to(
+						target.querySelector('#soleil'),
+						30,
+						{
+							rotation: 360,
+							repeat: -1,
 							yoyo: true,
 							repeatDelay: 0,
 							ease: 1
 						},
-						{
-							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
-						}
+						'<'
 					);
+
 					break;
 
 				case 6:
@@ -588,23 +582,11 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
-					scene.fromTo(
-						textWrapper7.querySelectorAll('span'),
-						1,
-						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
-							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
-						}
-					);
+					scene.to(textWrapper7.querySelectorAll('span'), 1, {
+						autoAlpha: 1,
+						stagger: 0.05,
+						ease: 1
+					});
 					break;
 				default:
 					break;

@@ -93,6 +93,10 @@ body {
 			text-align: center;
 			font-size: 20px;
 
+			span {
+				opacity: 0;
+			}
+
 			@media screen and (max-width: 375px) and (max-height: 812px) {
 				font-size: 13px;
 			}
@@ -508,8 +512,9 @@ body {
 				}
 				#soleil {
 					width: 6%;
-					right: 18%;
-					top: 28%;
+					right: -20vh;
+					//right: 30vh;
+					top: 50vh;
 				}
 				#nuage-droite-7 {
 					width: 17%;
