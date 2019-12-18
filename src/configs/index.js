@@ -5,7 +5,8 @@ const configs = {
 	},
 	colors: {
 		text: 'rgba(0, 0, 0, o)',
-		bg: 'rgba(255, 255, 255, o)'
+		bg: 'rgba(255, 255, 255, o)',
+		gold: '#c27036'
 	},
 	menu: [],
 	font: {
@@ -20,6 +21,7 @@ const configs = {
 	},
 	classNames: {
 		APP: '.app',
+		LOADER: '.app__overlay',
 		ARROW: '.arrow',
 		ARTEMIS: '.artemis',
 		ARTEMIS_FRAGMENT: '.artemis__fragment',
@@ -44,7 +46,8 @@ const configs = {
 		FLEURS3: 'animation--fleurs3',
 		BEBE: 'animation--bebe',
 		ARTEMISARC: 'animation--artemisarc',
-		SHATTER: 'animation--shatter'
+		SHATTER: 'animation--shatter',
+		LOADER: 'loading'
 	}
 };
 

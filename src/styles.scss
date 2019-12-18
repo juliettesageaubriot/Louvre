@@ -12,6 +12,43 @@ body {
 	@include abs-pos();
 	overflow: hidden;
 	z-index: 9999;
+	pointer-events: none;
+	background-image: url('./assets/images/fond-black.svg');
+	background-size: cover;
+
+	img {
+		@include abs-center;
+		@include size(auto, 32%);
+		opacity: 0;
+	}
+	
+	div {
+		@include abs-center;
+		background-color: rgba(0, 0, 0, 0.63);
+		
+		mask-size: 10%;
+		mask-postion: center;
+		mask: url('./assets/images/loader-arrow-start.svg');
+		mask-repeat: no-repeat;
+		-webkit-mask-size: 10%;
+		-webkit-mask-postion: center center;
+		-webkit-mask: url('./assets/images/loader-arrow-start.svg');
+		-webkit-mask-repeat: no-repeat;
+		
+		&:after {
+			content: '';
+			display: block;
+			@include abs-pos($left: -100%);
+			@include size(100%, 100%);
+			background-color: $gold;
+		}
+		
+		&.loading {
+			&:after {
+				animation: loading 6s ease-in-out 1 forwards;
+			}
+		}
+	}
 }
 
 .app {

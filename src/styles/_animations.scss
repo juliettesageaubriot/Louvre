@@ -38,6 +38,15 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	}
 }
 
+@keyframes loading {
+	from {
+		left: -100%;
+	}
+	to {
+		left: 0;
+	}
+}
+
 @keyframes artemis {
 	from {
 		background-position: 0 0;

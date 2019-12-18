@@ -11,8 +11,8 @@ import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
 
-const { bounding } = utils;
-const { classNames } = configs;
+const { bounding, last } = utils;
+const { classNames, classAnimations, colors } = configs;
 
 class App {
 	constructor(debug = true, className = classNames.APP) {
@@ -33,12 +33,40 @@ class App {
 			false
 		);
 
+		this.loader();
+
 		this.bind();
 		this.scenes();
 		this.tweens();
 		this.events();
 
 		this.observer = new Observer(this);
+	}
+
+	loader() {
+		const overlay = document.querySelector(classNames.LOADER);
+		const img = overlay.querySelector('img');
+		const div = overlay.querySelector('div');
+	
+		
+		const {width, height} = bounding(img);
+		gsap.set(div, {width, height})
+
+		const start = () => div.classList.add(classAnimations.LOADER)
+		const update = () => img.style.opacity = tl.progress()/2;
+		const complete = () => {
+			gsap.to(img, 0.6, {alpha: 1});
+			setTimeout(() => {
+				gsap.to(overlay, 1.2, { autoAlpha: 0, scale: 2, zIndex: -999 });
+			}, 600)
+		};
+
+		const tl = gsap.timeline({
+			duration: 6,
+			onStart: start,
+			onUpdate: update,
+			onComplete: complete
+		});
 	}
 
 	bind() {
@@ -546,57 +574,58 @@ class App {
 						},
 						'<'
 					);
-					scene.to(
-						target.querySelector('#soleil'),
-						30,
-						{
-							rotation: 360,
-							repeat: -1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						'>'
-					)
-					.to(
-						target.querySelector('#nuage-droite-7'),
-						1,
-						{
-							x: "10px",
-							scale: 1.02,
-							repeat: -1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						'<'
-					)
-					.to(
-						target.querySelector('#nuage-gauche-7'),
-						1,
-						{
-							x: "-8px",
-							scale: 1.02,
-							repeat: -1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						'>'
-					)
-					.to(
-						target.querySelector('#nuage-bas-7'),
-						1,
-						{
-							y: "-10px",
-							scale: 1.02,
-							repeat: -1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						'>'
-					);
+					scene
+						.to(
+							target.querySelector('#soleil'),
+							30,
+							{
+								rotation: 360,
+								repeat: -1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'>'
+						)
+						.to(
+							target.querySelector('#nuage-droite-7'),
+							1,
+							{
+								x: '10px',
+								scale: 1.02,
+								repeat: -1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'<'
+						)
+						.to(
+							target.querySelector('#nuage-gauche-7'),
+							1,
+							{
+								x: '-8px',
+								scale: 1.02,
+								repeat: -1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'>'
+						)
+						.to(
+							target.querySelector('#nuage-bas-7'),
+							1,
+							{
+								y: '-10px',
+								scale: 1.02,
+								repeat: -1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'>'
+						);
 
 					break;
 
