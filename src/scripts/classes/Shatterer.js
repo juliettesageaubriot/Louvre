@@ -16,7 +16,7 @@ export default class Shatterer {
 	}
 
 	bindit() {
-		this.content.addEventListener('animationend', () => {
+		this.content.addEventListener('shatterend', () => {
 			this.content.classList.remove(SHATTER_ANIM);
 			void this.content.offsetWidth;
 			gsap
@@ -26,7 +26,7 @@ export default class Shatterer {
 					`${SHATTER_OVERLAY} > div:last-of-type`,
 					1.2,
 					{ autoAlpha: 0 },
-					'+=2.4'
+					'+=3.2'
 				);
 		});
 	}
@@ -34,6 +34,11 @@ export default class Shatterer {
 	doit() {
 		this.content.classList.add(SHATTER_ANIM);
 		this.appScroller.setDoScroll(false);
+
+		setTimeout(
+			() => this.content.dispatchEvent(new CustomEvent('shatterend')),
+			2400
+		);
 	}
 
 	click(el) {
