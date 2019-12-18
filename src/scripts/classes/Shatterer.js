@@ -1,40 +1,40 @@
 import { gsap } from 'gsap';
-import utils from '../../utils';
 import configs from '../../configs';
 
-const { last } = utils;
 const { SHATTER: SHATTER_ANIM } = configs.classAnimations;
-const { SHATTER } = configs.classNames;
+const { SHATTER, SHATTER_OVERLAY } = configs.classNames;
 
 export default class Shatterer {
 	constructor(container, appScroller) {
 		this.container = container;
 		this.appScroller = appScroller;
 
-		this.contents = [...this.container.querySelectorAll(SHATTER)];
+		this.content = this.container.querySelector(SHATTER);
 
 		this.bindit();
-		this.init();
-		this.doit();
+		// this.doit();
 	}
 
 	bindit() {
-		const el = last(this.contents);
-		let playState = true;
-		let isFirst = true;
-
-		gsap.set(el, { width: '100%', height: '100%' });
-
-		el.addEventListener('click', () => {
-			el.classList.add(SHATTER_ANIM);
+		this.content.addEventListener('animationend', () => {
+			this.content.classList.remove(SHATTER_ANIM);
+			void this.content.offsetWidth;
+			gsap
+				.timeline()
+				.to(SHATTER_OVERLAY, 1.2, { alpha: 1, pointerEvents: 'all' })
+				.to(
+					`${SHATTER_OVERLAY} > div:last-of-type`,
+					1.2,
+					{ autoAlpha: 0 },
+					'+=2.4'
+				);
 		});
-
-		this.click(el);
 	}
 
-	init() {}
-
-	doit() {}
+	doit() {
+		this.content.classList.add(SHATTER_ANIM);
+		this.appScroller.setDoScroll(false);
+	}
 
 	click(el) {
 		// Simulate clicking on the specified element.

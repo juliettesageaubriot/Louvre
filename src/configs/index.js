@@ -33,7 +33,8 @@ const configs = {
 		FLEURS3: '.fleurs3',
 		BEBE: '.bebe',
 		ARTEMISARC: '.artemisarc',
-		SHATTER: '.shatter'
+		SHATTER: '.shatter',
+		SHATTER_OVERLAY: '.shatter__overlay'
 	},
 	classAnimations: {
 		ARTEMIS: 'animation--artemis',

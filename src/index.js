@@ -148,7 +148,7 @@ class App {
 		this.animations.fleurs2 = fleurs2();
 		this.animations.fleurs3 = fleurs3();
 		this.animations.bebe = bebe();
-		this.animations.artemisarc = artemisarc();
+		this.animations.artemisarc = artemisarc(this.animations.shatter);
 
 		//scene 3
 		// loup qui saute sur le bouc et qui emet un son
