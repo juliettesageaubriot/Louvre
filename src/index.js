@@ -556,7 +556,46 @@ class App {
 							repeatDelay: 0,
 							ease: 1
 						},
+						'>'
+					)
+					.to(
+						target.querySelector('#nuage-droite-7'),
+						1,
+						{
+							x: "10px",
+							scale: 1.02,
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},
 						'<'
+					)
+					.to(
+						target.querySelector('#nuage-gauche-7'),
+						1,
+						{
+							x: "-8px",
+							scale: 1.02,
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},
+						'>'
+					)
+					.to(
+						target.querySelector('#nuage-bas-7'),
+						1,
+						{
+							y: "-10px",
+							scale: 1.02,
+							repeat: -1,
+							yoyo: true,
+							repeatDelay: 0,
+							ease: 1
+						},
+						'>'
 					);
 
 					break;
