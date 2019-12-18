@@ -392,8 +392,10 @@ class App {
 						);
 
 						scene.to(target.querySelector('#lune'), 2, {
-							x: "280px",
-							y:"-200px",
+							// x: "280px",
+							// y:"-200px",
+							x:"30vh",
+							y:"-22vh",
 							opacity: 1,
 							ease: 1
 						},"<")
