@@ -74,7 +74,7 @@ class App {
 		window.addEventListener('keypress', handlerKeypress);
 		this.select(classNames.ARTEMIS).parentNode.addEventListener(
 			'click',
-			() => artemis.timeline.play(),
+			() => artemis.shootArrow(),
 			false
 		);
 		this.select(classNames.BICHE).addEventListener(
@@ -205,7 +205,9 @@ class App {
 
 			switch (index) {
 				case 0:
-					this.animations.scratcher = new Scratcher(target, this.scroller);
+					this.animations.scratcher = new Scratcher(target, this.scroller, () =>
+						this.animations.artemis.fragmentToArt.play()
+					);
 					break;
 				case 1:
 					let textWrapper2 = document.querySelector('.span-2');

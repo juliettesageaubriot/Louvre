@@ -41,10 +41,6 @@ body {
 			opacity: 0;
 		}
 
-		// .instructions {
-		// 	@include abs-pos(90%, 50%, -50%, -50%);
-		// }
-
 		#song {
 			//width: 2%;
 			@include size(30px, auto);
@@ -114,6 +110,7 @@ body {
 
 			&#one {
 				width: 100vw;
+
 				@at-root {
 					.artemis {
 						&__wrapper {
@@ -130,6 +127,13 @@ body {
 
 							> * {
 								@include noselect;
+							}
+
+							p {
+								position: absolute;
+								width: 100%;
+								transform: scale(1.3);
+								text-align: center;
 							}
 						}
 
