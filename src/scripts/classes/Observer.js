@@ -80,8 +80,6 @@ export default class Observer {
 		const { options } = this.config;
 		const { targets } = this.app.animations.scenes;
 
-		console.log(!isMobile());
-
 		this.observer = !isMobile()
 			? new IntersectionObserver(this.animHandler, options)
 			: new CustomObserver(
