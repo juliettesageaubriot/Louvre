@@ -32,7 +32,8 @@ const configs = {
 		FLEURS2: '.fleurs2',
 		FLEURS3: '.fleurs3',
 		BEBE: '.bebe',
-		ARTEMISARC: '.artemisarc'
+		ARTEMISARC: '.artemisarc',
+		SHATTER: '.shatter'
 	},
 	classAnimations: {
 		ARTEMIS: 'animation--artemis',
@@ -41,7 +42,8 @@ const configs = {
 		FLEURS2: 'animation--fleurs2',
 		FLEURS3: 'animation--fleurs3',
 		BEBE: 'animation--bebe',
-		ARTEMISARC: 'animation--artemisarc'
+		ARTEMISARC: 'animation--artemisarc',
+		SHATTER: 'animation--shatter'
 	}
 };
 

@@ -30,9 +30,11 @@ const utils = {
 			.map((c) => parseInt(c.match(/\d+/)))
 			.filter((c) => !isNaN(c)),
 	alpha: (color, opacity) => color.replace('o', opacity),
+	sign: (x) => (x < 0 ? -1 : 1),
 	randomIntegerInRange: (min, max) =>
 		Math.floor(Math.random() * (max - min + 1)) + min,
 	randomNumberInRange: (min, max) => Math.random() * (max - min) + min,
+	last: (array) => array[array.length - 1],
 	sample: (array) => array[Math.floor(Math.random() * array.length)],
 	shuffle: ([...arr]) => {
 		let m = arr.length;

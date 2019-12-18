@@ -9,7 +9,7 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	&--artemis {
 		animation: artemis 2.4s steps(15);
 		animation-iteration-count: 1;
- 	}
+	}
 	// &--biche {
 	// 	animation: biche 1s steps(4) 1;
 	// }
@@ -20,16 +20,25 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 		animation: fleurs 1s steps(3) 1;
 	}
 	&--fleurs2 {
-		animation: fleurs-2 .8s steps(3) 1;
+		animation: fleurs-2 0.8s steps(3) 1;
 	}
 	&--fleurs3 {
-		animation: fleurs-3 .8s steps(3) 1;
+		animation: fleurs-3 0.8s steps(3) 1;
 	}
 	&--bebe {
 		animation: bebe 1s steps(3) 1;
 	}
 	&--artemisarc {
 		animation: artemisarc 1.8s steps(7) 1;
+	}
+	&--shatter {
+		-webkit-mask: url('./assets/videos/shatter.png');
+		mask: url('./assets/videos/shatter.png');
+		-webkit-mask-size: 100% 2900%;
+		mask-size: 100% 2900%;
+		-webkit-animation: shatter 2.4s steps(29) forwards;
+		animation: shatter 2.4s steps(29) forwards;
+		animation-iteration-count: infinite;
 	}
 }
 
@@ -78,7 +87,7 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	}
 }
 
-@keyframes bebe{
+@keyframes bebe {
 	from {
 		background-position: 0 0;
 	}
@@ -87,11 +96,25 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	}
 }
 
-@keyframes artemisarc{
+@keyframes artemisarc {
 	from {
 		background-position: 0 0;
 	}
 	to {
 		background-position: 0 -700%;
+	}
+}
+
+@keyframes shatter {
+	0% {
+		-webkit-mask-position: 0 0;
+		mask-position: 0 0;
+		opacity: 1;
+	}
+
+	100% {
+		-webkit-mask-position: 0 100%;
+		mask-position: 0 100%;
+		opacity: 0;
 	}
 }

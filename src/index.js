@@ -4,10 +4,12 @@ import { gsap } from 'gsap';
 import Debugger from './scripts/classes/Debugger';
 import Scroller from './scripts/classes/Scroller';
 import Scratcher from './scripts/classes/Scratcher';
+import Observer from './scripts/classes/Observer';
+import Shatterer from './scripts/classes/Shatterer';
+
 import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
-import Observer from './scripts/classes/Observer';
 
 const { bounding } = utils;
 const { classNames } = configs;
@@ -561,8 +563,8 @@ class App {
 					break;
 
 				case 6:
+					this.animations.shatter = new Shatterer(target, this.scroller);
 					//apparition scène
-
 					scene.to(target.querySelectorAll('.appear'), 1, {
 						opacity: 1,
 						repeat: 0,
