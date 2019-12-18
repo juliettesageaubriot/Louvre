@@ -4,8 +4,18 @@
 import { gsap } from 'gsap';
 import Hammer from 'hammerjs';
 
+const VELOCITY = {
+	prod: 80,
+	dev: 320
+};
+
 export default class Scroller {
-	constructor(scrollingElement, appDebugger, debug = true, velocity = 200) {
+	constructor(
+		scrollingElement,
+		appDebugger,
+		debug = true,
+		velocity = VELOCITY.dev
+	) {
 		this.config = {
 			velocity,
 			debug,

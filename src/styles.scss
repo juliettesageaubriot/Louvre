@@ -59,7 +59,7 @@ body {
 		@include size(100vw, 100vh);
 		overflow: hidden;
 		&__wrapper {
-			@include size(calc((100vw * 2) + (180vh * 5)), 100%);
+			@include size(calc(100vw + (180vh * 6)), 100%);
 			display: flex;
 		}
 
@@ -562,8 +562,6 @@ body {
 				}
 			}
 			&#seven {
-				width: 100vw;
-
 				.artemisarc {
 					&__wrapper {
 						// position: relative;
@@ -572,8 +570,8 @@ body {
 						transform-origin: bottom;
 						padding: 0;
 						bottom: 13.5%;
-						left: 50%;
-						transform: translate(-40%, 0);
+						left: 68%;
+						transform: translate(-50%, 0);
 
 						&:before {
 							content: '';
@@ -599,7 +597,7 @@ body {
 				}
 
 				.texte-8 {
-					@include abs-pos(50%, 20%, -50%, -50%);
+					@include abs-pos(50%, 32%, -50%, -50%);
 					width: 45vh;
 				}
 			}
