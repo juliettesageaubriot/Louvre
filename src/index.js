@@ -215,23 +215,15 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
-					scene.fromTo(
-						textWrapper2.querySelectorAll('span'),
-						1,
-						{
-							autoAlpha: 0,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						{
-							autoAlpha: 1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1,
-							stagger: 0.05
-						}
+					[...textWrapper2.querySelectorAll('span')].forEach(
+						(span) => (span.style.opacity = 0)
 					);
+
+					scene.to(textWrapper2.querySelectorAll('span'), 1, {
+						autoAlpha: 1,
+						ease: 1,
+						stagger: 0.05
+					});
 
 					scene.to(target.querySelector('#oiseau'), 1, {
 						rotation: -15,
