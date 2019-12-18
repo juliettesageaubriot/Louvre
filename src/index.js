@@ -226,6 +226,13 @@ class App {
 						/\S/g,
 						"<span class='letter'>$&</span>"
 					);
+
+					if ("<span class='letter'>.</span>" === true) {
+						console.log("capte le point")
+					} else {
+						console.log("error")
+					}
+					
 					scene.fromTo(
 						textWrapper2.querySelectorAll('span'),
 						1,
