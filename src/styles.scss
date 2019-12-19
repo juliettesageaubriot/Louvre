@@ -7,12 +7,13 @@ body {
 }
 
 .app__overlay {
-	@include size(100%, 100%);
-	@include abs-pos();
+	@include size(102%, 102%);
+	@include abs-center;
 	overflow: hidden;
 	z-index: 9999;
 	background-image: url('./assets/images/fond-black.svg');
 	background-size: cover;
+	background-position: center;
 	background-color: black;
 
 	* {
@@ -65,7 +66,7 @@ body {
 
 	canvas {
 		@include abs-center;
-		@include size(100%, 100%);
+		@include size(102%, 102%);
 	}
 
 	.cursor {
@@ -678,12 +679,22 @@ body {
 				pointer-events: none;
 				position: fixed;
 				z-index: 999;
-				top: 0;
-				left: 0;
 				opacity: 0;
-				@include size(100vw, 100vh);
+				@include size(102vw, 102vh);
+				@include abs-center;
 				background-image: url('./assets/images/fond-black.svg');
 				background-size: cover;
+
+				&:after {
+					content: '';
+					display: block;
+					@include abs-pos;
+					@include size(100%, 100%);
+					background-image: url('./assets/images/texture.jpg');
+					background-size: cover;
+					mix-blend-mode: multiply;
+					pointer-events: none;
+				}
 
 				& > div {
 					@include size(100%, 100%);
@@ -700,14 +711,32 @@ body {
 						margin: 20px 0;
 					}
 
-					span {
-						filter: brightness(90%);
-						font-size: 2rem;
-					}
+					&.credits {
+						p:last-of-type {
+							@include center-content(row);
+						}
 
-					img {
-						display: inline-block;
-						width: 36%;
+						span {
+							filter: brightness(90%);
+							font-size: 2rem;
+						}
+
+						img {
+							display: inline-block;
+							width: 100px;
+							margin: 0 20px;
+
+							&.button--replay {
+								filter: invert(1);
+								padding: 24px;
+								cursor: pointer;
+								@include transition($duration: 0.8s);
+
+								&:hover {
+									transform: scale(1.2) rotate(-60deg);
+								}
+							}
+						}
 					}
 				}
 			}

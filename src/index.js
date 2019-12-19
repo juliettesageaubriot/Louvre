@@ -12,7 +12,7 @@ import configs from './configs';
 import utils from './utils';
 
 const { bounding, last } = utils;
-const { classNames, classAnimations } = configs;
+const { classNames, classAnimations, buttons } = configs;
 
 class App {
 	constructor(debug = true, className = classNames.APP) {
@@ -91,10 +91,7 @@ class App {
 			console.log(code);
 			switch (code) {
 				case 'Enter':
-					!this.scroller.isAutoScrolling() &&
-						this.scroller.auto(1, 2, () =>
-							gsap.to(classNames.ARROW, 0.4, { autoAlpha: 0 })
-						);
+					!this.scroller.isAutoScrolling() && this.scroller.auto(1, 2);
 					break;
 				default:
 					break;
@@ -108,6 +105,10 @@ class App {
 				if (this.sfx.paused) this.sfx.play();
 				else this.sfx.pause();
 			}
+		});
+
+		this.select(buttons.REPLAY).addEventListener('click', () => {
+			window.location.reload(false);
 		});
 
 		this.select(classNames.ARTEMIS).parentNode.addEventListener(

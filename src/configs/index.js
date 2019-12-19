@@ -50,6 +50,9 @@ const configs = {
 		ARTEMISARC: 'animation--artemisarc',
 		SHATTER: 'animation--shatter',
 		LOADER: 'loading'
+	},
+	buttons: {
+		REPLAY: '.button--replay'
 	}
 };
 
