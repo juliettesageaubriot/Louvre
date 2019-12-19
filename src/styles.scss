@@ -7,14 +7,17 @@ body {
 }
 
 .app__overlay {
-	pointer-events: none;
 	@include size(100%, 100%);
 	@include abs-pos();
 	overflow: hidden;
 	z-index: 9999;
-	pointer-events: none;
 	background-image: url('./assets/images/fond-black.svg');
 	background-size: cover;
+	background-color: black;
+
+	* {
+		@include noselect;
+	}
 
 	img {
 		@include abs-center;
@@ -63,6 +66,24 @@ body {
 	canvas {
 		@include abs-center;
 		@include size(100%, 100%);
+	}
+
+	.cursor {
+		position: absolute;
+
+		&--default {
+			border-radius: 100%;
+			background-color: black;
+			@include size(20px, 20px);
+		}
+
+		&--scratch {
+			@include size(88.75px, 69.75px);
+			background-image: url('./assets/images/scratch-cursor.gif');
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+		}
 	}
 
 	.shatter {

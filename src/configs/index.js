@@ -35,7 +35,10 @@ const configs = {
 		BEBE: '.bebe',
 		ARTEMISARC: '.artemisarc',
 		SHATTER: '.shatter',
-		SHATTER_OVERLAY: '.shatter__overlay'
+		SHATTER_OVERLAY: '.shatter__overlay',
+		CURSOR: 'cursor',
+		CURSOR_DEFAULT: 'cursor--default',
+		CURSOR_SCRATCH: 'cursor--scratch'
 	},
 	classAnimations: {
 		ARTEMIS: 'animation--artemis',

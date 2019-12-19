@@ -85,6 +85,7 @@ export default class Scroller {
 
 		// Kill any existing auto scroll if manually scrolling
 		gsap.killTweensOf(this.app);
+		this.clearAuto();
 
 		this.scroll({
 			wheelDelta: isTouchEvents ? e.deltaX : e.wheelDelta || -e.detail,
@@ -136,9 +137,19 @@ export default class Scroller {
 		}
 
 		// Data
+		const scrollDirection = isTouchEvents
+			? direction
+			: config.auto
+			? app.scrollLeft <= scrollTo
+				? 'RIGHT'
+				: 'LEFT'
+			: delta < 0
+			? 'RIGHT'
+			: 'LEFT';
+
 		this.data = {
 			...this.data,
-			direction: isTouchEvents ? direction : delta < 0 ? 'RIGHT' : 'LEFT',
+			direction: scrollDirection,
 			x: app.scrollLeft,
 			autoScroll: config.auto
 		};
@@ -174,15 +185,11 @@ export default class Scroller {
 	 */
 	auto(scrollTo = 0, duration = 0, cb = null) {
 		this.config.auto = true;
-		this.config.autoIntervalID = setInterval(
-			() => this.scroll({ scrollTo, duration, cb }),
-			200
-		);
+		this.scroll({ scrollTo, duration, cb });
 	}
 
 	clearAuto() {
 		this.config.auto = false;
-		clearInterval(this.config.autoIntervalID);
 	}
 
 	toggleAuto() {

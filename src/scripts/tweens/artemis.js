@@ -5,21 +5,36 @@ import configs from '../../configs';
 const { ARTEMIS, ARTEMIS_FRAGMENT, ARTEMIS_TEXT, ARROW } = configs.classNames;
 const { ARTEMIS: ARTEMIS_ANIM } = configs.classAnimations;
 
-const tween = (appScroller, scrollStart = 0, scrollEnd = 0, duration = 0) => {
+const tween = (
+	appScroller,
+	scrollTo = 0,
+	scrollStart = 0,
+	scrollEnd = 0,
+	duration = 0
+) => {
 	const artemis = document.querySelector(ARTEMIS);
+
+	let arrowForceVisible = false;
 
 	charming(document.querySelector(ARTEMIS_TEXT));
 
 	const tweenArrow = () => {
-		if (appScroller.data.x <= scrollStart || appScroller.data.x >= scrollEnd)
-			gsap.to(ARROW, 0.4, { autoAlpha: 0 });
-		else gsap.to(ARROW, 0.4, { autoAlpha: 1 });
+		if (!arrowForceVisible) {
+			if (appScroller.data.x <= scrollStart || appScroller.data.x >= scrollEnd)
+				gsap.to(ARROW, 0.4, { autoAlpha: 0 });
+			else gsap.to(ARROW, 0.4, { autoAlpha: 1 });
+		}
+
+		if (appScroller.data.direction === 'LEFT')
+			gsap.to(ARROW, 0.4, { scaleX: -1 });
+		else gsap.to(ARROW, 0.4, { scaleX: 1 });
 	};
 
 	appScroller.addAnimation(tweenArrow);
 
 	const shootArrow = () => {
-		// gsap.set(ARROW, { autoAlpha: 0 });
+		arrowForceVisible = true;
+		gsap.set(ARROW, { scaleX: 1 });
 		artemis.classList.remove(ARTEMIS_ANIM);
 
 		void artemis.offsetWidth;
@@ -27,9 +42,11 @@ const tween = (appScroller, scrollStart = 0, scrollEnd = 0, duration = 0) => {
 		artemis.classList.add(ARTEMIS_ANIM);
 
 		artemis.addEventListener('animationend', () => {
-			scrollStart && appScroller.auto(scrollStart, duration);
+			scrollTo && appScroller.auto(scrollTo, duration);
 			gsap.set(ARROW, { autoAlpha: 1 });
 			// gsap.to(ARTEMIS_TEXT, 0.4, { autoAlpha: 0 });
+
+			setTimeout(() => (arrowForceVisible = false), duration);
 		});
 	};
 

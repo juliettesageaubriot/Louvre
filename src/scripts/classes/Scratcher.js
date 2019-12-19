@@ -5,7 +5,7 @@
  */
 
 import { gsap } from 'gsap';
-
+import Cursor from './Cursor';
 import configs from '../../configs';
 
 import BG from '../../assets/images/scratch-bg.png';
@@ -13,6 +13,7 @@ import Brush from '../../assets/images/scratch-brush.png';
 import SFX from '../../assets/sons/scratch.mp3';
 
 const { W, H } = configs.dimensions;
+const { CURSOR_SCRATCH } = configs.classNames;
 
 const STRIDE = 1;
 const MAX_FILL_AMT = 0.32;
@@ -47,6 +48,8 @@ export default class Scratcher {
 		this.ctx = this.canvas.getContext('2d');
 
 		this.container.append(this.canvas);
+
+		this.cursor = new Cursor(this.container, CURSOR_SCRATCH);
 
 		this.appScroller.setDoScroll(false);
 	}
@@ -165,6 +168,7 @@ export default class Scratcher {
 				onComplete: () => {
 					this.cb();
 					this.pauseSFX();
+					this.cursor.dispose();
 					this.appScroller.setDoScroll(true);
 				}
 			});

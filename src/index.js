@@ -11,7 +11,7 @@ import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
 
-const { bounding } = utils;
+const { bounding, last } = utils;
 const { classNames, classAnimations } = configs;
 
 class App {
@@ -177,9 +177,16 @@ class App {
 		// cta(select('#loup'), true);
 		// cta(select('#cheval'), true);
 
-		const scrollStart = (bounding(scenes[1]).x / 2 + 1) / 4;
-		const scrollEnd = bounding(scenes[scenes.length - 2]).right;
-		this.animations.artemis = artemis(this.scroller, scrollStart, scrollEnd, 2.4);
+		const scrollStart = bounding(scenes[1]).x / 2 + 1;
+		const scrollEnd = bounding(select('#seven')).x;
+		const scrollTo = bounding(scenes[1]).x;
+		this.animations.artemis = artemis(
+			this.scroller,
+			scrollTo,
+			scrollStart,
+			scrollEnd,
+			2.4
+		);
 
 		this.animations.biche = biche();
 		this.animations.fleurs = fleurs();
