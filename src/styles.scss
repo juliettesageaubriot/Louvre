@@ -743,11 +743,17 @@ body {
 
 			.img {
 				position: absolute;
+				opacity: 0;
 			}
+
+			#premier-plan, #montagnes, #lamare, #paysage, #pierre {
+				opacity: 1;
+			}
+
 			.appear {
 				@include size(100%, 100%);
 				@include abs-center;
-				opacity: 0;
+				// opacity: 0;
 				width: 180vh;
 			}
 		}
