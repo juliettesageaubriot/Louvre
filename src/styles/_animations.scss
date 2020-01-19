@@ -1,7 +1,3 @@
-// * {
-// 	transition: all ease 0.4s;
-// }
-
 @mixin transition($easing: ease, $duration: 0.4s) {
 	transition: 0.4s $easing $duration;
 }
@@ -11,12 +7,9 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 
 .animation {
 	&--artemis {
-		animation: artemis 2.4s steps(15);
+		animation: artemis 2.4s steps(15) infinite;
 		animation-iteration-count: 1;
 	}
-	// &--biche {
-	// 	animation: biche 1s steps(4) 1;
-	// }
 	&--biche {
 		animation: bicheVerticale 1s steps(4) 1;
 	}
@@ -56,7 +49,7 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 		background-position: 0 0;
 	}
 	to {
-		background-position: -8085px 0;
+		background-position: 0 -1500%;
 	}
 }
 
