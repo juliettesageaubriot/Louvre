@@ -741,12 +741,12 @@ body {
 				}
 			}
 
-			.img {
+			.img, .biche__wrapper, .fleurs__wrapper, .fleurs2__wrapper, .fleurs3__wrapper {
 				position: absolute;
 				opacity: 0;
 			}
 
-			#premier-plan, #montagnes, #lamare, #paysage, #pierre {
+			#premier-plan, #montagnes, #lamare, #paysage, #pierre, #arbre-7, #rocher, #pierre-haut, #temple, #pierre-droite, #pierre-gauche {
 				opacity: 1;
 			}
 
