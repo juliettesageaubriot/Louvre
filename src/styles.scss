@@ -167,17 +167,17 @@ body {
 			border: 2px solid black;
 
 			&#one {
+				//width: 100vw;
 				width: 100vw;
-
 				@at-root {
 					.artemis {
 						&__wrapper {
-							// @include abs-center(
-							// 	$vertical: true,
-							// 	$horizontal: true,
-							// 	// $transform: scale(0.7)
-							// );
-							// @include size(539px, 662px);
+							@include abs-center(
+								$vertical: true,
+								$horizontal: true,
+								// $transform: scale(0.7)
+							);
+							@include size(539px, 662px);
 							position: absolute;
 							padding: 0;
 							width: 35%;
@@ -193,31 +193,31 @@ body {
 							&:before {
 								content: '';
 								display: block;
-								padding-top: 40.85%;
+								padding-top: 10.85%;
 							}
 						}
 
-						// &__text {
-						// 	position: absolute;
-						// 	left: 72%;
-						// 	top: 64%;
-						// 	width: 100%;
-						// 	transform: scale(1.2);
-						// 	text-align: center;
+						&__text {
+							position: absolute;
+							left: 72%;
+							top: 64%;
+							width: 100%;
+							transform: scale(1.2);
+							text-align: center;
 
-						// 	span {
-						// 		opacity: 0;
-						// 	}
-						// }
+							span {
+								opacity: 0;
+							}
+						}
 
-						// &__fragment {
-						// 	position: relative;
-						// 	display: block;
-						// 	z-index: 1;
-						// 	opacity: 0;
-						// }
+						&__fragment {
+							position: relative;
+							display: block;
+							z-index: 1;
+							opacity: 0;
+						}
 
-						// @include size(100%, 100%);
+						@include size(100%, 100%);
 						margin: 0;
 						padding: 0;
 						left: 0;
@@ -225,14 +225,48 @@ body {
 						top: 0;
 						bottom: 0;
 						position: absolute;
-						background-image: url('./assets/videos/artemis/anim-artemis.png');
+						background-image: url('./assets/videos/artemis/anim-artemis-hori.png');
 						background-repeat: no-repeat;
 						background-size: cover;
 						background-position: 0 0;
+						display: block;
+						cursor: pointer;
 						// opacity: 0;
 					}
-				}
+
+					// .artemis {
+					// 	&__wrapper {
+					// 		position: absolute;
+					// 		// height: 70%;
+					// 		width: 35.585%;
+					// 		transform-origin: bottom;
+					// 		padding: 0;
+					// 		bottom: 19%;
+					// 		right: 30%;
+
+					// 		&:before {
+					// 			content: '';
+					// 			display: block;
+					// 			padding-top: 10%;
+					// 		}
+					// 	}
+					// 	margin: 0;
+					// 	padding: 0;
+
+					// 	position: absolute;
+					// 	left: 0;
+					// 	right: 0;
+					// 	top: 0;
+					// 	bottom: 0;
+					// 	background: url('./assets/videos/artemis/anim-artemis-hori.png');
+					// 	background-size: cover;
+					// 	background-position: 0 0;
+					// 	display: block;
+					// 	cursor: pointer;
+					// }
+				// }
 			}
+		}
 			&#two {
 				.biche {
 					&__wrapper {
