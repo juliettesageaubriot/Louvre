@@ -248,9 +248,9 @@ class App {
 
 			switch (index) {
 				case 0:
-					// this.animations.scratcher = new Scratcher(target, this.scroller, () =>
-					// 	this.animations.artemis.fragmentToArt.play()
-					// );
+					this.animations.scratcher = new Scratcher(target, this.scroller, () =>
+						this.animations.artemis.fragmentToArt.play()
+					);
 					break;
 				case 1:
 
