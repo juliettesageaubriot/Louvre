@@ -169,14 +169,12 @@ class App {
 		 * Set CTA for interactive elements
 		 */
 		// cta(select(classNames.ARTEMIS).parentNode);
-		// cta(select(classNames.BICHE).parentNode);
-		// cta(select(classNames.FLEURS).parentNode);
-		// cta(select(classNames.FLEURS2).parentNode);
-		// cta(select(classNames.FLEURS3).parentNode);
-		// cta(select(classNames.BEBE).parentNode);
-		// cta(select(classNames.ARTEMISARC).parentNode);
-		// cta(select('#loup'), true);
-		// cta(select('#cheval'), true);
+		cta(select(classNames.BICHE).parentNode);
+		cta(select(classNames.FLEURS).parentNode);
+		cta(select(classNames.FLEURS2).parentNode);
+		cta(select(classNames.FLEURS3).parentNode);
+		cta(select(classNames.BEBE).parentNode);
+		cta(select(classNames.ARTEMISARC).parentNode);
 
 		const scrollStart = bounding(scenes[1]).x / 2 + 1;
 		const scrollEnd = bounding(select('#seven')).x;
@@ -253,175 +251,208 @@ class App {
 					);
 					break;
 				case 1:
+					//apparition texte + animation différents éléments
 
-				//apparition texte + animation différents éléments
+					let textWrapper2 = document.querySelector('.span-2');
+					textWrapper2.innerHTML = textWrapper2.textContent.replace(
+						/\S/g,
+						"<span class='letter'>$&</span>"
+					);
 
-				let textWrapper2 = document.querySelector('.span-2');
-				textWrapper2.innerHTML = textWrapper2.textContent.replace(
-					/\S/g,
-					"<span class='letter'>$&</span>"
-				);
+					if ("<span class='letter'>.</span>" === true) {
+						console.log('capte le point');
+					} else {
+						console.log('error');
+					}
 
-				if ("<span class='letter'>.</span>" === true) {
-					console.log('capte le point');
-				} else {
-					console.log('error');
-				}
-
-				scene.to(textWrapper2.querySelectorAll('span'), 1, {
-					autoAlpha: 1,
-					stagger: 0.05,
-					ease: 1
-				});
-
-					//apparition scène
-
-					scene.to(target.querySelectorAll('#loup'), .5, {
-						opacity: 1,
-					 	repeat: 0,
-					 	repeatDelay: 0,
-					 	ease: 1
-					}, "<"),
-
-					scene.to(target.querySelectorAll('#antilope'), .5, {
-						opacity: 1,
-					 	repeat: 0,
-					 	repeatDelay: 0,
-					 	ease: 1
-					}, ">"),
-
-					scene.to(target.querySelectorAll('.biche__wrapper'), .5, {
-						opacity: 1,
-					 	repeat: 0,
-					 	repeatDelay: 0,
-					 	ease: 1
-					}, ">"),
-
-					scene.to(target.querySelectorAll('#oiseau'), .5, {
-						opacity: 1,
-					}, ">"),
-
-					scene.to(target.querySelectorAll('#plante-accrochee'), .5, {
-						opacity: 1,
-					 	repeat: 0,
-					 	repeatDelay: 0,
-					 	ease: 1
-					}, ">"),
-
-					scene.to(target.querySelectorAll('#cheval'), .5, {
-						opacity: 1,
-					 	repeat: 0,
-					 	repeatDelay: 0,
-					 	ease: 1
-					}, ">"),
-
-					scene.to(target.querySelectorAll('#myrtille'), .5, {
-						opacity: 1,
-					}, "<"),
-
-					scene.to(target.querySelectorAll('#myrtille'), 1, {
-						rotation: 5,
-						repeat: -1,
-						yoyo: true,
-						repeatDelay: 0,
+					scene.to(textWrapper2.querySelectorAll('span'), 1, {
+						autoAlpha: 1,
+						stagger: 0.05,
 						ease: 1
-					}, ">"),
-
-					scene.to(target.querySelectorAll('#oiseau'), 1, {
-						rotation: -15,
-						repeat: 5,
-						yoyo: true,
-						repeatDelay: 0,
-						ease: 1
-					},  "<"),
-					
-					scene.to(target.querySelectorAll('#biche__wrapper'), 1, {
-						opacity: 1,
-					 	repeat: 0,
-					 	repeatDelay: 0,
-					 	ease: 1
-					}, "<");
-
-					break;
-				case 2:
-
-				//apparition texte + animation différents éléments
-
-				let textWrapper3 = document.querySelector('.span-3');
-				textWrapper3.innerHTML = textWrapper3.textContent.replace(
-					/\S/g,
-					"<span class='letter'>$&</span>"
-				);
-				scene.to(textWrapper3.querySelectorAll('span'), 1, {
-					autoAlpha: 1,
-					ease: 1,
-					stagger: 0.05
-				});
+					});
 
 					//apparition scène
 
 					scene.to(
-						target.querySelector('#plante-tombee'),
-						.5,
+						target.querySelectorAll('#loup'),
+						0.5,
 						{
-							opacity: 1
-						}, 
-						"<"
-					),
-
-					scene.to(
-						target.querySelector('#fleurs-fixes'),
-						.5,
-						{
-							opacity: 1
-						}, 
-						">"
-					),
-
-					scene.to(
-						target.querySelector('.fleurs__wrapper'),
-						.5,
-						{
-							opacity: 1
-						}, 
-						">"
-					),
-
-					scene.to(
-						target.querySelector('.fleurs2__wrapper'),
-						.5,
-						{
-							opacity: 1
-						}, 
-						">"
-					),
-
-					scene.to(
-						target.querySelector('.fleurs3__wrapper'),
-						.5,
-						{
-							opacity: 1
-						}, 
-						">"
-					),
-
-					scene.to(
-						target.querySelector('#plante-tombee'),
-						1,
-						{
-							rotation: -1,
-							repeat: -1,
-							yoyo: true,
+							opacity: 1,
+							repeat: 0,
 							repeatDelay: 0,
 							ease: 1
 						},
-						">"
+						'<'
+					),
+						scene.to(
+							target.querySelectorAll('#antilope'),
+							0.5,
+							{
+								opacity: 1,
+								repeat: 0,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelectorAll('.biche__wrapper'),
+							0.5,
+							{
+								opacity: 1,
+								repeat: 0,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelectorAll('#oiseau'),
+							0.5,
+							{
+								opacity: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelectorAll('#plante-accrochee'),
+							0.5,
+							{
+								opacity: 1,
+								repeat: 0,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelectorAll('#cheval'),
+							0.5,
+							{
+								opacity: 1,
+								repeat: 0,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelectorAll('#myrtille'),
+							0.5,
+							{
+								opacity: 1
+							},
+							'<'
+						),
+						scene.to(
+							target.querySelectorAll('#myrtille'),
+							1,
+							{
+								rotation: 5,
+								repeat: -1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelectorAll('#oiseau'),
+							1,
+							{
+								rotation: -15,
+								repeat: 5,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'<'
+						),
+						scene.to(
+							target.querySelectorAll('#biche__wrapper'),
+							1,
+							{
+								opacity: 1,
+								repeat: 0,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'<'
+						);
+
+					break;
+				case 2:
+					//apparition texte + animation différents éléments
+
+					let textWrapper3 = document.querySelector('.span-3');
+					textWrapper3.innerHTML = textWrapper3.textContent.replace(
+						/\S/g,
+						"<span class='letter'>$&</span>"
 					);
+					scene.to(textWrapper3.querySelectorAll('span'), 1, {
+						autoAlpha: 1,
+						ease: 1,
+						stagger: 0.05
+					});
+
+					//apparition scène
+
+					scene.to(
+						target.querySelector('#plante-tombee'),
+						0.5,
+						{
+							opacity: 1
+						},
+						'<'
+					),
+						scene.to(
+							target.querySelector('#fleurs-fixes'),
+							0.5,
+							{
+								opacity: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelector('.fleurs__wrapper'),
+							0.5,
+							{
+								opacity: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelector('.fleurs2__wrapper'),
+							0.5,
+							{
+								opacity: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelector('.fleurs3__wrapper'),
+							0.5,
+							{
+								opacity: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelector('#plante-tombee'),
+							1,
+							{
+								rotation: -1,
+								repeat: -1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'>'
+						);
 
 					break;
 
 				case 3:
-
 					//apparition texte + animation différents éléments
 
 					let textWrapper4 = document.querySelector('.span-4');
@@ -442,96 +473,88 @@ class App {
 						{
 							opacity: 1
 						},
-						"<"
+						'<'
 					),
-
-					scene.to(
-						target.querySelector('#groupe-de-femme'),
-						.5,
-						{
-							opacity: 1
-						},
-						">"
-					),
-
-					scene.to(
-						target.querySelector('.bebe__wrapper'),
-						.5,
-						{
-							opacity: 1
-						},
-						">"
-					),
-
-					scene.to(
-						target.querySelector('#artemis'),
-						.5,
-						{
-							opacity: 1
-						},
-						">"
-					),
-
-					scene.to(
-						target.querySelector('#femme-penchee'),
-						.5,
-						{
-							opacity: 1
-						},
-						">"
-					),
-
-					scene.to(
-						target.querySelector('#poissons'),
-						.5,
-						{
-							opacity: 1
-						},
-						">"
-					),
-
-					scene.to(
-						target.querySelector('#enfant'),
-						1,
-						{
-							y: '15px',
-							repeat: 3,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						"<"
-					),
-
-					scene.to(
-						target.querySelector('#poissons'),
-						1,
-						{
-							rotation: 10,
-							x: '25px',
-							repeat: -1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						"<"
-					),
-					scene.to(
-						target.querySelector('#femme-penchee'),
-						1,
-						{
-							rotation: 5,
-							repeat: -1,
-							yoyo: true,
-							repeatDelay: 0,
-							ease: 1
-						},
-						"<"
-					);
+						scene.to(
+							target.querySelector('#groupe-de-femme'),
+							0.5,
+							{
+								opacity: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelector('.bebe__wrapper'),
+							0.5,
+							{
+								opacity: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelector('#artemis'),
+							0.5,
+							{
+								opacity: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelector('#femme-penchee'),
+							0.5,
+							{
+								opacity: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelector('#poissons'),
+							0.5,
+							{
+								opacity: 1
+							},
+							'>'
+						),
+						scene.to(
+							target.querySelector('#enfant'),
+							1,
+							{
+								y: '15px',
+								repeat: 3,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'<'
+						),
+						scene.to(
+							target.querySelector('#poissons'),
+							1,
+							{
+								rotation: 10,
+								x: '25px',
+								repeat: -1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'<'
+						),
+						scene.to(
+							target.querySelector('#femme-penchee'),
+							1,
+							{
+								rotation: 5,
+								repeat: -1,
+								yoyo: true,
+								repeatDelay: 0,
+								ease: 1
+							},
+							'<'
+						);
 
 					break;
 				case 4:
-					
 					//apparition texte + animation différents éléments
 
 					let textWrapper5 = document.querySelector('.span-5');
@@ -544,28 +567,53 @@ class App {
 						stagger: 0.05,
 						ease: 1
 					});
-					
+
 					//apparition scène
 
-					scene.to(target.querySelectorAll('#nuages-bas'), .5, {
-						opacity: 1,
-					}, "<");
+					scene.to(
+						target.querySelectorAll('#nuages-bas'),
+						0.5,
+						{
+							opacity: 1
+						},
+						'<'
+					);
 
-					scene.to(target.querySelectorAll('#nuages-gauche'), .5, {
-						opacity: 1,
-					}, ">");
+					scene.to(
+						target.querySelectorAll('#nuages-gauche'),
+						0.5,
+						{
+							opacity: 1
+						},
+						'>'
+					);
 
-					scene.to(target.querySelectorAll('#nuages-droite'), .5, {
-						opacity: 1,
-					}, ">");
+					scene.to(
+						target.querySelectorAll('#nuages-droite'),
+						0.5,
+						{
+							opacity: 1
+						},
+						'>'
+					);
 
-					scene.to(target.querySelectorAll('#poisson'), .5, {
-						opacity: 1,
-					}, ">");
+					scene.to(
+						target.querySelectorAll('#poisson'),
+						0.5,
+						{
+							opacity: 1
+						},
+						'>'
+					);
 
-					scene.to(target.querySelectorAll('#artemis'), .5, {
-						opacity: 1,
-					}, ">");
+					scene.to(
+						target.querySelectorAll('#artemis'),
+						0.5,
+						{
+							opacity: 1
+						},
+						'>'
+					);
 
 					scene
 						.to(
@@ -579,7 +627,7 @@ class App {
 								repeatDelay: 0,
 								ease: 1
 							},
-							">"
+							'>'
 						)
 						.to(
 							target.querySelector('#bateau'),
@@ -591,7 +639,7 @@ class App {
 								repeatDelay: 0,
 								ease: 1
 							},
-							">"
+							'>'
 						)
 						.to(
 							target.querySelector('#vague'),
@@ -599,7 +647,7 @@ class App {
 							{
 								opacity: 1
 							},
-							"<s"
+							'<s'
 						)
 						.to(
 							target.querySelector('#vague'),
@@ -611,7 +659,7 @@ class App {
 								repeatDelay: 0,
 								ease: 1
 							},
-							"<"
+							'<'
 						)
 
 						.to(
@@ -626,7 +674,7 @@ class App {
 								repeatDelay: 0,
 								ease: 1
 							},
-							"<"
+							'<'
 						);
 					scene
 						.to(
@@ -695,7 +743,6 @@ class App {
 
 					break;
 				case 5:
-
 					//apparition texte + animation différents éléments
 
 					let textWrapper6 = document.querySelector('.span-6');
@@ -712,29 +759,59 @@ class App {
 
 					//apparition scène
 
-					scene.to(target.querySelectorAll('#apollon'), 1, {
-						opacity: 1
-					}, "<");
+					scene.to(
+						target.querySelectorAll('#apollon'),
+						1,
+						{
+							opacity: 1
+						},
+						'<'
+					);
 
-					scene.to(target.querySelectorAll('#soleil'), 1, {
-						opacity: 1
-					}, ">");
+					scene.to(
+						target.querySelectorAll('#soleil'),
+						1,
+						{
+							opacity: 1
+						},
+						'>'
+					);
 
-					scene.to(target.querySelectorAll('#nuage-droite-7'), 1, {
-						opacity: 1
-					}, ">");
+					scene.to(
+						target.querySelectorAll('#nuage-droite-7'),
+						1,
+						{
+							opacity: 1
+						},
+						'>'
+					);
 
-					scene.to(target.querySelectorAll('#nuage-gauche-7'), 1, {
-						opacity: 1
-					}, ">");
+					scene.to(
+						target.querySelectorAll('#nuage-gauche-7'),
+						1,
+						{
+							opacity: 1
+						},
+						'>'
+					);
 
-					scene.to(target.querySelectorAll('#nuage-bas-7'), 1, {
-						opacity: 1
-					}, ">");
+					scene.to(
+						target.querySelectorAll('#nuage-bas-7'),
+						1,
+						{
+							opacity: 1
+						},
+						'>'
+					);
 
-					scene.to(target.querySelectorAll('#plante-7'), 1, {
-						opacity: 1
-					}, ">");
+					scene.to(
+						target.querySelectorAll('#plante-7'),
+						1,
+						{
+							opacity: 1
+						},
+						'>'
+					);
 
 					scene.to(
 						target.querySelector('#soleil'),

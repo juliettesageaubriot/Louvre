@@ -49,7 +49,8 @@ const configs = {
 		BEBE: 'animation--bebe',
 		ARTEMISARC: 'animation--artemisarc',
 		SHATTER: 'animation--shatter',
-		LOADER: 'loading'
+		LOADER: 'loading',
+		GLOW: 'glow'
 	},
 	buttons: {
 		REPLAY: '.button--replay'

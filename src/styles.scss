@@ -87,6 +87,14 @@ body {
 		}
 	}
 
+	.glow {
+		@include size(100%, 100%);
+		@include abs-center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+	}
+
 	.shatter {
 		@include size(100%, 100%);
 		@include abs-center;
@@ -189,7 +197,6 @@ body {
 							}
 
 							@media (min-height: 667px) {
-								
 								@include abs-center(
 									$vertical: false,
 									$horizontal: true,
@@ -198,14 +205,12 @@ body {
 							}
 
 							@media (min-height: 812px) {
-								
 								@include abs-center(
 									$vertical: false,
 									$horizontal: true,
 									$transform: scale(0.7)
 								);
 							}
-
 						}
 
 						&__text {
@@ -272,6 +277,10 @@ body {
 							content: '';
 							display: block;
 							padding-top: 98.85%;
+						}
+
+						.glow {
+							background-image: url('./assets/images/glows/artemis-biche.png');
 						}
 					}
 
@@ -353,6 +362,10 @@ body {
 							display: block;
 							padding-top: 145.93%;
 						}
+
+						.glow {
+							background-image: url('./assets/images/glows/flower-left.png');
+						}
 					}
 
 					margin: 0;
@@ -388,6 +401,10 @@ body {
 							display: block;
 							padding-top: 103.95%;
 						}
+
+						.glow {
+							background-image: url('./assets/images/glows/flower-middle.png');
+						}
 					}
 
 					margin: 0;
@@ -420,6 +437,10 @@ body {
 							content: '';
 							display: block;
 							padding-top: 134.71%;
+						}
+
+						.glow {
+							background-image: url('./assets/images/glows/flower-right.png');
 						}
 					}
 
@@ -476,6 +497,10 @@ body {
 							content: '';
 							display: block;
 							padding-top: 231.88%;
+						}
+
+						.glow {
+							background-image: url('./assets/images/glows/women.png');
 						}
 					}
 
@@ -686,6 +711,12 @@ body {
 							display: block;
 							padding-top: 73.12%;
 						}
+
+						.glow {
+							background-image: url('./assets/images/glows/artemis-badass.png');
+							background-position: -20%;
+							@include abs-pos($top: 0, $left: 0, $x: 0, $y: 40px);
+						}
 					}
 
 					margin: 0;
@@ -776,12 +807,26 @@ body {
 				}
 			}
 
-			.img, .biche__wrapper, .fleurs__wrapper, .fleurs2__wrapper, .fleurs3__wrapper, .bebe__wrapper {
+			.img,
+			.biche__wrapper,
+			.fleurs__wrapper,
+			.fleurs2__wrapper,
+			.fleurs3__wrapper {
 				position: absolute;
 				opacity: 0;
 			}
 
-			#premier-plan, #montagnes, #lamare, #paysage, #pierre, #arbre-7, #rocher, #pierre-haut, #temple, #pierre-droite, #pierre-gauche {
+			#premier-plan,
+			#montagnes,
+			#lamare,
+			#paysage,
+			#pierre,
+			#arbre-7,
+			#rocher,
+			#pierre-haut,
+			#temple,
+			#pierre-droite,
+			#pierre-gauche {
 				opacity: 1;
 			}
 
