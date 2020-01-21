@@ -59,9 +59,20 @@ export default class Scratcher {
 
 		this.loadAssets();
 
+		// https://stackoverflow.com/questions/28047792/html-canvas-scaling-image-to-fit-without-stretching
 		this.canvas.addEventListener('bgReady', ({ detail }) => {
+			const ratio = detail.img.width / detail.img.height;
+			let bgW, bgH;
+
+			bgW = W;
+			bgH = bgW / ratio;
+			if (bgH < H) {
+				bgH = H;
+				bgW = bgH * ratio;
+			}
+
 			this.assets.bg = detail.img;
-			this.ctx.drawImage(this.assets.bg, 0, 0, W, H);
+			this.ctx.drawImage(this.assets.bg, -(bgW - W) / 2, 0, bgW, bgH);
 		});
 
 		this.canvas.addEventListener('brushReady', ({ detail }) => {
