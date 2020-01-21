@@ -67,6 +67,7 @@ body {
 	canvas {
 		@include abs-center;
 		@include size(102%, 102%);
+		// @include size(101vw, 101vh);
 	}
 
 	.cursor {
@@ -172,7 +173,7 @@ body {
 			background-image: url('./assets/images/fond.jpg');
 			background-size: cover;
 			background-repeat: no-repeat;
-			border: 2px solid black;
+			// border: 2px solid black;
 
 			&#one {
 				width: 100vw;
@@ -196,7 +197,7 @@ body {
 								@include noselect;
 							}
 
-							@media (min-height: 667px) {
+							@media (min-height: 667px){
 								@include abs-center(
 									$vertical: false,
 									$horizontal: true,
@@ -215,13 +216,10 @@ body {
 
 						&__text {
 							position: absolute;
-							// left: 72%;
-							// top: 64%;
-							left: 62%;
-							top: 67%;
-							// width: 100%;
-							width: 40%;
-							transform: scale(1.2);
+							left: 59%;
+							top: 63%;
+							width: 55%;
+							transform: scale(.8);
 							text-align: center;
 
 							span {
@@ -232,6 +230,7 @@ body {
 								width: 60%;
 								left: 80%;
 								top: 57%;
+								transform: scale(1.2);
 							}
 
 							@media (min-width: 1024px) {
