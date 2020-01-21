@@ -11,7 +11,7 @@ import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
 
-const { bounding, last } = utils;
+const { bounding } = utils;
 const { classNames, classAnimations, buttons } = configs;
 
 class App {
@@ -41,7 +41,7 @@ class App {
 
 		this.sfx = this.select('#sfx');
 
-		this.loader();
+		this.loader(false);
 		this.scenes();
 		this.tweens();
 		this.events();
@@ -53,27 +53,31 @@ class App {
 		this.select = this.select.bind(this);
 	}
 
-	loader() {
+	loader(isActive = true) {
 		const overlay = document.querySelector(classNames.LOADER);
-		const img = overlay.querySelector('img');
-		const div = overlay.querySelector('div');
+		if (isActive) {
+			const img = overlay.querySelector('img');
+			const div = overlay.querySelector('div');
 
-		const { width, height } = bounding(img);
-		gsap.set(div, { width, height });
+			const { width, height } = bounding(img);
+			gsap.set(div, { width, height });
 
-		const tl = gsap.timeline({
-			duration: 6,
-			onStart: () => div.classList.add(classAnimations.LOADER),
-			onUpdate: () => (img.style.opacity = tl.progress() / 2),
-			onComplete: () => {
-				gsap.to(img, 0.6, { alpha: 1 });
-				setTimeout(() => {
-					gsap.to(overlay, 1.2, { autoAlpha: 0, scale: 2, zIndex: -999 });
-				}, 600);
+			const tl = gsap.timeline({
+				duration: 6,
+				onStart: () => div.classList.add(classAnimations.LOADER),
+				onUpdate: () => (img.style.opacity = tl.progress() / 2),
+				onComplete: () => {
+					gsap.to(img, 0.6, { alpha: 1 });
+					setTimeout(() => {
+						gsap.to(overlay, 1.2, { alpha: 0, scale: 2, zIndex: -999 });
+					}, 600);
 
-				this.sfx && this.sfx.play().catch(() => this.sfx.play());
-			}
-		});
+					this.sfx && this.sfx.play().catch(() => this.sfx.play());
+				}
+			});
+		} else {
+			gsap.set(overlay, { alpha: 0, zIndex: -999 });
+		}
 	}
 
 	events() {
