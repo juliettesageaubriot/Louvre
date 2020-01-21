@@ -53,31 +53,28 @@ class App {
 		this.select = this.select.bind(this);
 	}
 
-	loader(isActive = true) {
+	loader() {
 		const overlay = document.querySelector(classNames.LOADER);
-		if (isActive) {
-			const img = overlay.querySelector('img');
-			const div = overlay.querySelector('div');
 
-			const { width, height } = bounding(img);
-			gsap.set(div, { width, height });
+		const img = overlay.querySelector('img');
+		const div = overlay.querySelector('div');
 
-			const tl = gsap.timeline({
-				duration: 6,
-				onStart: () => div.classList.add(classAnimations.LOADER),
-				onUpdate: () => (img.style.opacity = tl.progress() / 2),
-				onComplete: () => {
-					gsap.to(img, 0.6, { alpha: 1 });
-					setTimeout(() => {
-						gsap.to(overlay, 1.2, { alpha: 0, scale: 2, zIndex: -999 });
-					}, 600);
+		const { width, height } = bounding(img);
+		gsap.set(div, { width, height });
 
-					this.sfx && this.sfx.play().catch(() => this.sfx.play());
-				}
-			});
-		} else {
-			gsap.set(overlay, { alpha: 0, zIndex: -999 });
-		}
+		const tl = gsap.timeline({
+			duration: 6,
+			onStart: () => div.classList.add(classAnimations.LOADER),
+			onUpdate: () => (img.style.opacity = tl.progress() / 2),
+			onComplete: () => {
+				gsap.to(img, 0.6, { alpha: 1 });
+				setTimeout(() => {
+					gsap.to(overlay, 1.2, { alpha: 0, zIndex: -999 });
+				}, 600);
+
+				this.sfx && this.sfx.play().catch(() => this.sfx.play());
+			}
+		});
 	}
 
 	events() {
