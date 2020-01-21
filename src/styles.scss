@@ -7,7 +7,7 @@ body {
 }
 
 .app__overlay {
-	@include size(102%, 102%);
+	@include size(100%, 100%);
 	@include abs-center;
 	overflow: hidden;
 	z-index: 9999;
@@ -31,7 +31,7 @@ body {
 		background-color: rgba(0, 0, 0, 0.63);
 
 		mask-size: 10%;
-		mask-position: center;
+		mask-postion: center;
 		mask: url('./assets/images/loader-arrow-start.svg');
 		mask-repeat: no-repeat;
 		-webkit-mask-size: 10%;
@@ -57,7 +57,6 @@ body {
 
 .app {
 	@include size(100%, 100%);
-	@include abs-pos($top: 0, $left: 0, $x: 0, $y: 0);
 	overflow: hidden;
 	color: $text;
 	background: $bg;
