@@ -69,7 +69,7 @@ class App {
 				onComplete: () => {
 					gsap.to(img, 0.6, { alpha: 1 });
 					setTimeout(() => {
-						gsap.to(overlay, 1.2, { alpha: 0, zIndex: -999 });
+						gsap.to(overlay, 1.2, { alpha: 0, scale: 2, zIndex: -999 });
 					}, 600);
 
 					this.sfx && this.sfx.play().catch(() => this.sfx.play());
