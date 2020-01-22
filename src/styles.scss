@@ -192,6 +192,8 @@ body {
 
 			&#one {
 				width: 100vw;
+				background-size: auto 100vh;
+				background-repeat: repeat-x;
 
 				@at-root {
 					.artemis {
