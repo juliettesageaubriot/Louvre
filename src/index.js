@@ -169,7 +169,7 @@ class App {
 		/**
 		 * Set CTA for interactive elements
 		 */
-		// cta(select(classNames.ARTEMIS).parentNode);
+		cta(select(classNames.ARTEMIS).parentNode);
 		cta(select(classNames.BICHE).parentNode);
 		cta(select(classNames.FLEURS).parentNode);
 		cta(select(classNames.FLEURS2).parentNode);

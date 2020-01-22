@@ -212,6 +212,10 @@ body {
 									$transform: scale(0.7)
 								);
 							}
+
+							.glow {
+								background-image: url('./assets/images/glows/artemis-arc.png');
+							}
 						}
 
 						&__text {
