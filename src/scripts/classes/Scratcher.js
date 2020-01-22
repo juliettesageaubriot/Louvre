@@ -39,6 +39,12 @@ export default class Scratcher {
 
 	bindit() {
 		this.handler = this.handler.bind(this);
+
+		window.addEventListener('resize', () => {
+			this.canvas.width = W();
+			this.canvas.height = H();
+			this.bg();
+		});
 	}
 
 	init() {
@@ -55,30 +61,10 @@ export default class Scratcher {
 	}
 
 	doit() {
-		const { width: W, height: H } = this.canvas;
-
 		this.loadAssets();
-
-		// https://stackoverflow.com/questions/28047792/html-canvas-scaling-image-to-fit-without-stretching
 		this.canvas.addEventListener('bgReady', ({ detail }) => {
-			let bgW, bgH;
-
-			if (W < H) {
-				bgW = W;
-				bgH = H;
-			} else {
-				const ratio = detail.img.width / detail.img.height;
-
-				bgW = W;
-				bgH = bgW / ratio;
-				if (bgH < H) {
-					bgH = H;
-					bgW = bgH * ratio;
-				}
-			}
-
 			this.assets.bg = detail.img;
-			this.ctx.drawImage(this.assets.bg, -(bgW - W) / 2, 0, bgW, bgH);
+			this.bg();
 		});
 
 		this.canvas.addEventListener('brushReady', ({ detail }) => {
@@ -92,6 +78,30 @@ export default class Scratcher {
 
 		this.canvas.addEventListener('mousemove', this.handler);
 		this.canvas.addEventListener('touchmove', this.handler);
+	}
+
+	// https://stackoverflow.com/questions/28047792/html-canvas-scaling-image-to-fit-without-stretching
+	bg() {
+		const { width: W, height: H } = this.canvas;
+		const { bg } = this.assets;
+
+		let bgW, bgH;
+
+		if (W < H) {
+			bgW = W;
+			bgH = H;
+		} else {
+			const ratio = bg.width / bg.height;
+
+			bgW = W;
+			bgH = bgW / ratio;
+			if (bgH < H) {
+				bgH = H;
+				bgW = bgH * ratio;
+			}
+		}
+
+		this.ctx.drawImage(bg, -(bgW - W) / 2, 0, bgW, bgH);
 	}
 
 	loadAssets() {
