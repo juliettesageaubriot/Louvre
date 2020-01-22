@@ -60,8 +60,25 @@ class App {
 		const div = overlay.querySelector('div');
 
 		const { width, height } = bounding(img);
-		gsap.set(div, { width, height });
 
+		// IF GSAP not working, uncomment it and use this
+		// div.style.width = `${width}px`;
+		// div.style.height = `${height}px`;
+
+		// div.classList.add(classAnimations.LOADER);
+		// img.classList.add(classAnimations.LOADER_ARC_ALPHA);
+
+		// setTimeout(() => {
+		// 	overlay.classList.add(classAnimations.LOADER_OUT);
+		// 	this.sfx && this.sfx.play().catch(() => this.sfx.play());
+
+		// 	setTimeout(() => {
+		// 		overlay.classList.add('hidden');
+		// 	}, 1400);
+		// }, 6000);
+
+		// Use GSAP
+		gsap.set(div, { width, height });
 		const tl = gsap.timeline({
 			duration: 6,
 			onStart: () => div.classList.add(classAnimations.LOADER),
@@ -69,7 +86,7 @@ class App {
 			onComplete: () => {
 				gsap.to(img, 0.6, { alpha: 1 });
 				setTimeout(() => {
-					gsap.to(overlay, 1.2, { alpha: 0, zIndex: -999 });
+					gsap.to(overlay, 1.2, { autoAlpha: 0, scale: 2, zIndex: -999 });
 				}, 600);
 
 				this.sfx && this.sfx.play().catch(() => this.sfx.play());

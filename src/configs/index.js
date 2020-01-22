@@ -50,6 +50,8 @@ const configs = {
 		ARTEMISARC: 'animation--artemisarc',
 		SHATTER: 'animation--shatter',
 		LOADER: 'loading',
+		LOADER_ARC_ALPHA: 'loading-arc',
+		LOADER_OUT: 'loading-out',
 		GLOW: 'glow'
 	},
 	buttons: {

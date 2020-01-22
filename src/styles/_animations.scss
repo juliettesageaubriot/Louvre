@@ -51,6 +51,26 @@ $ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
 	}
 }
 
+@keyframes alpha {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes alpha-out {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(2);
+	}
+}
+
 @keyframes artemis {
 	from {
 		background-position: 0 0;

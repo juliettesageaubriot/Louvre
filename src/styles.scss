@@ -6,9 +6,16 @@ body {
 	position: relative;
 }
 
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+
 .app__overlay {
 	@include size(102%, 102%);
-	@include abs-center;
+	position: fixed;
+	top: 0;
+	left: 0;
 	overflow: hidden;
 	z-index: 9999;
 	background-image: url('./assets/images/fond-black.svg');
@@ -31,7 +38,7 @@ body {
 		background-color: rgba(0, 0, 0, 0.63);
 
 		mask-size: 10%;
-		mask-postion: center;
+		mask-position: center;
 		mask: url('./assets/images/loader-arrow-start.svg');
 		mask-repeat: no-repeat;
 		-webkit-mask-size: 10%;
@@ -46,12 +53,20 @@ body {
 			@include size(100%, 100%);
 			background-color: $gold;
 		}
+	}
+}
 
-		&.loading {
-			&:after {
-				animation: loading 6s ease-in-out 1 forwards;
-			}
-		}
+.loading {
+	&:after {
+		animation: loading 6s ease-in-out 1 forwards;
+	}
+
+	&-arc {
+		animation: alpha 6s ease-in-out 1 forwards;
+	}
+
+	&-out {
+		animation: alpha-out 1.2s ease-in-out 1 forwards;
 	}
 }
 
