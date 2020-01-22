@@ -101,7 +101,7 @@ export default class Scratcher {
 			}
 		}
 
-		this.ctx.drawImage(bg, -(bgW - W) / 2, 0, bgW, bgH);
+		this.ctx.drawImage(bg, -(bgW - W) / 2, -(bgH - H) / 2, bgW, bgH);
 	}
 
 	loadAssets() {
