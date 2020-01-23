@@ -26,7 +26,7 @@
     "uninstall": "0.0.0",
     "wipe.css": "^1.1.2",
     "prettier": "^1.19.1",
-    "parcel-bundler": "^1.12.4",
+    "parcel-bundler": "^1.12.4"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
