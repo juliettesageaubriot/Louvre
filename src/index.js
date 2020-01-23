@@ -11,7 +11,7 @@ import tweens from './scripts/tweens';
 import configs from './configs';
 import utils from './utils';
 
-const { bounding } = utils;
+const { bounding, isMobile } = utils;
 const { classNames, classAnimations, buttons } = configs;
 
 class App {
@@ -264,9 +264,11 @@ class App {
 
 			switch (index) {
 				case 0:
-					this.animations.scratcher = new Scratcher(target, this.scroller, () =>
-						this.animations.artemis.fragmentToArt.play()
-					);
+					if (!isMobile()) {
+						this.animations.scratcher = new Scratcher(target, this.scroller, () =>
+							this.animations.artemis.fragmentToArt.play()
+						);
+					}
 					break;
 				case 1:
 					//apparition texte + animation différents éléments
