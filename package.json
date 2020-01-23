@@ -25,7 +25,7 @@
     "scrollmagic-plugin-gsap": "^1.0.3",
     "uninstall": "0.0.0",
     "wipe.css": "^1.1.2",
-    "prettier": "^1.19.1",
+    "prettier": "^1.19.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
