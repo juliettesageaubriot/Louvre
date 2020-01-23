@@ -7,6 +7,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
+    "server": "node server.js",
     "clean": "git rm -rf --cached dist && rm -r dist .cache",
     "start": "parcel src/index.html",
     "build-prod": "parcel build src/index.html",
@@ -23,7 +24,8 @@
     "scrollmagic": "^2.0.7",
     "scrollmagic-plugin-gsap": "^1.0.3",
     "uninstall": "0.0.0",
-    "wipe.css": "^1.1.2"
+    "wipe.css": "^1.1.2",
+    "prettier": "^1.19.1",
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
