@@ -18,7 +18,7 @@
     "charming": "^3.0.1",
     "delaunator": "^4.0.1",
     "express": "^4.17.1",
-    "gsap": "^3.0.2",
+    "gsap": "^3.6.0",
     "hammerjs": "^2.0.8",
     "intersection-observer-polyfill": "^0.1.0",
     "nstall": "^0.2.0",
